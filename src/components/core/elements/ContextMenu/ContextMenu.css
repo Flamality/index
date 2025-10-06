@@ -1,0 +1,20 @@
+.context-menu {
+  position: absolute;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-main);
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  list-style: none;
+  z-index: 10000;
+  min-width: 150px;
+}
+.context-menu li {
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  padding: var(--space-xxs) var(--space-sm);
+}
+.context-menu li:hover {
+  background: var(--color-surface-alt);
+}

@@ -1,0 +1,22 @@
+.core-screen-404 {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-bg-main);
+  position: relative;
+}
+.core-screen-404-header {
+  font-size: 3rem;
+  color: var(--color-accent-primary);
+  font-weight: 700;
+}
+.core-screen-404-subheader {
+  font-size: 1.8rem;
+  color: var(--color-text-muted);
+}
+.core-screen-404-back {
+  margin-top: 1.5rem;
+}

@@ -1,0 +1,25 @@
+.birthdaybash-hero {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.birthdaybash-hero-title {
+  text-align: center;
+  color: #fff;
+}
+.birthdaybash-hero-title h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+.birthdaybash-hero-title h1 {
+  font-size: 4rem;
+  font-weight: 900;
+}
+.birthdaybash-hero-navigation {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+}

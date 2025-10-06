@@ -1,0 +1,20 @@
+.account-tab-connections-createlist {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  background-color: var(--color-surface);
+  width: 100%;
+  padding: var(--padding-input-vertical) var(--padding-input-horizontal);
+  border-radius: var(--radius-sm);
+  margin: var(--margin-input-vertical) 0;
+  border: var(--border-thin) solid var(--color-border);
+}
+.account-tab-connections-createlist > a > svg {
+  height: 3rem;
+  width: 3rem;
+  color: var(--color-text-main);
+  cursor: pointer;
+}
+.account-tab-connections-createlist > a:hover > svg {
+  color: var(--color-text-muted);
+}

@@ -1,0 +1,38 @@
+.account-tab-security-sessions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+.account-tab-security-sessions-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  text-align: left;
+  width: 100%;
+}
+.account-tab-security-sessions-subtitle {
+  text-align: left;
+  width: 100%;
+}
+
+
+.account-tab-security-sessions-other{
+  width: 100%;
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.account-tab-security-sessions div {
+  border-radius: var(--radius-md);
+}
+.account-tab-security-sessions-other div:first-child {
+    border-radius: var(--radius-xl) var(--radius-xl) var(--radius-md) var(--radius-md);
+}
+.account-tab-security-sessions-other div:last-child {
+    border-radius: var(--radius-md) var(--radius-md) var(--radius-xl) var(--radius-xl);
+}
+.account-tab-security-sessions-other div:first-child:last-child {
+    border-radius: var(--radius-xl);
+}

@@ -1,0 +1,47 @@
+.core-element-textfield {
+  position: relative;
+}
+.core-element-textfield-with-symbol > input {
+  padding-right: calc(var(--input-padding) + 2rem);
+}
+.core-element-textfield-x,
+.core-element-textfield-check,
+.core-element-textfield-loading {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--color-danger);
+  height: 1.5rem;
+  width: 1.5rem;
+}
+.core-element-textfield-check {
+  color: var(--color-success);
+}
+.core-element-textfield-loading {
+  color: var(--color-text-muted);
+  animation: loadSpin 1s linear infinite;
+}
+
+@keyframes loadSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* .core-element-textfield > div {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--primary);
+  height: 1.5rem;
+  width: 1.5rem;
+}
+.core-element-textfield > div::before {
+  background-size: 0.75rem 0.75rem;
+} */

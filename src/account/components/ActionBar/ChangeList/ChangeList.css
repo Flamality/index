@@ -1,0 +1,66 @@
+.account-actionbar-changelist {
+  position: absolute;
+  bottom: 3.1rem;
+  right: 0;
+  background-color: var(--color-surface);
+  min-width: 10rem;
+  max-width: 80vw;
+  padding: var(--padding-input-vertical) var(--padding-input-horizontal);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  border: 1px solid var(--color-border);
+  border-bottom: none;
+  z-index: var(--z-popover);
+}
+.account-actionbar-changelist-item {
+  border-bottom: var(--border-thin) solid var(--color-border);
+  padding: var(--space-sm) var(--space-sm);
+  position: relative;
+}
+.account-actionbar-changelist-item:last-child {
+  border-bottom: none;
+}
+.account-actionbar-changelist-item-key {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  margin-bottom: var(--space-xxs);
+}
+
+.account-actionbar-changelist-item-data {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+.account-actionbar-changelist-item-old {
+  color: var(--color-danger);
+}
+.account-actionbar-changelist-item-new {
+  font-weight: 600;
+}
+.account-actionbar-changelist-item-remove {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  background-color: var(--color-surface);
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  display: none;
+}
+.account-actionbar-changelist-item:hover
+  .account-actionbar-changelist-item-remove {
+  display: flex;
+}
+.account-actionbar-changelist-item-remove > p {
+  font-weight: 700;
+  color: var(--color-danger);
+  font-size: var(--text-sm);
+}

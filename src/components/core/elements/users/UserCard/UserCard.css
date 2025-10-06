@@ -1,0 +1,79 @@
+.user-card {
+  width: 325px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-surface-alt);
+  padding: var(--space-md);
+}
+
+.user-card-banner {
+  height: 120px;
+  background: linear-gradient(135deg, #746aff, #4f3eff);
+  margin: calc(-1 * var(--space-md)) calc(-1 * var(--space-md)) 0
+    calc(-1 * var(--space-md));
+}
+
+.user-card-avatar-wrapper {
+  display: flex;
+  justify-content: left;
+  margin-top: -40px;
+}
+
+.user-card-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 4px solid var(--color-surface-alt);
+  background-color: #fff;
+  object-fit: cover;
+}
+
+.user-card-info {
+  border-radius: 0 0 16px 16px;
+}
+
+.user-card-names {
+  margin-bottom: 12px;
+}
+
+.user-card-names h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.user-card-names p {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.user-card-bio {
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-border);
+}
+
+.user-card-bio h4 {
+  margin: 0 0 4px 0;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.user-card-bio p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.user-card-stats h4 {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.user-card-stats p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}

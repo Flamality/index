@@ -1,0 +1,10 @@
+.account-section-subtitle {
+  font-weight: 600;
+  margin: var(--space-lg) 0 var(--space-xs) 0;
+  text-align: left;
+  color: var(--color-text-muted);
+  font-family: var(--font-main);
+  font-size: var(--text-md);
+  text-align: left;
+  width: 100%;
+}

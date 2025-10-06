@@ -1,0 +1,21 @@
+.account-tab-connections-connectionlist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.account-tab-connections-connectionlist > div {
+  width: 100%;
+  padding: var(--padding-input-vertical) var(--padding-input-horizontal);
+  border-radius: var(--radius-sm);
+  margin: var(--margin-input-vertical) 0;
+  border: var(--border-thin) solid var(--color-border);
+  color: var(--color-text-main);
+}
+.account-tab-connections-connectionlist > div > h3 {
+  font-size: var(--text-md);
+  font-weight: 500;
+}
+.account-tab-connections-connectionlist > div > h4 {
+  font-size: var(--text-sm);
+  font-weight: 400;
+}

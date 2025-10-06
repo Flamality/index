@@ -1,0 +1,19 @@
+.account-tab-data-header {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 1.5rem 0 0.5rem;
+  color: var(--color-text-main);
+  width: fit-content;
+}
+
+.account-tab-data-code {
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  padding: 1rem;
+  border-radius: 5px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.4;
+  width: fit-content;
+}

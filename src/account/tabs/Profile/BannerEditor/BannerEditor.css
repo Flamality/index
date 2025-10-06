@@ -1,0 +1,75 @@
+.account-profile-banner-editor {
+  width: 100%;
+}
+
+.banner-editor-colormap {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: space-between;
+  border-radius: var(--radius-md);
+}
+.color-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: color;
+  border: 2px solid #fff;
+  cursor: pointer;
+  position: relative;
+}
+.banner-editor-colormap > div {
+  position: relative;
+}
+.banner-editor-colormap > div > svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  width: 100%;
+  pointer-events: none;
+}
+.banner-editor-colormap > div > .remove-color {
+  position: absolute;
+  top: -0.5rem;
+  right: 0;
+  cursor: pointer;
+  color: var(--color-danger);
+  width: 20px;
+  height: 20px;
+  display: none;
+  pointer-events: all;
+}
+.banner-editor-colormap > div:hover > .remove-color {
+  display: block;
+}
+.insert-color {
+  margin: auto var(--space-xs);
+  height: fit-content;
+  cursor: pointer;
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+}
+.insert-color svg {
+  font-size: var(--text-sm);
+}
+.insert-color-edge {
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  cursor: pointer;
+}
+
+.insert-color-edge svg {
+  font-size: var(--text-sm);
+}

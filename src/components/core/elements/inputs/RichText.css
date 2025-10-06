@@ -1,0 +1,95 @@
+.rich-text-editor {
+  width: 100%;
+  min-height: 120px;
+  padding: 16px;
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: 12px;
+  font-size: var(--text-md);
+  line-height: 1.5;
+  background: var(--color-surface);
+  outline: none;
+  color: var(--color-text-main);
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.rich-text-editor:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.rich-text-editor:hover {
+  border-color: #cbd5e0;
+}
+
+.rich-text-editor:empty:before {
+  content: attr(data-placeholder);
+  color: var(--color-text-main);
+  pointer-events: none;
+}
+
+.mention {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: var(--color-text-main);
+  padding: 2px 8px;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 14px;
+  display: inline-block;
+  margin: 0 2px;
+  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+}
+
+.hashtag {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 14px;
+  display: inline-block;
+  margin: 0 2px;
+  box-shadow: 0 2px 4px rgba(245, 87, 108, 0.3);
+}
+
+.link {
+  color: #007bff;
+  text-decoration: none;
+  border-bottom: 1px dotted #007bff;
+  transition: all 0.2s ease;
+}
+
+.link:hover {
+  background-color: #f8f9ff;
+  border-bottom-style: solid;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.code {
+  background: var(--color-surface-alt);
+  color: var(--color-text-muted);
+  padding: 2px;
+  border-radius: 4px;
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+  font-size: 14px;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+  color: #718096;
+}
+
+.emoji {
+  font-size: 1.2em;
+  line-height: 1;
+  vertical-align: middle;
+  margin: 0 1px;
+  display: inline-block;
+}

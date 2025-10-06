@@ -1,0 +1,24 @@
+.account {
+  background-color: var(--color-bg-main);
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+.account-tab {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+/* .account > div {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+} */
+
+@media screen and (max-width: 1000px) {
+  .account {
+    flex-direction: column;
+  }
+}

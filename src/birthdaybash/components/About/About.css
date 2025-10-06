@@ -1,0 +1,22 @@
+.birthdaybash-landing-about {
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: var(--background-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.birthdaybash-landing-about h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  max-width: 38rem;
+}
+.birthdaybash-landing-about p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  max-width: 38rem;
+}

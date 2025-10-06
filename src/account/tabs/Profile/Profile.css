@@ -1,0 +1,75 @@
+.account-label {
+  /* font-weight: 600; */
+  margin: var(--space-md) 0 var(--space-sm) 0;
+  text-align: left;
+  width: 100%;
+}
+.account-tab-profile-pfpwrapper {
+  position: relative;
+  width: 100%;
+  width: 100px;
+  height: 100px;
+  margin-right: auto;
+}
+.account-tab-profile-pfpwrapper > img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: var(--space-md);
+  position: relative;
+}
+.account-tab-profile-pfpwrapper > input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  opacity: 0;
+  cursor: pointer;
+}
+.account-tab-profile-pfpwrapper > svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  opacity: 0;
+  user-select: none;
+  pointer-events: none;
+}
+.account-tab-profile-pfpwrapper > div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  user-select: none;
+  pointer-events: none;
+}
+.account-tab-profile-pfpwrapper:hover > svg {
+  opacity: 1;
+}
+.account-tab-profile-pfpwrapper:hover > img {
+  cursor: pointer;
+  opacity: var(--opacity-disabled);
+}
+.account-tab-profile-pfpwrapper:disabled > svg {
+  opacity: 0.5;
+}
+.account-tab-profile-email {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-xs);
+}
+.account-tab-profile-email p {
+  padding: var(--space-xs) 0;
+  color: var(--color-text-muted);
+  font-family: var(--font-main);
+  font-size: var(--text-xs);
+  width: fit-content;
+}
+.account-tab-profile-email input {
+  flex-grow: 1;
+}

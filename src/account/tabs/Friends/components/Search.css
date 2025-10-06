@@ -1,0 +1,49 @@
+.account-tab-friends-search {
+    width: 100%;
+    max-width: 650px;
+    position: relative;
+}
+.account-tab-friends-search-results {
+    position: absolute;
+    top: calc(100% + var(--space-sm));
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xxs)
+}
+.account-tab-friends-search-result {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    padding: var(--space-sm) var(--space-md);
+    background-color: var(--color-surface);
+    width: 100%;
+    border-radius: var(--radius-md);
+}
+.account-tab-friends-search-result:first-child {
+    border-radius: var(--radius-xl) var(--radius-xl) var(--radius-md) var(--radius-md);
+}
+.account-tab-friends-search-result:last-child {
+    border-radius: var(--radius-md) var(--radius-md) var(--radius-xl) var(--radius-xl);
+}
+.account-tab-friends-search-result:first-child:last-child {
+    border-radius: var(--radius-xl);
+}
+.account-tab-friends-search-result img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--radius-full);
+}
+.account-tab-friends-search-result > div {
+    margin-right: auto;
+}
+.account-tab-friends-search-result > div > .display {
+    font-weight: 600;
+    color: var(--color-text-main)
+}
+.account-tab-friends-search-result > div > .username {
+    color: var(--color-text-muted)
+}
+.account-tab-friends-search-result > button {
+    margin-left: 2rem;
+}

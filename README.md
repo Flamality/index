@@ -1,3 +1,18 @@
-Get started by customizing your environment (defined in the .idx/dev.nix file) with the tools and IDE extensions you'll need for your project!
+# Flamality.com
 
-Learn more at https://developers.google.com/idx/guides/customize-idx-env
+> Welcome to the repo for [flamality.com](https://flamality.com)
+
+## What is this?
+
+This is my website where you can:
+
+- Find info on me and my socials.
+- Browse some of my featured projects
+- Manage your Flamality account
+
+## Tech stack
+
+- react (Front end)
+- vite (Build tool)
+- appwrite (Back end)
+- css (Styling)
