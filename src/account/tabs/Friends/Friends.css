@@ -1,0 +1,6 @@
+.friend-lonely-msg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8rem 2rem
+}

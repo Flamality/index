@@ -101,7 +101,7 @@ export const refreshSpotifyToken = async (refreshToken) => {
   params.append("grant_type", "refresh_token");
   params.append("refresh_token", refreshToken);
 
-  const basicAuth = btoa(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`);
+  const basicAuth = btoa(`${import.meta.env.SPOTIFY_CLIENT_ID}:${import.meta.env.SPOTIFY_CLIENT_SECRET}`);
 
   try {
     const res = await fetch("https://accounts.spotify.com/api/token", {
@@ -113,7 +113,7 @@ export const refreshSpotifyToken = async (refreshToken) => {
       body: params.toString(),
     });
 
-    if (!res.ok) throw new Error("Failed to refresh token");
+    if (!res.ok) throw new Error(`Failed to refresh token`);
 
     const data = await res.json();
     return data.access_token;

@@ -1,0 +1,37 @@
+.account-tab-friends-friendslist {
+    width: 100%;
+}
+.account-tab-friends-friendslist-tabs {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 1rem;
+    position: relative;
+    width: 100%;
+}
+.account-tab-friends-friendslist-tabs button {
+    background-color: transparent;
+    overflow: visible;
+}
+.account-tab-friends-friendslist-tabs button:hover {
+    background-color: transparent;
+}
+.account-tab-friends-friendslist-tabs button::after {
+    display: none;
+}
+.account-tab-friends-friendslist-tabs button.active {
+    background-color: var(--color-accent-primary);
+}
+.account-tab-friends-friendslist-tabs div {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: var(--color-accent-primary-dark);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-main);
+    position: absolute;
+    right: -0.5rem;
+    top: -0.5rem;
+}

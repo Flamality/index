@@ -55,9 +55,9 @@ export default function SpotifyController() {
     return () => clearInterval(progInterval);
   }, [isPlaying, song]);
 
-  // if (!token) return <></>;
-  // if (song === undefined) return <></>;
-  // if (song === null) return <></>;
+  if (!token) return <></>;
+  if (song === undefined) return <></>;
+  if (song === null) return <></>;
 
   const progressPercent = (progressMs / song?.duration_ms) * 100;
   

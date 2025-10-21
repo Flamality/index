@@ -2,7 +2,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { createContext } from "react";
 import { account, databases } from "../services/appwrite";
-import { getCurrentSong, getSpotifyUser } from "../services/spotify";
+import { getCurrentSong, getSpotifyUser, refreshSpotifyToken } from "../services/spotify";
 import { Notifications } from "./notifications";
 
 export const Auth = createContext(null);
@@ -154,7 +154,7 @@ export const AuthProvider = ({ children }) => {
       let spotifyUser = await getSpotifyUser(accessToken);
       if (!spotifyUser) {
         // Maybe token expired – try to refresh
-        accessToken = await refreshSpotifyToken(response.spotify_refresh);
+        accessToken = await refreshSpotifyToken(response.spotify_refresh_token);
         if (!accessToken) throw new Error("Could not refresh token");
 
         spotifyUser = await getSpotifyUser(accessToken);
