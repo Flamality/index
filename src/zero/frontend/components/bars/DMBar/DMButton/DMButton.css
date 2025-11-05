@@ -1,0 +1,27 @@
+.app-bar-dms-button {
+    display: flex;
+    flex-direction: row;
+    gap: var(--gap-xs);
+    width: 250px;
+    padding: var(--pad-xs) var(--pad-sm);
+    align-items: center;
+    cursor: pointer;
+}
+
+
+
+.app-bar-dms-button:hover {
+    background: var(--color-surface);
+}
+
+.app-bar-dms-button-avatar img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--radius-full);
+    object-fit: cover;
+}
+
+.app-bar-dms-button-text-content {
+    color: var(--color-text-sub);
+    font-size: var(--text-sm);
+}

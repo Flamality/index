@@ -1,9 +1,50 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./UserCard.css";
+import { databases } from "../../../../../services/appwrite";
+import Spinner from "../../Spinner";
+import { Auth } from "../../../../../contexts/auth";
 
-export default function UserCard({ user }) {
+export default function UserCard({overwrite, children }) {
+  const [user, setUser] = useState();
+  const [relation, setRelation] = useState();
+  const {user: usr} = useContext(Auth);
+
+  useEffect(() => {
+    const getUser = async () => {
+      if (overwrite){
+        setUser(overwrite);
+        return;
+      }
+      setUser(null);
+      const res = await databases.getDocument("main", "users", children);
+      setUser(res);
+      const res2 = await databases.getDocument("social", "relations", usr.$id + res.$id) || null;
+      setRelation(res2?.type || "0")
+    };
+
+    getUser();
+  }, [overwrite, children]);
+
+  if (!user) {
+    return (
+      <div className='user-card'>
+        <Spinner />
+       </div>
+    )
+  };
+
   return (
-    <div className='user-card'>
+    <div className='user-card'
+    style={
+      user?.banner_gradient
+        ? {
+            borderColor: user?.banner_gradient[1]
+          }
+        : {
+          borderColor: "var(--color-border)"
+        }
+    }
+    >
       <div
         className='user-card-banner'
         style={
@@ -40,6 +81,10 @@ export default function UserCard({ user }) {
           {user?.display && user.display !== user.username && (
             <p>{user?.username}</p>
           )}
+        </div>
+
+        <div className='user-card-buttons'>
+          <button>Friends</button>
         </div>
 
         {user?.bio && (

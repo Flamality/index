@@ -2,6 +2,7 @@
     width: 100%;
     max-width: 650px;
     position: relative;
+    z-index: var(--z-overlay);
 }
 .account-tab-friends-search-results {
     position: absolute;

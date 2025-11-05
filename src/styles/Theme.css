@@ -1,24 +1,32 @@
 :root {
   /* ------------------- Colors ------------------- */
+
+  /* === Background === */
   --color-bg-main: #0b0d10;
   --color-bg-alt: #121418;
   --color-surface: #1a1d22;
   --color-surface-alt: #20242a;
   --color-border: #2b2f36;
 
+  /* === Text === */
   --color-text-main: #f5f6f8;
+  --color-text-sub: #cacbd3;
   --color-text-muted: #9ca2ad;
   --color-text-disabled: #6c737e;
 
+  /* === Primary === */
   --color-accent-primary: #e66ba4;
   --color-accent-primary-light: #f08bbd;
   --color-accent-primary-dark: #b94f84;
   --color-accent-primary-glow: rgba(230, 107, 164, 0.45);
+  --color-accent-primary-bg: #140b0f;
 
+  /* === Secondary === */
   --color-accent-secondary: #66b0fb;
   --color-accent-secondary-light: #90c7fc;
   --color-accent-secondary-dark: #4a88c8;
-  --color-accent-secondary-glow: rgba(102, 176, 251, 0.45);
+  --color-accent-secondary-glow: rgba(102, 176, 251, 0.451);
+  --color-accent-secondary-bg: #070c11;
 
   --color-hud-grid: rgba(255, 255, 255, 0.03);
   --color-hud-line: rgba(255, 255, 255, 0.08);
@@ -61,20 +69,39 @@
   --line-height-body: 1.5;
 
   /* ------------------- Spacing ------------------- */
-  --space-xxs: 0.25rem;
-  --space-xs: 0.5rem;
-  --space-sm: 0.75rem;
-  --space-md: 1rem;
-  --space-lg: 1.5rem;
-  --space-xl: 2rem;
-  --space-xxl: 3rem;
+  --space-xxs: 0.125rem;  /* 2px */
+  --space-xs:  0.25rem;   /* 4px */
+  --space-sm:  0.5rem;    /* 8px */
+  --space-md:  1rem;      /* 16px */
+  --space-lg:  1.5rem;    /* 24px */
+  --space-xl:  2rem;      /* 32px */
+  --space-2xl: 3rem;      /* 48px */
+  --space-3xl: 4rem;      /* 64px */
+
+  --pad-xxs: var(--space-xxs);
+  --pad-xs: var(--space-xs);
+  --pad-sm: var(--space-sm);
+  --pad-md: var(--space-md);
+  --pad-lg: var(--space-lg);
+  --pad-xl: var(--space-xl);
+  --pad-2xl: var(--space-2xl);
+
+  --pad-sm-yx: var(--space-sm) var(--space-md);
+  --pad-md-yx: var(--space-md) var(--space-lg);
+  --pad-lg-yx: var(--space-lg) var(--space-xl);
+
+  --gap-xs: var(--space-xs);
+  --gap-sm: var(--space-sm);
+  --gap-md: var(--space-md);
+  --gap-lg: var(--space-lg);
+  --gap-xl: var(--space-xl);
 
   /* ------------------- Border Radius ------------------- */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.5rem;
-  --radius-full: 9999rem;
+  --radius-sm: 0.25rem;   /* 4px */
+  --radius-md: 0.5rem;    /* 8px */
+  --radius-lg: 1rem;      /* 16px */
+  --radius-xl: 1.5rem;    /* 24px */
+  --radius-full: 9999rem; /* max */
 
   /* ------------------- Opacity ------------------- */
   --opacity-hover: 0.85;
@@ -122,6 +149,7 @@
   --section-spacing: var(--space-xl);
 
   /* ------------------- Z-Index ------------------- */
+  --z-card-overlay: 5;
   --z-tooltip: 1000;
   --z-overlay: 1100;
   --z-modal: 1200;
@@ -155,47 +183,6 @@
   overflow-x: hidden;
 }
 
-.light {
-  /* ------------------- Colors ------------------- */
-  --color-bg-main: #f9fafc;
-  --color-bg-alt: #f0f2f5;
-  --color-surface: #ffffff;
-  --color-surface-alt: #e9edf2;
-  --color-border: #d2d6de;
-
-  --color-text-main: #1a1c20;
-  --color-text-muted: #5a5f69;
-  --color-text-disabled: #9ba1ac;
-
-  --color-accent-primary: #d64a8c;
-  --color-accent-primary-light: #e873aa;
-  --color-accent-primary-dark: #a6366b;
-  --color-accent-primary-glow: rgba(214, 74, 140, 0.45);
-
-  --color-accent-secondary: #3689e6;
-  --color-accent-secondary-light: #6ca9f0;
-  --color-accent-secondary-dark: #2763a8;
-  --color-accent-secondary-glow: rgba(54, 137, 230, 0.45);
-
-  --color-hud-grid: rgba(0, 0, 0, 0.03);
-  --color-hud-line: rgba(0, 0, 0, 0.08);
-  --color-hud-highlight: rgba(0, 0, 0, 0.12);
-
-  --color-success: #28a86d;
-  --color-warning: #e69500;
-  --color-danger: #e23d3d;
-  --color-info: #1e96d4;
-
-
-  /* ------------------- Shadows & Glows ------------------- */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.12);
-  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.15);
-  --shadow-inset: inset 0 1px 3px rgba(0, 0, 0, 0.08);
-
-  --shadow-glow-primary: 0 0 12px var(--color-accent-primary-glow);
-  --shadow-glow-secondary: 0 0 12px var(--color-accent-secondary-glow);
-}
 body,
 html {
   overflow-x: hidden;
@@ -257,7 +244,6 @@ a {
   color: var(--color-info);
   text-decoration: none;
 }
-
 svg {
   color: var(--color-text-main);
 }
@@ -266,7 +252,7 @@ button {
   background: var(--color-surface-alt);
   color: var(--color-text-main);
   border: none;
-  padding: var(--padding-button-vertical) var(--padding-button-horizontal);
+  padding: var(--pad-sm-yx);
   border: var(--border-thin) solid var(--color-border);
   border-radius: var(--radius-sm);
   cursor: pointer;
@@ -349,7 +335,7 @@ input {
   background-color: var(--color-surface-alt);
   color: var(--color-text-main);
   border: var(--border-thin) solid var(--color-border);
-  padding: var(--padding-input-vertical) var(--padding-input-horizontal);
+  padding: var(--pad-sm);
   border-radius: var(--radius-sm);
   width: 100%;
   box-sizing: border-box;

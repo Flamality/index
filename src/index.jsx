@@ -8,6 +8,7 @@ import { AuthProvider } from "./contexts/auth";
 import { BrowserRouter } from "react-router-dom";
 import { NotificationsProvider } from "./contexts/notifications";
 import { ConnectionsProvider } from "./contexts/connections";
+import { LayersProvider } from "./contexts/layers";
 console.log("Test");
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,9 +16,11 @@ root.render(
     <BrowserRouter>
       <NotificationsProvider>
         <AuthProvider>
-          <ConnectionsProvider>
-            <Root />
-          </ConnectionsProvider>
+          <LayersProvider>
+            <ConnectionsProvider>
+              <Root />
+            </ConnectionsProvider>
+          </LayersProvider>
         </AuthProvider>
       </NotificationsProvider>
     </BrowserRouter>

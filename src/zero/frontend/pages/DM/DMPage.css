@@ -1,0 +1,4 @@
+.page-dms {
+    display: flex;
+    flex-direction: row;
+}

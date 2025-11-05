@@ -3,11 +3,12 @@
   flex-direction: column;
   width: 100%;
   padding: 1rem;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-lg);
   background-color: var(--color-surface);
   border: var(--border-thin) solid var(--color-border);
   position: relative;
   overflow: hidden;
+  max-width: 900px;
 }
 
 .account-card-content {

@@ -18,16 +18,16 @@ export default function AccountCard() {
           <div className='account-user'>
             <img src={userData?.avatar} alt='Avatar' />
             <p>Hey, {userData?.display || userData?.username}!</p>
-            <Link to='/account'>
+            <a href='/account'>
               <button>Manage Account</button>
-            </Link>
+            </a>
           </div>
         ) : (
           <div className='account-guest'>
             <p>Looks like you&apos;re not logged in.</p>
-            <Link to='/account'>
+            <a href='/account'>
               <button>Log In or Sign Up</button>
-            </Link>
+            </a>
           </div>
         )}
       </div>

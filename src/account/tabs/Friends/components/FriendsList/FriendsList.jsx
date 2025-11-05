@@ -6,6 +6,8 @@ import { Auth } from '../../../../../contexts/auth'
 import UserFriendCard from '../../../../../components/core/elements/users/UserFriendCard/UserFriendCard'
 
 import "./FriendsList.css"
+import UserSmallCard from '../../../../../components/core/elements/users/UserSmallCard/UserSmallCard'
+import { Layers } from '../../../../../contexts/layers'
 
 export default function FriendsList() {
     const [friends, setFriends] = useState([]);
@@ -44,21 +46,30 @@ export default function FriendsList() {
       <>
       <SectionSubtitle>My Friends</SectionSubtitle>
       {friends?.map((friend) => (
-        <UserFriendCard>{friend.target}</UserFriendCard>
+        <UserSmallCard>{friend.target}</UserSmallCard>
         ))}
         {friends.length < 1 && <div><p className='friend-lonely-msg'>You must be lonely, go make some friends.</p></div>}
       </>
       ) : (
         <>
-        <SectionSubtitle>Incoming</SectionSubtitle>
-      {recFriendRequests?.map((friend) => (
-        <UserFriendCard>{friend.target}</UserFriendCard>
-        ))}
-      <SectionSubtitle>Outgoing</SectionSubtitle>
-      {sentRequests?.map((friend) => (
-        <UserFriendCard>{friend.target}</UserFriendCard>
-        ))}
+        {recFriendRequests.length > 0 && (
+          <>
+            <SectionSubtitle>Incoming</SectionSubtitle>
+            {recFriendRequests?.map((friend) => (
+            <UserFriendCard>{friend.target}</UserFriendCard>
+            ))}
+           </>
+        )}
+        {sentRequests.length > 0 && (
+          <>
+            <SectionSubtitle>Outgoing</SectionSubtitle>
+            {sentRequests?.map((friend) => (
+            <UserFriendCard>{friend.target}</UserFriendCard>
+            ))}
+           </>
+        )}
       
+      {(recFriendRequests.length < 1 && sentRequests.length < 1) && <div><p className='friend-lonely-msg'>You have no pending friend requests {':('}</p></div>}
     </>
   )}
     </div>

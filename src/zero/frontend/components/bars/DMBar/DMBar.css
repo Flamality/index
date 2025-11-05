@@ -1,0 +1,9 @@
+.app-bar-dms {
+    background-color: var(--color-bg-alt);
+}
+.app-bar-dms-header {
+    color: var(--color-text-muted);
+    padding: var(--pad-sm);
+    font-size: var(--text-sm);
+    cursor: default;
+}

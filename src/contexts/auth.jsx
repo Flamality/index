@@ -1,7 +1,7 @@
 // AuthProvider.js
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { createContext } from "react";
-import { account, databases } from "../services/appwrite";
+import { account, databases, execute } from "../services/appwrite";
 import { getCurrentSong, getSpotifyUser, refreshSpotifyToken } from "../services/spotify";
 import { Notifications } from "./notifications";
 
@@ -14,6 +14,11 @@ export const AuthProvider = ({ children }) => {
   const [updUserData, setUpdUserData] = useState(userData || {});
   const [dataDiff, setdataDiff] = useState([]);
   const [connections, setConnections] = useState([]);
+
+  const [friends, setFriends] = useState([]);
+  const [incomingFriends, setIncomingFriends] = useState([]);
+  const [outgoingFriends, setOutgoingFriends] = useState([]);
+
   const { createNotification } = useContext(Notifications);
   const hasFetched = useRef(false);
   useEffect(() => {
@@ -33,6 +38,7 @@ export const AuthProvider = ({ children }) => {
 
   const getUserData = async (userId) => {
     const response = await databases.getDocument("main", "users", userId);
+    // const response = await execute("interaction", "/me");
     setUserData(response);
     setUpdUserData(response);
     createNotification("success", "Fetched user data", `Got user data for ${response?.username}`)
@@ -192,6 +198,7 @@ export const AuthProvider = ({ children }) => {
     discardChange,
     saveChanges,
     connections,
+    
   };
 
   return <Auth.Provider value={value}>{children}</Auth.Provider>;

@@ -3,11 +3,12 @@
   flex-direction: column;
   width: 100%;
   padding: 0.5rem;
-  border-radius: var(--radius-sm);
-  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  background: linear-gradient(to left, var(--color-bg-alt), #232463);
   border: var(--border-thin) solid var(--color-border);
   position: relative;
   overflow: hidden;
+  max-width: 500px;
 }
 
 .landing-discord-card > div {

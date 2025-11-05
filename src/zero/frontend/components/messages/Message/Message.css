@@ -1,0 +1,27 @@
+.message {
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem;
+}
+.message-meta img {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+}
+.message-content {
+    color: var(--color-text-main)
+}
+.message-content-author {
+    cursor: pointer;
+}
+.message-content-author:hover {
+    text-decoration: underline;
+}
+.message-content-content {
+    font-weight: 300;
+}
+.message-timestamp {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+}

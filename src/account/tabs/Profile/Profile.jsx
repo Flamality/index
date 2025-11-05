@@ -36,64 +36,70 @@ export default function Profile() {
   return (
     <PageContent>
       <PageTitle>Customize Your Profile</PageTitle>
-      <SectionTitle>Public Profile</SectionTitle>
-      <SectionSubtitle>Profile Picture</SectionSubtitle>
-      <div className='account-tab-profile-pfpwrapper'>
-        <img src={updUserData["avatar"]} />
-        <input
-          type='file'
-          accept='image/png, image/jpeg'
-          onChange={handleUpload}
-          disabled={uploading}
-        />
-        {uploading ? <Spinner /> : <FaPaintbrush />}
+      <div className="account-tab-profile">
+        <div>
+          <SectionTitle>Public Profile</SectionTitle>
+          <SectionSubtitle>Profile Picture</SectionSubtitle>
+          <div className='account-tab-profile-pfpwrapper'>
+            <img src={updUserData["avatar"]} />
+            <input
+              type='file'
+              accept='image/png, image/jpeg'
+              onChange={handleUpload}
+              disabled={uploading}
+            />
+            {uploading ? <Spinner /> : <FaPaintbrush />}
+          </div>
+          <SectionSubtitle>Username</SectionSubtitle>
+          <input
+            type='text'
+            value={updUserData["username"]}
+            onChange={(e) => {
+              updateDataValue("username", e.target.value);
+            }}
+            disabled={true}
+          />
+          <SectionSubtitle>Display Name</SectionSubtitle>
+          <input
+            type='text'
+            value={updUserData["display"] || ""}
+            onChange={(e) => {
+              updateDataValue("display", e.target.value);
+            }}
+          />
+          <SectionSubtitle>About Me</SectionSubtitle>
+          <textarea
+            rows={5}
+            value={updUserData["bio"] || ""}
+            onChange={(e) => {
+              updateDataValue("bio", e.target.value);
+            }}
+          />
+          <SectionSubtitle>Email</SectionSubtitle>
+          <div className='account-tab-profile-email'>
+            <input type='email' value={user.email} disabled={true} />
+            <p className='account-tab-profile-email-verification-status'>
+              {user.emailVerification ? (
+                "Email Verified"
+              ) : (
+                <>
+                  'Email Not Verified'{" "}
+                  <a onClick={sendVerificationEmail}>Resent email</a>
+                </>
+              )}
+            </p>
+          </div>
+          <SectionSubtitle>Banner</SectionSubtitle>
+          <BannerEditor
+            banner_gradient={updUserData["banner_gradient"]}
+            onChange={(val) => updateDataValue("banner_gradient", val)}
+          />
       </div>
-      <SectionSubtitle>Username</SectionSubtitle>
-      <input
-        type='text'
-        value={updUserData["username"]}
-        onChange={(e) => {
-          updateDataValue("username", e.target.value);
-        }}
-        disabled={true}
-      />
-      <SectionSubtitle>Display Name</SectionSubtitle>
-      <input
-        type='text'
-        value={updUserData["display"] || ""}
-        onChange={(e) => {
-          updateDataValue("display", e.target.value);
-        }}
-      />
-      <SectionSubtitle>About Me</SectionSubtitle>
-      <textarea
-        rows={5}
-        value={updUserData["bio"] || ""}
-        onChange={(e) => {
-          updateDataValue("bio", e.target.value);
-        }}
-      />
-      <SectionSubtitle>Email</SectionSubtitle>
-      <div className='account-tab-profile-email'>
-        <input type='email' value={user.email} disabled={true} />
-        <p className='account-tab-profile-email-verification-status'>
-          {user.emailVerification ? (
-            "Email Verified"
-          ) : (
-            <>
-              'Email Not Verified'{" "}
-              <a onClick={sendVerificationEmail}>Resent email</a>
-            </>
-          )}
-        </p>
+      <div>
+        <SectionTitle>Preview</SectionTitle>
+        <UserCard overwrite={updUserData}></UserCard>
       </div>
-      <SectionSubtitle>Banner</SectionSubtitle>
-      <BannerEditor
-        banner_gradient={updUserData["banner_gradient"]}
-        onChange={(val) => updateDataValue("banner_gradient", val)}
-      />
-      <SectionTitle>Preview</SectionTitle>
-      <UserCard user={updUserData} />
+      </div>
     </PageContent>
   );
 }

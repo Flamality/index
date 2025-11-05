@@ -1,22 +1,24 @@
 .user-card {
   width: 325px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-xl);
   overflow: hidden;
   background: var(--color-surface-alt);
-  padding: var(--space-md);
+  padding: var(--pad-sm);
+  border: 2px solid var(--color-border);
 }
 
 .user-card-banner {
-  height: 120px;
+  height: 128px;
   background: linear-gradient(135deg, #746aff, #4f3eff);
-  margin: calc(-1 * var(--space-md)) calc(-1 * var(--space-md)) 0
-    calc(-1 * var(--space-md));
+  /* margin: calc(-1 * var(--space-md)) calc(-1 * var(--space-md)) calc(-1 * var(--space-md)); */
+  border-radius: var(--radius-lg);
 }
 
 .user-card-avatar-wrapper {
   display: flex;
   justify-content: left;
-  margin-top: -40px;
+  margin-top: -45px;
+  margin-left: 10px;
 }
 
 .user-card-avatar {
@@ -29,11 +31,13 @@
 }
 
 .user-card-info {
+  margin-top: -45px;
   border-radius: 0 0 16px 16px;
 }
 
 .user-card-names {
   margin-bottom: 12px;
+  margin-left: 100px;
 }
 
 .user-card-names h3 {
@@ -45,11 +49,11 @@
 .user-card-names p {
   font-size: 0.85rem;
   color: var(--color-text-muted);
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 .user-card-bio {
-  margin-top: 12px;
+  
   padding-top: 8px;
   border-top: 1px solid var(--color-border);
 }
@@ -65,9 +69,10 @@
   font-size: 0.85rem;
   line-height: 1.4;
 }
-
+.user-card-bio, .user-card-stats {
+  margin: var(--pad-md) var(--pad-sm);
+}
 .user-card-stats h4 {
-  margin-top: 12px;
   font-size: 0.9rem;
   color: var(--color-text-muted);
 }

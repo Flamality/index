@@ -16,11 +16,17 @@ export default function Search() {
     const [input, setInput] = useState("");
     const {user} = useContext(Auth)
     const { createNotification } = useContext(Notifications)
+    const [focused, setFocused] = useState(true);
     useEffect(() => {
-        if (input == "") {
-            setRes([])
-            return
+        if (input === "") {
+            setRes([]);
+            return;
         }
+    
+        const atTheTime = input;
+    
+        let active = true; // cancel async if input changes
+    
         databases.listDocuments("main", "users", [
             Query.or([
                 Query.contains("display", input),
@@ -29,28 +35,34 @@ export default function Search() {
             Query.limit(5),
         ])
         .then((response) => {
-            var temp = [];
-            for (const doc of response.documents) {
-                if (doc.$id !== user.$id) {
-                    databases.listDocuments("social", "relations", [
+            if (!active || atTheTime !== input) return;
+            const temp = [];
+            response.documents.forEach((doc) => {
+                if (doc.$id === user.$id) return;
+                databases.listDocuments("social", "relations", [
                     Query.equal("UID", user.$id),
                     Query.equal("target", doc.$id)
-                    ]).then((relationResponse) => {
+                ]).then((relationResponse) => {
                     temp.push({
-                    ...doc,
-                    relationType: relationResponse.documents.length > 0 ? relationResponse.documents[0].type : "0", 
+                        ...doc,
+                        relationType: relationResponse.documents.length > 0 ? relationResponse.documents[0].type : "0",
                     });
                     if (temp.length === response.documents.filter(d => d.$id !== user.$id).length) {
-                        console.log(temp);
-                    setRes(temp);
+                        setRes(temp);
                     }
-                    });
-                }
-            }
+                });
+            });
         })
-        .catch((error) => {
-            console.log(error);
-        });
+        .catch(console.log);
+    
+        return () => { active = false }; // cancel on cleanup
+    }, [input]);
+    
+    useEffect(() => {
+        if (input == "") {
+            setRes([])
+            return
+        }
     },[input])
     
     const addFriend = async (usr) => {
@@ -92,10 +104,11 @@ export default function Search() {
         value={input}
         onChange={(e) => {setInput(e.target.value); search(e)}}
         placeholder='Search for friends'
+        
         />
         <div className='account-tab-friends-search-results'>
         {
-            res.map((usr) => 
+            focused && res.map((usr) => 
                 (
                     <div key={usr.$id} className='account-tab-friends-search-result'>
                         <img src={usr.avatar} />

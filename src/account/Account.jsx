@@ -1,4 +1,4 @@
-import React, { Suspense, useMemo, useContext } from "react";
+import React, { Suspense, useMemo, useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../components/core/screens/Loading";
 import NavBar from "./components/NavBar/NavBar";
@@ -20,8 +20,11 @@ const tabs = {
 export default function Account() {
   const { userData, dataDiff } = useContext(Auth);
   const { tab = "" } = useParams();
+  const [ActiveTab, setActiveTab] = useState(<div>Tab no found</div>);
 
-  const ActiveTab = tabs[tab] || (() => <div>Tab not found</div>);
+  useEffect(() => {
+    setActiveTab(tabs[tab] || (() => <div>Tab not found</div>));
+  }, [tab])
 
   return (
     <div className='account'>

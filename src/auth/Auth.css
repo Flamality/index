@@ -59,12 +59,13 @@
   background: linear-gradient(
     to bottom right,
     var(--color-accent-primary) 20%,
-    rgb(241, 202, 255) 50%,
+    /* rgb(241, 202, 255) 50%, */
     var(--color-accent-secondary) 80%
   );
   opacity: 60%;
   border-radius: 0 0 0 0;
   position: relative;
+  overflow: hidden;
 }
 @media only screen and (max-width: 719px) {
   .auth-screen-decor {

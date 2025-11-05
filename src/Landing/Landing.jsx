@@ -6,16 +6,18 @@ import { GoGlobe } from "react-icons/go";
 import { FaGithub, FaUser } from "react-icons/fa6";
 import Header from "./Components/Header/Header";
 
-const version = import.meta.env.VITE_VERSION;
-
 import "./Landing.css";
+import ZoneZero from "./Components/Cards/ZoneZero/ZoneZero";
+import Footer from "./Components/Footer/Footer";
 function App() {
   return (
     <div className='landing'>
       <div className='landing-top'>
+        <div className='landing-bg' />
         <Header />
         <DiscordCard />
         <AccountCard />
+        <ZoneZero />
         <div className='link-cards'>
           <LinkCard
             text={"My Portfolio"}
@@ -35,9 +37,7 @@ function App() {
         </div>
       </div>
       <div className='landing-spacing' />
-      <p className='landing-footer'>
-        {version} | Made by Flamality | Powered by Appwrite
-      </p>
+      <Footer />
     </div>
   );
 }

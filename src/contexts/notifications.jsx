@@ -1,6 +1,7 @@
 // NotificationsProvider.js
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { client } from "../services/appwrite";
+import { Auth } from "./auth";
 
 export const Notifications = createContext(null);
 
@@ -35,7 +36,7 @@ export const NotificationsProvider = ({ children }) => {
   }, []);
   return (
     <Notifications.Provider value={{ notifications, createNotification }}>
-      {children}
+          {children}
     </Notifications.Provider>
   );
 };

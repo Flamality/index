@@ -11,7 +11,7 @@ const ConnectRoutes = lazy(() => import("./connect/Routes"));
 const AppwriteConnect = lazy(() =>
   import("./components/core/screens/AppwriteConnect")
 );
-const Flamalite = lazy(() => import("./flamalite/frontend/Index.jsx"));
+const Flamalite = lazy(() => import("./zero/frontend/Index.jsx"));
 
 export default function Routing() {
   return (

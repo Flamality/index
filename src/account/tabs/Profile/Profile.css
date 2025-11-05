@@ -1,3 +1,15 @@
+.account-tab-profile {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.account-tab-profile > div:first-child {
+  flex-grow: 1;
+}
+.account-tab-profile > div:last-child {
+  flex-grow: 0;
+  margin: 0 var(--space-xl);
+}
 .account-label {
   /* font-weight: 600; */
   margin: var(--space-md) 0 var(--space-sm) 0;
