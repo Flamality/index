@@ -1,5 +1,11 @@
+/* IMPORTS */
+@import url('./themes/Dark.css'); 
+
 :root {
   /* ------------------- Colors ------------------- */
+
+  /* === Vars === */
+  --color-saturation-multiplier: 1;
 
   /* === Background === */
   --color-bg-main: #0b0d10;
@@ -32,15 +38,21 @@
   --color-hud-line: rgba(255, 255, 255, 0.08);
   --color-hud-highlight: rgba(255, 255, 255, 0.12);
 
-  --color-success: #3dd68c;
-  --color-warning: #ffb74a;
-  --color-danger: #ff5f5f;
-  --color-info: #4fc3f7;
+  /* === Status === */
+  --color-success: hsl(151, 65%, 54%);
+  --color-warning: hsl(36, 100%, 65%);
+  --color-danger: hsl(0, 100%, 69%);
+  --color-info: hsl(199, 91%, 64%);
 
-  --color-success-dark: #103b27;
-  --color-warning-dark: #87511a;
-  --color-danger-dark: #8e2b2b;
-  --color-info-dark: #136074;
+  --color-status-secondary-lightness: 30%;
+  --color-success-dark: hsl(152, calc(57% * var(--color-saturation-multiplier)), var(--color-status-secondary-lightness));
+  --color-warning-dark: hsl(30, calc(68% * var(--color-saturation-multiplier)), var(--color-status-secondary-lightness));
+  --color-danger-dark: hsl(0, calc(54% * var(--color-saturation-multiplier)), var(--color-status-secondary-lightness));
+  --color-info-dark: hsl(192, calc(72% * var(--color-saturation-multiplier)), var(--color-status-secondary-lightness));
+
+  /* === Additional Colors */
+  --discord-color-1-lightness: 65%;
+  --color-discord-1: hsl(235, calc(86% * var(--color-saturation-multiplier)), var(--discord-color-1-lightness));
 
   /* ------------------- Shadows & Glows ------------------- */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);

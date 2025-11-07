@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Loading from "./components/core/screens/Loading";
 import NotFound from "./components/core/screens/NotFound";
+import TermsOfService from "./docs/Terms.jsx";
+import Docs from "./docs/Docs.jsx";
 const App = lazy(() => import("./Landing/Landing"));
 const AccountRoutes = lazy(() => import("./account/Routes"));
 const AuthRoutes = lazy(() => import("./auth/Routes"));
@@ -61,6 +63,22 @@ export default function Routing() {
         element={
           <Suspense fallback={<Loading />}>
             <Flamalite />
+          </Suspense>
+        }
+      />
+      <Route
+        path='/terms'
+        element={
+          <Suspense fallback={<Loading />}>
+            <TermsOfService />
+          </Suspense>
+        }
+      />
+      <Route
+        path='/docs/*'
+        element={
+          <Suspense fallback={<Loading />}>
+            <Docs />
           </Suspense>
         }
       />
