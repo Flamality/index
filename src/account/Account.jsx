@@ -1,4 +1,10 @@
-import React, { Suspense, useMemo, useContext, useState, useEffect } from "react";
+import React, {
+  Suspense,
+  useMemo,
+  useContext,
+  useState,
+  useEffect,
+} from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../components/core/screens/Loading";
 import NavBar from "./components/NavBar/NavBar";
@@ -6,6 +12,7 @@ import { Auth } from "../contexts/auth";
 
 import "./Account.css";
 import ActionBar from "./components/ActionBar/ActionBar";
+import TopLevelNav from "./components/TopLevelNav/TopLevelNav";
 
 const tabs = {
   "": React.lazy(() => import("./tabs/Home/Home")),
@@ -24,13 +31,14 @@ export default function Account() {
 
   useEffect(() => {
     setActiveTab(tabs[tab] || (() => <div>Tab not found</div>));
-  }, [tab])
+  }, [tab]);
 
   return (
     <div className='account'>
       {userData ? (
         <>
           <NavBar />
+          <TopLevelNav />
           <Suspense fallback={<Loading />}>
             <ActiveTab />
             {/* {dataDiff?.length > 0 ?  : <></>} */}

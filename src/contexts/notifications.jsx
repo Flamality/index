@@ -2,6 +2,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { client } from "../services/appwrite";
 import { Auth } from "./auth";
+import { admin } from "../../config";
 
 export const Notifications = createContext(null);
 
@@ -9,8 +10,8 @@ export const Notifications = createContext(null);
 
 export const NotificationsProvider = ({ children }) => {
   const [notifications, setNotifications] = useState([]);
-
-  const createNotification = (type, title, desc) => {
+  const createNotification = (type, title, desc, reqAdmin = false) => {
+    if (reqAdmin && !admin) return;
     const id = Math.random();
     setNotifications((prev) => [...prev, { id, type, title, desc }]);
 
@@ -25,18 +26,26 @@ export const NotificationsProvider = ({ children }) => {
         (response) => {
           const event = response.payload;
           console.log(event);
-          createNotification("info", )
+          createNotification("info");
         }
       );
-      createNotification("success", "Connected", "Connected to realtime");
-      return () => {subscription(); createNotification("danger", "Disconnected", "Disconnected from realtime")};
+      createNotification("success", "Connected", "Connected to realtime", true);
+      return () => {
+        subscription();
+        createNotification(
+          "danger",
+          "Disconnected",
+          "Disconnected from realtime",
+          true
+        );
+      };
     } catch (error) {
       console.log(error);
     }
   }, []);
   return (
     <Notifications.Provider value={{ notifications, createNotification }}>
-          {children}
+      {children}
     </Notifications.Provider>
   );
 };

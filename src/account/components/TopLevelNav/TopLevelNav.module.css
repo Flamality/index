@@ -1,0 +1,69 @@
+.container {
+  position: absolute;
+  right: var(--pad-md);
+  top: var(--pad-md);
+  z-index: var(--z-popover);
+
+  &:hover {
+    .hover {
+      background-color: var(--color-surface-alt);
+    }
+    .drawer {
+      transform: translateX(0);
+    }
+  }
+}
+
+.hover {
+  padding: var(--pad-sm);
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition-fast);
+  display: flex;
+  background-color: var(--color-surface-alt);
+  z-index: calc(var(--z-popover) + 4);
+  svg {
+    margin: 0;
+    width: var(--text-lg);
+    height: var(--text-lg);
+  }
+}
+
+.drawer_container {
+  overflow: hidden;
+  position: absolute;
+  right: 50%;
+  top: 0;
+  height: 100%;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: -1;
+}
+
+.drawer {
+  display: flex;
+  background-color: var(--color-accent-primary-dark);
+  border-radius: var(--radius-full) 0 0 var(--radius-full);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--pad-sm);
+  padding-right: var(--pad-lg);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  svg {
+    width: var(--text-lg);
+    height: var(--text-lg);
+    cursor: pointer;
+  }
+  a {
+    display: flex;
+  }
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
