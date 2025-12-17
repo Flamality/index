@@ -36,20 +36,23 @@ export const registerUser = async (email, password, username) => {
 
 export const execute = async (func, path, ...arg) => {
   try {
-    const jwt = await account.createJWT();
     const res = await functions.createExecution({
       functionId: func,
       body: JSON.stringify(arg),
       async: false,
-      path: path,
-      headers: {
-        "Authorization": `Bearer ${jwt.jwt}`
-      }
+      path: path
     });
-    console(res);
+    console.log(res);
     return res;
   } catch (error) {
-    
+    console.error(error)
+    return {
+      success: false,
+      error: error.message,
+      functionId: func,
+      path: path,
+      body: JSON.stringify(arg),
+    }
   }
 }
 

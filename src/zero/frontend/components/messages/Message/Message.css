@@ -13,9 +13,15 @@
     color: var(--color-text-main)
 }
 .message-content-author {
+    display: flex;
+    flex-direction: row;
+    gap: var(--gap-xs);
+    align-items: end;
+}
+.message-content-author-name {
     cursor: pointer;
 }
-.message-content-author:hover {
+.message-content-author-name:hover {
     text-decoration: underline;
 }
 .message-content-content {
@@ -24,4 +30,5 @@
 .message-timestamp {
     font-size: var(--text-xs);
     color: var(--color-text-muted);
+    cursor: default;
 }

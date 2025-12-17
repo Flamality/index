@@ -1,0 +1,40 @@
+.navbar {
+    z-index: var(--z-overlay);
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    align-items: center;
+    top: 0;
+    width: 100%;
+    padding: var(--space-md) var(--space-lg);
+}
+.scrolled {
+    background: var(--color-bg-alt);
+}
+.left {
+    flex: 1;
+}
+.left p {
+    width: fit-content;
+    font-size: var(--text-lg);
+    color: var(--color-text-main);
+    transition: all 0.3s ease;
+}
+.left p:hover {
+    letter-spacing: 0.05rem;
+}
+.left a {
+    width: fit-content;
+}
+.right {
+    flex: 1;
+}
+.center {
+    display: flex;
+    flex-direction: row;
+    flex: 3;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    pointer-events: fill;
+}

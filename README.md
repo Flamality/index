@@ -16,3 +16,7 @@ This is my website where you can:
 - vite (Build tool)
 - appwrite (Back end)
 - css (Styling)
+
+## Developer?
+
+[flamality.com/admin](https://flamality.com/admin)

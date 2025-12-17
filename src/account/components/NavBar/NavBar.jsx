@@ -7,6 +7,7 @@ import {
   FaLock,
   FaPeopleArrows,
   FaPlug,
+  FaUserLock,
 } from "react-icons/fa6";
 import { FaPaintBrush, FaSignOutAlt } from "react-icons/fa";
 import TabButtonLogout from "./TabButton/TabButtonLogout";
@@ -21,7 +22,7 @@ export default function NavBar() {
       <TabButton text='Security' link='security' icon={<FaLock />} />
       <TabButton text='Conections' link='connections' icon={<FaPlug />} />
       {user.labels.includes("admin") ? (
-        <TabButton text='Data' link='data' icon={<FaDatabase />} />
+        <TabButton text='Admin' link='admin' icon={<FaUserLock />} />
       ) : (
         <></>
       )}

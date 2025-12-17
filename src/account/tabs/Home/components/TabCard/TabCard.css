@@ -2,7 +2,6 @@
   margin: 1rem;
   width: fit-content;
   display: block;
-  width: 40%;
 }
 .account-tab-home-tabcard {
   padding: 1rem;
@@ -13,6 +12,7 @@
   align-items: center;
   height: 150px;
   transition: all 0.2s ease;
+  width: 400px;
 }
 .account-tab-home-tabcard:hover {
   background-color: var(--color-bg-alt);
@@ -38,8 +38,14 @@
   margin-right: 0.25rem;
   color: var(--color-text-main);
 }
-@media screen and (max-width: var(--breakpoint-lg)) {
-  .account-tab-home-tabcard-container {
-    width: calc(100% - 2rem);
+@media screen and (max-width: 800px) {
+  .account-tab-home-tabcards {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .account-tab-home-tabcard {
+    width: 300px;
   }
 }

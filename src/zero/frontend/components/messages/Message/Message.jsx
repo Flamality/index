@@ -4,20 +4,21 @@ import "./Message.css"
 import { databases } from '../../../../../services/appwrite';
 import UserCard from '../../../../../components/core/elements/users/UserCard/UserCard';
 import { Layers } from '../../../../../contexts/layers';
+import { Auth } from '../../../../../contexts/auth';
+import { Cache } from '../../../../contexts/cache';
 
 export default function Message({message}) {
     const [author, setAuthor] = useState(null);
     const {showModal} = useContext(Layers)
+    const {user} = useContext(Auth)
+    const {users, updateUser} = useContext(Cache)
 
     useEffect(() => {
-        const getAuthor = async () => {
-            const res = await databases.getDocument("main", "users", message?.author);
-            setAuthor(res);
-        }
-        if (message?.author) {
-            getAuthor()
-        }
-    }, [message])
+        updateUser(message?.author)
+    }, [message] )
+    useEffect(() => {
+        setAuthor(users[message?.author])
+    },[users[message?.author]])
 
     // Function to format epoch timestamp
     const formatTimestamp = (timestamp) => {
@@ -47,14 +48,20 @@ export default function Message({message}) {
     };
 
  return (
- <div className='message'>
- <div className='message-meta'>
- <img src={author?.avatar} onClick={(e)=>{showModal([e.clientX,e.clientY], <UserCard>{message?.author}</UserCard>)}} />
+    <div className='message'>
+        <div className='message-meta'>
+            <img src={author?.avatar} onClick={(e)=>{showModal([e.clientX,e.clientY], <UserCard>{message?.author}</UserCard>)}} />
+                    </div>
+                    <div className='message-content'>
+            <div className='message-content-author'>
+                <p className='message-content-author-name' onClick={(e)=>{showModal([e.clientX,e.clientY], <UserCard>{message?.author}</UserCard>)}}>
+                    {author?.display || message?.author}
+                </p>
+                <p className="message-timestamp">{formatTimestamp(message?.$createdAt)}</p>
+            </div>
+            <p className='message-content-content'>{message?.content}</p>
         </div>
-        <div className='message-content'>
- <p className='message-content-author' onClick={(e)=>{showModal([e.clientX,e.clientY], <UserCard>{message?.author}</UserCard>)}}>{author?.display || message?.author} <span className="message-timestamp">{formatTimestamp(message?.$createdAt)}</span></p>
- <p className='message-content-content'>{message?.content}</p>
-        </div>
-        </div>
+    </div>
   )
 }
+

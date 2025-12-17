@@ -12,7 +12,7 @@ const tabs = {
   home: React.lazy(() => import("./tabs/Home/Home")),
   profile: React.lazy(() => import("./tabs/Profile/Profile")),
   security: React.lazy(() => import("./tabs/Security/Security")),
-  data: React.lazy(() => import("./tabs/Data/Data")),
+  admin: React.lazy(() => import("./tabs/Admin/Admin")),
   connections: React.lazy(() => import("./tabs/Connections/Connections")),
   friends: React.lazy(() => import("./tabs/Friends/Friends")),
 };
@@ -20,7 +20,7 @@ const tabs = {
 export default function Account() {
   const { userData, dataDiff } = useContext(Auth);
   const { tab = "" } = useParams();
-  const [ActiveTab, setActiveTab] = useState(<div>Tab no found</div>);
+  const [ActiveTab, setActiveTab] = useState(() => Loading);
 
   useEffect(() => {
     setActiveTab(tabs[tab] || (() => <div>Tab not found</div>));

@@ -1,36 +1,36 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "./AccountCard.css";
+import styles from "./AccountCard.module.css";
 import { Auth } from "../../../../contexts/auth";
+import GlintButton from "../../../../components/core/elements/inputs/buttons/GlintButton/GlintButton";
 export default function AccountCard() {
-  const { user, loading, userData } = React.useContext(Auth);
+	const { user, loading, userData } = React.useContext(Auth);
 
-  return (
-    <div className='account-card'>
-      <div className='account-card-content'>
-        <h2 className='account-card-title'>
-          My <span className='highlight'>Flamality</span> Account
-        </h2>
+	return (
+		<div className={styles.card}>
+			<div className={styles.content}>
+				<h2 className={styles.title}>
+					My <span className={styles.highlight}>Flamality</span> Account
+				</h2>
 
-        {loading ? (
-          <p className='account-loading'>Loading...</p>
-        ) : user ? (
-          <div className='account-user'>
-            <img src={userData?.avatar} alt='Avatar' />
-            <p>Hey, {userData?.display || userData?.username}!</p>
-            <a href='/account'>
-              <button>Manage Account</button>
-            </a>
-          </div>
-        ) : (
-          <div className='account-guest'>
-            <p>Looks like you&apos;re not logged in.</p>
-            <a href='/account'>
-              <button>Log In or Sign Up</button>
-            </a>
-          </div>
-        )}
-      </div>
-    </div>
-  );
+				{loading ? (
+					<p className={styles.loading}>Loading...</p>
+				) : user ? (
+					<div className={styles.user}>
+						<img src={userData?.avatar} alt="Avatar" />
+						<p>Hey, {userData?.display || userData?.username}!</p>
+						<a href="/account">
+							<GlintButton>Manage Account</GlintButton>
+						</a>
+					</div>
+				) : (
+					<div className={styles.guest}>
+						<p>Looks like you&apos;re not logged in.</p>
+						<a href="/account">
+							<GlintButton>Log In or Sign Up</GlintButton>
+						</a>
+					</div>
+				)}
+			</div>
+		</div>
+	);
 }

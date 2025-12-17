@@ -21,6 +21,7 @@ export default function AuthRoutes() {
         navigate(redirect);
       }
     }
+    document.title = "Login to a Flamality account"
   }, [user, loading]);
   return (
     <>

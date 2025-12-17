@@ -1,17 +1,25 @@
+.user-card-container {
+  border-radius: calc(var(--radius-xl) + var(--pad-xxs));
+  padding: var(--pad-xxs);
+  background-color: var(--color-border);
+}
+
 .user-card {
   width: 325px;
   border-radius: var(--radius-xl);
   overflow: hidden;
   background: var(--color-surface-alt);
   padding: var(--pad-sm);
-  border: 2px solid var(--color-border);
 }
 
 .user-card-banner {
   height: 128px;
-  background: linear-gradient(135deg, #746aff, #4f3eff);
   /* margin: calc(-1 * var(--space-md)) calc(-1 * var(--space-md)) calc(-1 * var(--space-md)); */
   border-radius: var(--radius-lg);
+}
+
+.user-card-container.loading .user-card-banner {
+  background-color: var(--color-border);
 }
 
 .user-card-avatar-wrapper {
@@ -19,15 +27,21 @@
   justify-content: left;
   margin-top: -45px;
   margin-left: 10px;
-}
-
-.user-card-avatar {
   width: 90px;
   height: 90px;
+  background-color: var(--color-border);
   border-radius: 50%;
   border: 4px solid var(--color-surface-alt);
-  background-color: #fff;
+}
+.user-card-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
   object-fit: cover;
+}
+
+.user-card-container.loading .user-card-avatar {
+  opacity: 0;
 }
 
 .user-card-info {
@@ -38,6 +52,15 @@
 .user-card-names {
   margin-bottom: 12px;
   margin-left: 100px;
+}
+.user-card-container.loading .user-card-info {
+  margin-top: -40px
+}
+.user-card-container.loading .user-card-names h3 {
+  background-color: var(--color-border);
+  width: fit-content;
+  border-radius: var(--radius-sm);
+  color: var(--color-border);
 }
 
 .user-card-names h3 {

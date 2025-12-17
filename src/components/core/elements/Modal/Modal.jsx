@@ -11,6 +11,14 @@ export default function Modal() {
   useLayoutEffect(() => {
     if (!visible || !modalRef.current) return
 
+    if (location == 'center') {
+      let left = window.innerWidth / 2 - modalRef.current.offsetWidth / 2
+      let top = window.innerHeight / 2 - modalRef.current.offsetHeight / 2
+      setPos({ left, top })
+      return;
+    }
+
+    console.log("Update position")
     const el = modalRef.current
     const elRect = el.getBoundingClientRect()
     const gap = 20
@@ -29,7 +37,7 @@ export default function Modal() {
     top = Math.min(Math.max(top, gap), window.innerHeight - elRect.height - gap)
 
     setPos({ left, top })
-  }, [location, visible])
+  }, [location, visible, content])
 
   // Click outside logic
   useEffect(() => {
@@ -48,7 +56,7 @@ export default function Modal() {
   }, [visible, hideModal])
 
   return (
-    <div className="modal-container">
+    <div className={`modal-container ${location === true && 'center'}`}>
       {visible && (
         <div
           ref={modalRef}

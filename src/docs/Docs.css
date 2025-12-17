@@ -1,4 +1,4 @@
 .docs-document-body {
-    padding: 0 20vw;
+    padding: var(--pad-2xl) 20vw var(--pad-sm) 20vw;
     white-space: pre-wrap;
 }

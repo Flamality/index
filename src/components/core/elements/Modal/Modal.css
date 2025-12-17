@@ -7,6 +7,11 @@
     z-index: var(--z-modal);
     pointer-events: none;
 }
+.modal-container.center .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
 .modal-content {
     z-index: var(--z-modal);
     position: absolute;

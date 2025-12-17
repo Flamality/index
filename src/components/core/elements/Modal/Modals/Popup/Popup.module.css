@@ -1,0 +1,11 @@
+.popup {
+    padding: var(--pad-md);
+    background-color: var(--color-surface);
+    border-radius: var(--radius-md);
+}
+.title {
+    font-weight: 800;
+}
+.desc {
+    margin-bottom: var(--space-sm)
+}

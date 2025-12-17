@@ -39,6 +39,7 @@ export const CurrentProvider = ({ children }) => {
             setChannel(res?.$id || null);
             cache.updateChannel(res?.$id, res)
             fetchMoreMessages();
+            document.title = "DM | Zone Zero"
         } else if (type == "SERVER") {
             const res = await databases.getDocument("social", "servers", channel)
             setCurrentChannel(res);

@@ -20,7 +20,6 @@ const mdxComponents = {
   li: (props) => <li style={{ color: "#fff" }} {...props} />,
 };
 
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>

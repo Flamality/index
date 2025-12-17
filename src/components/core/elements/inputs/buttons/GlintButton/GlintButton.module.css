@@ -1,0 +1,82 @@
+.button {
+	position: relative;
+	background: var(--color-surface-alt);
+	color: var(--color-text-main);
+	border: none;
+	padding: var(--pad-md);
+	border: var(--border-thin) solid var(--color-border);
+	border-radius: var(--radius-md);
+	cursor: pointer;
+	overflow: hidden;
+	font-weight: 600;
+	transition: background 0.3s ease, color 0.3s ease;
+	min-width: 100px;
+}
+
+.button:hover {
+	background: var(--color-surface);
+}
+
+.button::before,
+.button::after,
+.button::nth-child(1)::before {
+	content: "";
+	position: absolute;
+	height: 2px;
+	width: 0%;
+	background-color: var(--color-surface-alt);
+	left: 50%;
+	transform: translateX(-50%);
+	transition: width 0.4s ease, transform 0.4s ease;
+}
+
+.button::before {
+	top: 6px;
+}
+.button::after {
+	bottom: 6px;
+}
+
+.button::after {
+	bottom: 6px;
+	box-shadow: 0 0 6px var(--color-surface-alt);
+}
+
+.button:hover::before,
+.button:hover::after {
+	width: 90%;
+}
+
+.button::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: -75%;
+	width: 50%;
+	height: 100%;
+	background: linear-gradient(
+		120deg,
+		rgba(255, 255, 255, 0.1),
+		rgba(255, 255, 255, 0.25),
+		rgba(255, 255, 255, 0.1)
+	);
+	transform: skewX(-20deg);
+	transition: left 0.5s ease;
+}
+
+.button:hover::after {
+	left: 125%;
+}
+
+.button:disabled {
+	background-color: var(--color-surface);
+	cursor: default;
+}
+.button:disabled:hover {
+	background-color: var(--color-surface);
+}
+.button:disabled:hover::before,
+.button:disabled:hover::after {
+	width: 100%;
+	display: none;
+}

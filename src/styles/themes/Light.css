@@ -1,0 +1,63 @@
+.light {
+    /* ------------------- Light Mode ------------------- */
+
+    /* === Vars === */
+    --color-saturation-multiplier: 1;
+
+    /* === Background === */
+    --color-bg-main: #f9fafb;
+    --color-bg-alt: #e4e6eb;
+    --color-surface: #ffffff;
+    --color-surface-alt: #e9ecf0;
+    --color-border: #d2d6db;
+
+    /* === Text === */
+    --color-text-main: #0b0d10;
+    --color-text-sub: #2c2f35;
+    --color-text-muted: #5a5f66;
+    --color-text-disabled: #9ca2ad;
+
+    /* === Primary === */
+    --color-accent-primary: #d24c8c;
+    --color-accent-primary-light: #e66ba4;
+    --color-accent-primary-dark: #a83d71;
+    --color-accent-primary-glow: rgba(210, 76, 140, 0.35);
+    --color-accent-primary-bg: #fff0f6;
+
+    /* === Secondary === */
+    --color-accent-secondary: #3f8bea;
+    --color-accent-secondary-light: #66b0fb;
+    --color-accent-secondary-dark: #2c6dc1;
+    --color-accent-secondary-glow: rgba(63, 139, 234, 0.35);
+    --color-accent-secondary-bg: #f0f7ff;
+
+    --color-hud-grid: rgba(0, 0, 0, 0.04);
+    --color-hud-line: rgba(0, 0, 0, 0.08);
+    --color-hud-highlight: rgba(0, 0, 0, 0.12);
+
+    /* === Status === */
+    --color-success: hsl(151, 55%, 40%);
+    --color-warning: hsl(36, 100%, 45%);
+    --color-danger: hsl(0, 85%, 50%);
+    --color-info: hsl(199, 85%, 45%);
+
+    --color-status-secondary-lightness: 75%;
+    --color-success-dark: hsl(152, calc(57% * var(--color-saturation-multiplier)), var(--color-status-secondary-lightness));
+    --color-warning-dark: hsl(30, calc(68% * var(--color-saturation-multiplier)), var(--color-status-secondary-lightness));
+    --color-danger-dark: hsl(0, calc(54% * var(--color-saturation-multiplier)), var(--color-status-secondary-lightness));
+    --color-info-dark: hsl(192, calc(72% * var(--color-saturation-multiplier)), var(--color-status-secondary-lightness));
+
+    /* === Additional Colors === */
+    --discord-color-1-lightness: 40%;
+    --color-discord-1: hsl(235, calc(86% * var(--color-saturation-multiplier)), var(--discord-color-1-lightness));
+
+    /* ------------------- Shadows & Glows ------------------- */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.16);
+    --shadow-inset: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+
+    --shadow-glow-primary: 0 0 10px var(--color-accent-primary-glow);
+    --shadow-glow-secondary: 0 0 10px var(--color-accent-secondary-glow);
+
+}

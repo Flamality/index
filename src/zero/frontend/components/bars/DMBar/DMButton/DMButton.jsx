@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import "./DMButton.css"
 import { useNavigate } from 'react-router-dom';
+import { Current } from '../../../../../contexts/current';
 
 export default function DMButton({key, dm}) {
   const navigate = useNavigate()
+  const {changeChannel} = useContext(Current)
   const nav = () => {
+    changeChannel(dm?.$id);
     navigate(`/app/${dm?.$id}`)
   }
   return (

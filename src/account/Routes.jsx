@@ -6,7 +6,7 @@ import Verify from "./tabs/Verify/Verify";
 import NotFound from "../components/core/screens/NotFound";
 
 export default function AccountRoutes() {
-  const { user, loading } = useContext(Auth);
+  const { user, loading, userData } = useContext(Auth);
   const navigate = useNavigate();
   const location = useLocation();
   useEffect(() => {
@@ -17,6 +17,7 @@ export default function AccountRoutes() {
 
       navigate(`/auth?redirect=${encodeURIComponent(redirect)}`);
     }
+    document.title = "Manange Your Account (" + userData?.username + ")"
   }, [user, loading, location]);
   return (
     <>

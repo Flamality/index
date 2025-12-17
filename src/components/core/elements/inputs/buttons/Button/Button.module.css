@@ -1,0 +1,21 @@
+.button {
+	min-width: 120px;
+	padding: var(--pad-sm) var(--pad-md);
+	border-radius: var(--radius-full);
+	background-color: var(--color-text-main);
+	outline: none;
+	border: none;
+	cursor: pointer;
+	width: fit-content;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+.button p {
+	font-size: var(--text-sm);
+	color: var(--color-bg-main);
+}
+.button:hover {
+	background-color: var(--color-text-sub);
+}

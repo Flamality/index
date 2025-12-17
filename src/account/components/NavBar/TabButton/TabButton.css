@@ -53,11 +53,28 @@
 
 @media screen and (max-width: 1000px) {
   .account-navigation-tabbutton {
-    padding: 0.2rem 24px;
-    border-radius: 8px 8px 0 0;
+    padding: var(--pad-sm) var(--pad-md);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--pad-md);
+  }
+  .account-navigation-tabbutton.active {
+    background: var(--color-text-main);
+    color: var(--color-bg-alt);
+  }
+  .account-navigation-tabbutton.active p, .account-navigation-tabbutton.active svg {
+    color: var(--color-accent-primary-dark);
+  }
+  .account-navigation-tabbutton-logout p, .account-navigation-tabbutton-logout svg {
+    color: var(--color-danger);
+  }
+  .account-navigation-tabbutton-logout:hover {
+    background: var(--color-danger);
+  }
+  .account-navigation-tabbutton-logout:hover p, .account-navigation-tabbutton-logout:hover svg {
+    color: var(--color-bg-alt)
   }
   .account-navigation-tabbutton.active::after {
-    height: 2px;
+    height: 0px;
     width: 100%;
     border-radius: 0px;
     top: 100%;
@@ -65,9 +82,9 @@
     bottom: 0;
     position: absolute;
   }
-  .account-navigation-tabbutton::after {
+  /* .account-navigation-tabbutton::after {
     content: "";
-    height: 2px;
+    height: 0px;
     width: 100%;
     border-radius: 0px;
     top: 100%;
@@ -75,5 +92,5 @@
     bottom: 0;
     position: absolute;
     background-color: var(--color-surface-alt);
-  }
+  } */
 }

@@ -8,12 +8,14 @@ import UserFriendCard from '../../../../../components/core/elements/users/UserFr
 import "./FriendsList.css"
 import UserSmallCard from '../../../../../components/core/elements/users/UserSmallCard/UserSmallCard'
 import { Layers } from '../../../../../contexts/layers'
+import TabGroup from '../../../../../components/core/elements/inputs/tabs/TabGroup/TabGroup'
+import Tab from '../../../../../components/core/elements/inputs/tabs/Tab/Tab'
 
 export default function FriendsList() {
     const [friends, setFriends] = useState([]);
     const [sentRequests, setSentRequests] = useState([]);
     const [recFriendRequests, setRecFriendRequests] = useState([]);
-    const [tab, setTab] = useState(true);
+    const [tab, setTab] = useState(0);
     const {user} = useContext(Auth)
     useEffect(() =>  {
       const getFriends = async () => {
@@ -38,11 +40,15 @@ export default function FriendsList() {
   return (
     <div className='account-tab-friends-friendslist'>
       <div className='account-tab-friends-friendslist-tabs'>
-        <button onClick={()=>{setTab(true)}} className={tab ? "active" : ""}>Friends List</button>
-        <button onClick={()=>{setTab(false)}} className={tab ? "" : "active"}>Pending{recFriendRequests.length > 0 && <div>{recFriendRequests.length}</div>}</button>
+        <TabGroup onChange={setTab} value={tab}>
+          <Tab>Friends</Tab>
+          <Tab>Pending</Tab>
+        </TabGroup>
+        {/* <button onClick={()=>{setTab(true)}} className={tab ? "active" : ""}>Friends List</button>
+        <button onClick={()=>{setTab(false)}} className={tab ? "" : "active"}>Pending{recFriendRequests.length > 0 && <div>{recFriendRequests.length}</div>}</button> */}
         
       </div>
-    {tab ? (
+    {tab == 0 ? (
       <>
       <SectionSubtitle>My Friends</SectionSubtitle>
       {friends?.map((friend) => (

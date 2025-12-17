@@ -1,0 +1,72 @@
+.card {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 0.75rem;
+	border-radius: var(--radius-sm);
+	background-color: var(--color-bg-alt);
+	border: var(--border-thin) solid var(--color-border);
+	position: relative;
+	overflow: hidden;
+	max-width: 500px;
+
+	&:hover {
+		background-color: var(--color-surface);
+	}
+}
+
+.title {
+	color: var(--color-text-main);
+	font-size: 1.25rem;
+	font-weight: 700;
+	margin: 0;
+}
+
+@media (max-width: 1400px) {
+	.title {
+		font-size: 1rem;
+	}
+}
+
+@media (max-width: 1024px) {
+	.title {
+		font-size: 1rem;
+	}
+}
+
+@media (max-width: 768px) {
+	.title {
+		font-size: 1rem;
+	}
+}
+
+.url {
+	color: var(--color-text-disabled);
+	font-size: 1rem;
+	font-weight: 500;
+	margin-bottom: 8rem;
+	margin-top: 0.25rem;
+}
+
+.card:hover .icon {
+	bottom: 0.5rem;
+	right: 0.5rem;
+	transform: skew(20deg, 20deg), translate(25%, 25%);
+}
+.icon {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 8rem;
+	height: 8rem;
+	transform: translate(25%, 25%);
+	color: var(--color-text-muted);
+	transition: all 0.2s ease;
+}
+
+.card:hover .icon {
+	color: var(--color-text-main);
+}
+.card:hover .url {
+	color: var(--color-text-muted);
+}

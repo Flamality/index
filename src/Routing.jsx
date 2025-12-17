@@ -5,6 +5,7 @@ import Loading from "./components/core/screens/Loading";
 import NotFound from "./components/core/screens/NotFound";
 import TermsOfService from "./docs/Terms.jsx";
 import Docs from "./docs/Docs.jsx";
+import Admin from "./admin/Admin.jsx";
 const App = lazy(() => import("./Landing/Landing"));
 const AccountRoutes = lazy(() => import("./account/Routes"));
 const AuthRoutes = lazy(() => import("./auth/Routes"));
@@ -87,6 +88,14 @@ export default function Routing() {
         element={
           <Suspense fallback={<Loading />}>
             <AppwriteConnect />
+          </Suspense>
+        }
+      />
+      <Route
+        path='/admin/*'
+        element={
+          <Suspense fallback={<Loading />}>
+            <Admin />
           </Suspense>
         }
       />

@@ -1,0 +1,67 @@
+.landing {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	min-height: 100vh;
+}
+.background {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: radial-gradient(
+		circle at top left,
+		var(--color-accent-primary-dark),
+		var(--color-accent-primary-bg),
+		var(--color-accent-secondary-bg),
+		var(--color-accent-secondary-dark)
+	);
+	filter: blur(100px);
+}
+.top {
+	display: flex;
+	z-index: 10;
+	margin-top: 2.5rem;
+	flex-direction: column;
+	align-items: center;
+	gap: 5rem;
+	width: 100%;
+	padding: 0 16rem;
+	position: relative;
+}
+.link_cards {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+	gap: 2rem;
+	width: 100%;
+	gap: 0.75rem;
+}
+.spacing {
+	margin-bottom: 8rem;
+}
+@media (max-width: 1300px) {
+	.top {
+		padding-left: 14rem;
+		padding-right: 14rem;
+	}
+}
+@media (max-width: 1024px) {
+	.top {
+		padding-left: 10rem;
+		padding-right: 10rem;
+	}
+	.link_cards {
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+}
+
+@media (max-width: 640px) {
+	.top {
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
+}

@@ -9,7 +9,7 @@
     position: relative;
     width: 100%;
 }
-.account-tab-friends-friendslist-tabs button {
+/* .account-tab-friends-friendslist-tabs button {
     background-color: transparent;
     overflow: visible;
 }
@@ -34,4 +34,4 @@
     position: absolute;
     right: -0.5rem;
     top: -0.5rem;
-}
+} */

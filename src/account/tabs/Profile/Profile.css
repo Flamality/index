@@ -39,7 +39,7 @@
   height: 100px;
   opacity: 0;
   cursor: pointer;
-}
+} 
 .account-tab-profile-pfpwrapper > svg {
   position: absolute;
   top: 50%;
@@ -84,4 +84,9 @@
 }
 .account-tab-profile-email input {
   flex-grow: 1;
+}
+@media screen and (max-width: 768px) {
+  .account-tab-profile {
+    flex-direction: column;
+  }
 }

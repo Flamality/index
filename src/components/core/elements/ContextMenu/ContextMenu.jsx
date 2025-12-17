@@ -12,7 +12,7 @@ export default function ContextMenu() {
 
   useEffect(() => {
     const handleContextMenu = (e) => {
-      e.preventDefault();
+      // e.preventDefault();
       const selection = window.getSelection().toString();
       setMenu({ visible: true, x: e.pageX, y: e.pageY, selection });
     };

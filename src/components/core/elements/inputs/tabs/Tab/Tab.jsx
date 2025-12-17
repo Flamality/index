@@ -1,5 +1,7 @@
 import React from 'react';
 
+import "./Tab.css"
+
 export default function Tab({ index, active, onClick, children }) {
   return (
     <div
