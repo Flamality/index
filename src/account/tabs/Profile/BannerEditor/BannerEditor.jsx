@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import "./BannerEditor.css";
-import { linearGradient } from "framer-motion/client";
 import { FaPaintBrush } from "react-icons/fa";
 import { FaPlus, FaXmark } from "react-icons/fa6";
 

@@ -3,8 +3,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Loading from "./components/core/screens/Loading";
 import NotFound from "./components/core/screens/NotFound";
-import TermsOfService from "./docs/Terms.jsx";
-import Docs from "./docs/Docs.jsx";
+// import TermsOfService from "./docs/Terms.jsx";
+// import Docs from "./docs/Docs.jsx";
 import Admin from "./admin/Admin.jsx";
 const App = lazy(() => import("./Landing/Landing"));
 const AccountRoutes = lazy(() => import("./account/Routes"));
@@ -67,7 +67,7 @@ export default function Routing() {
           </Suspense>
         }
       />
-      <Route
+      {/* <Route
         path='/terms'
         element={
           <Suspense fallback={<Loading />}>
@@ -82,7 +82,7 @@ export default function Routing() {
             <Docs />
           </Suspense>
         }
-      />
+      /> */}
       <Route
         path='/appwrite-connect'
         element={
