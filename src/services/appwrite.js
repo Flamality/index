@@ -3,9 +3,11 @@ import { Client, Account, Databases, Storage, Functions } from "appwrite";
 export const client = new Client();
 
 client
-  .setEndpoint(import.meta.env.VITE_API_URL)
-  .setProject(import.meta.env.VITE_APPWRITE_ID)
-  .setDevKey(import.meta.env.VITE_DEV_KEY);
+  .setEndpoint(
+    import.meta.env.VITE_API_URL || "https://nyc.cloud.appwrite.io/v1"
+  )
+  .setProject(import.meta.env.VITE_APPWRITE_ID || "flamality")
+  .setDevKey(import.meta.env.VITE_DEV_KEY || "invalid");
 
 export const account = new Account(client);
 export const databases = new Databases(client);
@@ -40,23 +42,20 @@ export const execute = async (func, path, ...arg) => {
       functionId: func,
       body: JSON.stringify(arg),
       async: false,
-      path: path
+      path: path,
     });
     console.log(res);
     return res;
   } catch (error) {
-    console.error(error)
+    console.error(error);
     return {
       success: false,
       error: error.message,
       functionId: func,
       path: path,
       body: JSON.stringify(arg),
-    }
+    };
   }
-}
+};
 
-
-export const addFriend = async (user) => {
-  
-}
+export const addFriend = async (user) => {};
