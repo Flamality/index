@@ -2,7 +2,11 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { createContext } from "react";
 import { account, databases, execute } from "../services/appwrite";
-import { getCurrentSong, getSpotifyUser, refreshSpotifyToken } from "../services/spotify";
+import {
+  getCurrentSong,
+  getSpotifyUser,
+  refreshSpotifyToken,
+} from "../services/spotify";
 import { Notifications } from "./notifications";
 
 export const Auth = createContext(null);
@@ -41,7 +45,12 @@ export const AuthProvider = ({ children }) => {
     // const response = await execute("interaction", "/me");
     setUserData(response);
     setUpdUserData(response);
-    createNotification("success", "Fetched user data", `Got user data for ${response?.username}`)
+    createNotification(
+      "success",
+      "Fetched user data",
+      `Got user data for ${response?.username}`,
+      true
+    );
     await getConnections(userId);
     setLoading(false);
     return response;
@@ -198,7 +207,6 @@ export const AuthProvider = ({ children }) => {
     discardChange,
     saveChanges,
     connections,
-    
   };
 
   return <Auth.Provider value={value}>{children}</Auth.Provider>;
