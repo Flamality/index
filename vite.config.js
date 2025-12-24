@@ -13,4 +13,5 @@ export default defineConfig({
       generateScopedName: "[local]_[hash:5]",
     },
   },
+  base: "/",
 });
