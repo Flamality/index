@@ -1,4 +1,3 @@
-
 .spotify-controller {
   position: fixed;
   display: flex;
@@ -8,7 +7,8 @@
   bottom: 1rem;
   left: 1rem;
   background-color: rgba(25, 25, 25, 0.7);
-  padding: 0.4rem 0.4rem;
+  padding: var(--pad-sm);
+  padding-right: var(--pad-lg);
   border-radius: 1.2rem;
   z-index: var(--z-modal);
   backdrop-filter: blur(10px);
@@ -16,8 +16,8 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  width: 100%;
-  max-width: 50vw;
+  width: 600px;
+  max-height: 85px;
   box-sizing: border-box;
 }
 
@@ -30,13 +30,22 @@
 
 .spotify-song-info {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: baseline;
   gap: 0.5rem;
-  min-width: 200px;
   width: 100%;
 }
-.spotify-song-info > .spotify-song-name {
+
+.spotify-song-meta {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.spotify-song-info>.spotify-song-name {
   font-size: 1rem;
   font-weight: 400;
   color: var(--color-text-muted);
@@ -47,38 +56,57 @@
   width: 100%;
   max-width: 190rem;
 }
+
 .spotify-song-info .spotify-song-artist {
   font-size: 0.9rem;
   color: var(--color-text-muted);
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  width: 100%;
+  overflow: hidden;
 }
-.spotify-song-info > p {
+
+.spotify-song-info>p {
   font-size: 0.8rem;
   color: var(--color-text-muted);
   white-space: nowrap;
   width: 100%;
 }
+
 .spotify-song-info * {
   line-height: 1.2;
 }
+
 
 .spotify-progress-bar {
   height: 6px;
   background: rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-full);
-  margin-top: 0.5rem;
+  margin-top: var(--pad-md);
+  margin-bottom: -0.4rem;
   width: 100%;
-  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: start;
+  flex-grow: 1;
 }
 
 .spotify-progress-fill {
   height: 100%;
-  background: #1DB954; 
-  border-radius: var(--radius-full);
-  transition: width 1s linear;
+  background: #1DB954;
+  border-radius: 0 0 var(--radius-full) var(--radius-full);
+}
+
+.spotify-time-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  margin-top: 0.2rem;
+
+  span {
+    color: var(--color-text-muted)
+  }
 }
 
 .spotify-controls {
@@ -108,42 +136,113 @@
 .spotify-controls button:active {
   transform: scale(0.95);
 }
- .spotify-minimize {
- position: absolute;
- right: -2rem;
- top: 50%;
- translate: 0 -50%;
- width: 3rem;
- height: 3rem;
- color: white;
- cursor: pointer;
- padding: 0.5rem;
- border-radius: var(--radius-md);
- }
- 
- .spotify-minimize svg {
+
+.spotify-minimize {
+  position: absolute;
+  top: 2px;
+  right: 10px;
+  width: 2rem;
+  height: 2rem;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: var(--radius-md);
+}
+
+.spotify-minimize svg {
   width: 100%;
   height: 100%;
   transition: all 0.2s ease;
   translate: 0.5rem 0;
- }
- .spotify-minimize:hover svg {
-    translate: 0rem 0;
- }
- .spotify-minimize:hover {
+}
+
+.spotify-minimize:hover svg {
+  translate: 0rem 0;
+}
+
+/* .spotify-minimize:hover {
   background-color: var(--color-surface-alt);
- }
- .spotify-controller.true {
+} */
+
+.spotify-controller.true {
   width: 4.5rem;
   padding: 0;
   bottom: 1.4rem;
- }
- .spotify-controller.true .spotify-song-info {
+}
+
+.spotify-controller.true .spotify-song-info {
   display: none;
- }
- .spotify-controller.true .spotify-album-art {
+}
+
+.spotify-controller.true .spotify-album-art {
   cursor: pointer;
- }
- .spotify-controller.true .spotify-minimize {
+}
+
+.spotify-controller.true .spotify-minimize {
   display: none;
- }
+}
+
+
+
+.spotify-progress-fill-waves {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  line-height: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: start;
+  justify-self: left;
+  flex-grow: 1;
+}
+
+.spotify-progress-fill-waves svg {
+  display: block;
+  width: 2400px;
+  transform: rotate(180deg);
+  height: 10px;
+}
+
+.wave path {
+  animation: waveMove 16s linear infinite;
+}
+
+.wave1 path {
+  animation-duration: 16s;
+}
+
+.wave2 path {
+  animation-duration: 12s;
+}
+
+.wave3 path {
+  animation-duration: 8s;
+}
+
+.wave1 path:first-child {
+  animation-delay: -8s;
+}
+
+.wave2 path:first-child {
+  animation-delay: -6s;
+}
+
+.wave3 path:first-child {
+  animation-delay: -4s;
+}
+
+@keyframes waveMove {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.shape-fill {
+  fill: #1DB954;
+}
