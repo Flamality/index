@@ -11,6 +11,7 @@ import {
 } from "../services/test";
 import { FaXmark } from "react-icons/fa6";
 import TextField from "../components/core/elements/inputs/TextField";
+import GlintButton from "../components/core/elements/inputs/buttons/GlintButton/GlintButton";
 
 export default function Signup() {
   const [username, setUsername] = useState("");
@@ -150,9 +151,9 @@ export default function Signup() {
           >
             {confirmError}
           </p>
-          <button type='submit' onClick={handleSignup}>
+          <GlintButton type='submit' onClick={handleSignup}>
             Register
-          </button>
+          </GlintButton>
         </form>
         <p className='auth-screen-form-footer'>
           Already have an account?{" "}

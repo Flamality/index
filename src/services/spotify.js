@@ -101,7 +101,11 @@ export const refreshSpotifyToken = async (refreshToken) => {
   params.append("grant_type", "refresh_token");
   params.append("refresh_token", refreshToken);
 
-  const basicAuth = btoa(`${import.meta.env.SPOTIFY_CLIENT_ID}:${import.meta.env.SPOTIFY_CLIENT_SECRET}`);
+  const basicAuth = btoa(
+    `${import.meta.env.VITE_SPOTIFY_CLIENT_ID}:${
+      import.meta.env.VITE_SPOTIFY_CLIENT_SECRET
+    }`
+  );
 
   try {
     const res = await fetch("https://accounts.spotify.com/api/token", {

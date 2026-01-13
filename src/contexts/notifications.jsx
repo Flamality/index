@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { client } from "../services/appwrite";
 import { Auth } from "./auth";
-import { admin } from "../../config";
+import { admin } from "../../devConfig";
 
 export const Notifications = createContext(null);
 

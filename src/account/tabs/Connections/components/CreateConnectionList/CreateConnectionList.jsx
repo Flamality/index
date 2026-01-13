@@ -5,15 +5,22 @@ import { FaSpotify } from "react-icons/fa6";
 
 export default function CreateConnectionList() {
   const connectSpotify = () => {
-    const clientId = "4b9c7d2f60ae4267a42d0e68db606675";
-    // const redirectUri = "https://flamality.com/connect/spotify";
-    const redirectUri = "https://9000-firebase-index-1756315404059.cluster-j3txs2guavbhgth3nz5qsaq5gi.cloudworkstations.dev/connect/spotify"
+    const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
+    const port = window.location.port ? `:${window.location.port}` : "";
+    const redirectUri =
+      window.location.protocol +
+      "//" +
+      window.location.hostname +
+      port +
+      "/connect/spotify";
     const scope = [
       "user-read-playback-state",
       "user-modify-playback-state",
       "user-read-currently-playing",
       "user-read-email",
     ].join(" ");
+
+    console.log(redirectUri);
 
     const authUrl =
       "https://accounts.spotify.com/authorize" +
