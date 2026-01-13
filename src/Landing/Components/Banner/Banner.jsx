@@ -14,6 +14,8 @@ export default function Banner() {
     };
     getData();
   }, []);
+
+  if (!data || !data.active) return null;
   return (
     <div className={styles.banner}>
       <p className={styles.header}>{data?.title}</p>
