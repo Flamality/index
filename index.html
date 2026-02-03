@@ -1,77 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#ffffff" />
-    <meta name="description" content="Hub for everything Flamality" />
-    <link
-      rel="icon"
-      type="image/png"
-      href="/context/favicon-96x96.png"
-      sizes="96x96"
-    />
-    <link rel="icon" type="image/svg+xml" href="/context/favicon.svg" />
-    <link rel="shortcut icon" href="/context/favicon.ico" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/context/apple-touch-icon.png"
-    />
-    <meta name="apple-mobile-web-app-title" content="Flamality" />
-    <link rel="manifest" href="/context/site.webmanifest" />
 
-    <title>Flamality</title>
+<head>
+  <!-- Basic Meta -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Hub for everything Flamality" />
+  <title>Flamality</title>
 
-    <!-- TWITTER -->
-    <meta name="twitter:title" content="Flamality" />
-    <meta name="twitter:description" content="Hub for everything Flamality" />
-    <meta
-      name="twitter:url"
-      content="https://flamality.com/context/favicon-96x96.png"
-    />
-    <meta name="twitter:card" content="summary" />
+  <!-- Favicons -->
+  <link rel="icon" href="/context/favicon.ico" />
+  <link rel="icon" href="/context/favicon-96x96.png" sizes="96x96" />
 
-    <!-- OPEN GRAPH -->
-    <meta property="og:title" content="Flamality" />
-    <meta property="og:description" content="Hub for everything Flamality" />
-    <meta
-      property="og:image"
-      content="https://flamality.com/context/favicon-96x96.png"
-    />
-    <meta property="og:url" content="https://flamality.com" />
-  </head>
+  <!-- Social Sharing -->
+  <meta property="og:title" content="Flamality" />
+  <meta property="og:description" content="Hub for everything Flamality" />
+  <meta property="og:image" content="https://flamality.com/context/favicon-96x96.png" />
+  <meta property="og:url" content="https://flamality.com" />
+  <meta name="twitter:card" content="summary" />
 
-  <!-- BODY -->
+  <!-- Stylesheets -->
+  <link rel="preload" href="/styles.css" as="style" />
+</head>
 
-  <body style="padding: 0; margin: 0">
-    <noscript
-      ><div
-        style="
-          height: 100vh;
-          width: 100vw;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background-color: #1b1b1b;
-          position: relative;
-        "
-      >
-        <p
-          style="
-            color: white;
-            font-family: Arial;
-            font-weight: bold;
-            font-size: 1.2em;
-            margin: 1em;
-            text-align: center;
-          "
-        >
-          YOU NEED JAVASCRIPT ENABLED TO VIEW THIS SITE
-        </p>
+<body>
+  <noscript>
+    <div class="noscript-message">
+      <h1>Oops</h1>
+      <p>JavaScript is required for this site to function.</p>
+      <div class="noscript-links">
+        <a href="https://www.enable-javascript.com/" target="_blank">Learn how to enable JavaScript</a>
+        <span> | </span>
+        <a href="https://www.whatismybrowser.com/guides/how-to-enable-javascript/" target="_blank">Instructions for your
+          browser</a>
       </div>
-    </noscript>
-    <div id="root"></div>
-    <script type="module" src="/src/index.jsx"></script>
-  </body>
+    </div>
+  </noscript>
+
+  <div id="root"></div>
+  <script type="module" src="/src/index.jsx"></script>
+</body>
+
 </html>

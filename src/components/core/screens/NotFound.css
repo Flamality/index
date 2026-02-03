@@ -8,15 +8,55 @@
   background-color: var(--color-bg-main);
   position: relative;
 }
+
+.core-screen-404-top {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 50%;
+  width: 100%;
+  background-color: var(--color-bg-alt);
+  padding-bottom: var(--space-2xl)
+}
+
+.core-screen-404-bottom {
+  flex: 1;
+  display: flex;
+  height: 50%;
+  width: 100%;
+  background-color: var(--color-bg-main);
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: var(--space-lg);
+}
+
 .core-screen-404-header {
-  font-size: 3rem;
+  font-size: 10rem;
   color: var(--color-accent-primary);
   font-weight: 700;
 }
+
 .core-screen-404-subheader {
-  font-size: 1.8rem;
+  font-size: 5rem;
   color: var(--color-text-muted);
 }
+
 .core-screen-404-back {
-  margin-top: 1.5rem;
+  margin-top: var(--space-xl);
+  font-size: 1.25rem;
+  background-color: var(--color-accent-primary);
+  color: var(--color-bg-main);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  font-weight: 600;
+
+  transition: background-color 0.3s, color 0.3s;
+
+  &:hover {
+    background-color: var(--color-accent-primary-light);
+    color: var(--color-bg-main);
+  }
 }

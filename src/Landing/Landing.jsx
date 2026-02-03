@@ -20,7 +20,13 @@ function App() {
     document.title = "Flamality";
     const width = window.innerWidth;
     const height = window.innerHeight;
-    // showModal('center', <Popup title="Screen Size"  desc={`Width: ${width} | Height: ${height}`} />);
+    // showModal(
+    //   "center",
+    //   <Popup
+    //     title='Screen Size'
+    //     desc={`Width: ${width} | Height: ${height}`}
+    //   />,
+    // );
   }, []);
   return (
     <div className={styles.landing}>
@@ -28,10 +34,11 @@ function App() {
       <Banner />
       <div className={styles.top}>
         <div className={styles.background} />
+        <div className={styles.accent_background} />
         <Header />
         <DiscordCard />
         <AccountCard />
-        <ZoneZero />
+        {/* <ZoneZero /> */}
         <div className={styles.link_cards}>
           <LinkCard
             text={"My Portfolio"}
@@ -50,7 +57,6 @@ function App() {
           />
         </div>
       </div>
-      <div className={styles.spacing} />
       <Footer />
     </div>
   );

@@ -8,16 +8,21 @@
   width: 300px;
   gap: var(--space-sm);
 }
+
 .notification {
   background: var(--color-surface-alt);
   color: var(--color-text-main);
   padding: 1rem 1.5rem 1rem 3rem;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   transition: transform 0.4s ease, opacity 0.4s ease, margin 0.4s ease;
   opacity: 0;
   transform: translateX(100%);
   position: relative;
+  background-color: var(--current-color-dark);
+  border: 1px solid var(--current-color);
+  --current-color: var(--color-info);
+  --current-color-dark: var(--color-info-dark);
 }
 
 .notification-title {
@@ -54,26 +59,29 @@
   justify-content: center;
   z-index: 1000;
 }
-.notification-accent > svg {
-  height: 60%;
-  aspect-ratio: 1 / 1;
+
+.notification-accent>svg {
+  height: 1.5rem;
+  width: 1.5rem;
+  color: var(--current-color);
 }
+
 .notification.danger {
-  background: linear-gradient(90deg, var(--color-danger), var(--color-surface-alt), var(--color-surface-alt));
+  --current-color: var(--color-danger);
+  --current-color-dark: var(--color-danger-dark);
 }
+
 .notification.success {
-  background: linear-gradient(90deg, var(--color-success-dark), var(--color-surface-alt), var(--color-surface-alt));
-  
+  --current-color: var(--color-success);
+  --current-color-dark: var(--color-success-dark);
 }
+
 .notification.info {
-  background: linear-gradient(90deg, var(--color-info), var(--color-surface-alt), var(--color-surface-alt));
+  --current-color: var(--color-info);
+  --current-color-dark: var(--color-info-dark);
 }
+
 .notification.warning {
-  background: linear-gradient(90deg, var(--color-warning), var(--color-surface-alt), var(--color-surface-alt));
-}
-.notification.danger .notification-accent > svg {
-  color: var(--color-danger)
-}
-.notification.success .notification-accent > svg {
-  color: var(--color-success)
+  --current-color: var(--color-warning);
+  --current-color-dark: var(--color-warning-dark);
 }

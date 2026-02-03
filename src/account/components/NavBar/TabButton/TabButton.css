@@ -5,41 +5,46 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1.9rem;
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  gap: 0.8rem;
+  padding: var(--pad-md) var(--pad-md);
+  border-radius: var(--radius-lg);
   position: relative;
   z-index: var(--z-overlay);
   cursor: pointer;
+  margin-left: var(--space-md);
 }
+
 .account-navigation-tabbutton:hover {
   background-color: var(--color-bg-alt);
 }
+
 /* .account-navigation-tabbutton-logout:hover > svg {
   color: var(--color-danger);
 } */
 .account-navigation-tabbutton-logout:hover {
-  background: linear-gradient(90deg, var(--color-bg-alt), var(--color-danger))
+  background: linear-gradient(90deg, var(--color-danger-dark), var(--color-danger))
 }
+
 /* .account-navigation-tabbutton-logout:hover > p {
   color: var(--color-danger);
 } */
-.account-navigation-tabbutton > svg {
-  height: 1.2rem;
-  width: 1.2rem;
+.account-navigation-tabbutton>svg {
+  height: 1.3rem;
+  width: 1.3rem;
 }
+
 .account-navigation-tabbutton:hover {
   text-decoration: none;
 }
+
 .account-navigation-tabbutton.active {
-  background: linear-gradient(
-    90deg,
-    var(--color-surface),
-    var(--color-accent-secondary-dark)
-  );
+  background: linear-gradient(90deg,
+      var(--color-accent-secondary),
+      var(--color-accent-secondary-dark));
   color: var(--color-text-main);
 }
-.account-navigation-tabbutton.active::after {
+
+/* .account-navigation-tabbutton.active::after {
   content: "";
   height: 1.9rem;
   width: 4px;
@@ -49,7 +54,7 @@
   translate: 0 -50%;
   position: absolute;
   background-color: var(--color-accent-secondary);
-}
+} */
 
 @media screen and (max-width: 1000px) {
   .account-navigation-tabbutton {
@@ -57,22 +62,31 @@
     border-radius: var(--radius-sm);
     margin-bottom: var(--pad-md);
   }
+
   .account-navigation-tabbutton.active {
     background: var(--color-text-main);
     color: var(--color-bg-alt);
   }
-  .account-navigation-tabbutton.active p, .account-navigation-tabbutton.active svg {
+
+  .account-navigation-tabbutton.active p,
+  .account-navigation-tabbutton.active svg {
     color: var(--color-accent-primary-dark);
   }
-  .account-navigation-tabbutton-logout p, .account-navigation-tabbutton-logout svg {
+
+  .account-navigation-tabbutton-logout p,
+  .account-navigation-tabbutton-logout svg {
     color: var(--color-danger);
   }
+
   .account-navigation-tabbutton-logout:hover {
     background: var(--color-danger);
   }
-  .account-navigation-tabbutton-logout:hover p, .account-navigation-tabbutton-logout:hover svg {
+
+  .account-navigation-tabbutton-logout:hover p,
+  .account-navigation-tabbutton-logout:hover svg {
     color: var(--color-bg-alt)
   }
+
   .account-navigation-tabbutton.active::after {
     height: 0px;
     width: 100%;
@@ -82,6 +96,7 @@
     bottom: 0;
     position: absolute;
   }
+
   /* .account-navigation-tabbutton::after {
     content: "";
     height: 0px;

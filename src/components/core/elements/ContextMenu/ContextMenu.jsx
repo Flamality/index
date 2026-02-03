@@ -56,11 +56,12 @@ export default function ContextMenu() {
     setMenu({ ...menu, visible: false });
   };
 
-  return menu.visible ? (
-    <ul className='context-menu' style={{ left: menu.x, top: menu.y }}>
-      {menu.selection && <li onClick={copyText}>Copy</li>}
-      <li onClick={goBack}>Back</li>
-      <li onClick={reloadPage}>Reload</li>
-    </ul>
-  ) : null;
+  // return menu.visible ? (
+  //   <ul className='context-menu' style={{ left: menu.x, top: menu.y }}>
+  //     {menu.selection && <li onClick={copyText}>Copy</li>}
+  //     <li onClick={goBack}>Back</li>
+  //     <li onClick={reloadPage}>Reload</li>
+  //   </ul>
+  // ) : null;
+  return <></>;
 }

@@ -1,0 +1,38 @@
+.content {
+    padding: 20px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: auto;
+    min-height: 100vh;
+
+    h1 {
+        font-size: 2.5em;
+        margin-bottom: 0.5em;
+    }
+
+    h2 {
+        font-size: 2em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+    }
+
+    h3 {
+        font-size: 1.5em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+    }
+
+    p {
+        margin-bottom: 1em;
+    }
+
+    ol,
+    ul {
+        margin-left: 20px;
+        margin-bottom: 1em;
+    }
+
+    li {
+        margin-bottom: 0.5em;
+    }
+}
