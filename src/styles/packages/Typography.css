@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    /* ------------------- Typography ------------------- */
+    --font-main: "Noto Sans", "Segoe UI", sans-serif;
+    --font-heading: "Noto Sans", "Segoe UI", sans-serif;
+
+    --header-1-size: 2.5rem;
+    --header-2-size: 2rem;
+    --header-3-size: 1.5rem;
+    --header-4-size: 1.25rem;
+
+    --text-lg: 1.125rem;
+    --text-md: 1rem;
+    --text-sm: 0.875rem;
+    --text-xs: 0.75rem;
+
+    --line-height-heading: 1.2;
+    --line-height-body: 1.5;
+
+
+}

@@ -1,0 +1,53 @@
+.bodyLarge {
+    font-size: var(--text-lg);
+    font-weight: 400;
+}
+
+.bodyMedium {
+    font-size: var(--text-md);
+    font-weight: 400;
+}
+
+.bodySmall {
+    font-size: var(--text-sm);
+    font-weight: 400;
+}
+
+.titleLarge {
+    font-size: var(--header-4-size);
+    font-weight: 600;
+}
+
+.titleMedium {
+    font-size: var(--text-lg);
+    font-weight: 600;
+}
+
+.titleSmall {
+    font-size: var(--text-md);
+    font-weight: 600;
+}
+
+.headerLarge {
+    font-size: var(--header-1-size);
+    font-weight: 700;
+}
+
+.headerMedium {
+    font-size: var(--header-2-size);
+    font-weight: 700;
+}
+
+.headerSmall {
+    font-size: var(--header-3-size);
+    font-weight: 700;
+}
+
+.headerTiny {
+    font-size: var(--header-4-size);
+    font-weight: 700;
+}
+
+.muted {
+    color: var(--color-text-muted);
+}

@@ -1,14 +1,16 @@
 .account-tab-friends-friendslist {
     width: 100%;
 }
+
 .account-tab-friends-friendslist-tabs {
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
+    margin-top: var(--space-lg);
     gap: 1rem;
     position: relative;
     width: 100%;
 }
+
 /* .account-tab-friends-friendslist-tabs button {
     background-color: transparent;
     overflow: visible;

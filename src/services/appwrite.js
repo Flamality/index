@@ -4,7 +4,7 @@ export const client = new Client();
 
 client
   .setEndpoint(
-    import.meta.env.VITE_API_URL || "https://nyc.cloud.appwrite.io/v1"
+    import.meta.env.VITE_API_URL || "https://nyc.cloud.appwrite.io/v1",
   )
   .setProject(import.meta.env.VITE_APPWRITE_ID || "flamality")
   .setDevKey(import.meta.env.VITE_DEV_KEY || "invalid");
@@ -23,7 +23,7 @@ export const registerUser = async (email, password, username) => {
     const user = await account.create(randomID(), email, password, username);
     await account.createEmailPasswordSession(email, password);
     await account.createVerification(
-      "https://flamality.com/account/verify-email"
+      "https://flamality.com/account/verify-email",
     );
     await databases.createDocument("main", "users", user.$id, {
       username: username,
@@ -36,26 +36,24 @@ export const registerUser = async (email, password, username) => {
   }
 };
 
-export const execute = async (func, path, ...arg) => {
+export const execute = async (func, path, arg) => {
   try {
     const res = await functions.createExecution({
       functionId: func,
       body: JSON.stringify(arg),
       async: false,
-      path: path,
+      xpath: path,
     });
-    console.log(res);
-    return res;
+    const body = JSON.parse(res.responseBody);
+    return body;
   } catch (error) {
     console.error(error);
     return {
       success: false,
       error: error.message,
       functionId: func,
-      path: path,
+      xpath: path,
       body: JSON.stringify(arg),
     };
   }
 };
-
-export const addFriend = async (user) => {};

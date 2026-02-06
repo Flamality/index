@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 2rem;
+    width: 100%;
+}
+
+.branding {
+    font-size: 1rem;
+    font-weight: bold;
+
+    width: fit-content;
+    background-color: var(--color-text-main);
+    border-radius: var(--radius-lg);
+
+    a {
+        color: var(--color-background-main);
+        padding: 0.5rem 1rem;
+        display: block;
+    }
+}

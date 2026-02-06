@@ -1,0 +1,1126 @@
+{
+    "projectId": "flamality",
+    "projectName": "Flamality",
+    "settings": {
+        "services": {
+            "account": true,
+            "avatars": true,
+            "databases": true,
+            "locale": true,
+            "health": true,
+            "storage": true,
+            "teams": true,
+            "users": true,
+            "functions": true,
+            "graphql": true,
+            "messaging": true
+        },
+        "auth": {
+            "methods": {
+                "jwt": true,
+                "phone": true,
+                "invites": false,
+                "anonymous": false,
+                "email-otp": true,
+                "magic-url": false,
+                "email-password": true
+            },
+            "security": {
+                "duration": 31536000,
+                "limit": 0,
+                "sessionsLimit": 10,
+                "passwordHistory": 1,
+                "passwordDictionary": false,
+                "personalDataCheck": false,
+                "sessionAlerts": true,
+                "mockNumbers": []
+            }
+        }
+    },
+    "functions": [
+        {
+            "$id": "interaction",
+            "execute": [
+                "any",
+                "users"
+            ],
+            "name": "interaction",
+            "enabled": true,
+            "logging": true,
+            "runtime": "node-22",
+            "scopes": [
+                "users.read"
+            ],
+            "events": [],
+            "schedule": "",
+            "timeout": 15,
+            "entrypoint": "src/main.js",
+            "commands": "npm install",
+            "specification": "s-0.5vcpu-512mb",
+            "path": "functions/interaction"
+        },
+        {
+            "$id": "authentication",
+            "execute": [
+                "any"
+            ],
+            "name": "authentication",
+            "enabled": true,
+            "logging": true,
+            "runtime": "node-22",
+            "scopes": [
+                "users.read"
+            ],
+            "events": [],
+            "schedule": "",
+            "timeout": 15,
+            "entrypoint": "src/main.js",
+            "commands": "npm install",
+            "specification": "s-0.5vcpu-512mb",
+            "path": "functions/authentication"
+        },
+        {
+            "$id": "thefireskins",
+            "execute": [
+                "any"
+            ],
+            "name": "The Fire Skins",
+            "enabled": true,
+            "logging": true,
+            "runtime": "node-18.0",
+            "scopes": [
+                "users.read"
+            ],
+            "events": [],
+            "schedule": "",
+            "timeout": 15,
+            "entrypoint": "src/main.js",
+            "commands": "npm install",
+            "specification": "s-0.5vcpu-512mb",
+            "path": "functions/The Fire Skins"
+        },
+        {
+            "$id": "wd14",
+            "execute": [
+                "any"
+            ],
+            "name": "wd14",
+            "enabled": true,
+            "logging": true,
+            "runtime": "python-3.9",
+            "scopes": [
+                "users.read"
+            ],
+            "events": [],
+            "schedule": "",
+            "timeout": 15,
+            "entrypoint": "src/main.py",
+            "commands": "pip install -r requirements.txt",
+            "specification": "s-1vcpu-1gb",
+            "path": "functions/wd14"
+        }
+    ],
+    "databases": [
+        {
+            "$id": "main",
+            "name": "main",
+            "enabled": true
+        },
+        {
+            "$id": "social",
+            "name": "social",
+            "enabled": true
+        },
+        {
+            "$id": "voice",
+            "name": "voice",
+            "enabled": true
+        },
+        {
+            "$id": "mcskinloader",
+            "name": "minecraftskinloader",
+            "enabled": true
+        },
+        {
+            "$id": "offbranch",
+            "name": "offbranch",
+            "enabled": true
+        }
+    ],
+    "collections": [
+        {
+            "$id": "users",
+            "$permissions": [
+                "create(\"users\")",
+                "read(\"users\")",
+                "update(\"users\")",
+                "read(\"any\")"
+            ],
+            "databaseId": "main",
+            "name": "users",
+            "enabled": true,
+            "documentSecurity": false,
+            "attributes": [
+                {
+                    "key": "UID",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "size": 18,
+                    "default": null
+                },
+                {
+                    "key": "username",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "size": 32,
+                    "default": null
+                },
+                {
+                    "key": "bio",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 400,
+                    "default": ""
+                },
+                {
+                    "key": "avatar",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "format": "url",
+                    "default": "https://nyc.cloud.appwrite.io/v1/storage/buckets/profiles/files/default/view?project=flamality"
+                },
+                {
+                    "key": "banner",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "format": "url",
+                    "default": null
+                },
+                {
+                    "key": "display",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 32,
+                    "default": ""
+                },
+                {
+                    "key": "birthday",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 10,
+                    "default": null
+                },
+                {
+                    "key": "email",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "format": "email",
+                    "default": null
+                },
+                {
+                    "key": "connections",
+                    "type": "string",
+                    "required": false,
+                    "array": true,
+                    "size": 16777216,
+                    "default": null
+                },
+                {
+                    "key": "banner_gradient",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 32676,
+                    "default": "[\"135deg\", \"#746aff\", \"#4f3eff\"]"
+                },
+                {
+                    "key": "badges",
+                    "type": "string",
+                    "required": false,
+                    "array": true,
+                    "size": 3,
+                    "default": null
+                },
+                {
+                    "key": "last_update",
+                    "type": "datetime",
+                    "required": false,
+                    "array": false,
+                    "format": "",
+                    "default": null
+                },
+                {
+                    "key": "online",
+                    "type": "boolean",
+                    "required": false,
+                    "array": false,
+                    "default": false
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "secrets",
+            "$permissions": [
+                "create(\"users\")"
+            ],
+            "databaseId": "main",
+            "name": "secrets",
+            "enabled": true,
+            "documentSecurity": true,
+            "attributes": [
+                {
+                    "key": "UID",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "size": 18,
+                    "default": null
+                },
+                {
+                    "key": "spotify_token",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 2000,
+                    "default": null
+                },
+                {
+                    "key": "spotify_refresh_token",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 2000,
+                    "default": null
+                },
+                {
+                    "key": "connection_info",
+                    "type": "string",
+                    "required": false,
+                    "array": true,
+                    "size": 16777216,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "flags",
+            "$permissions": [
+                "read(\"any\")",
+                "create(\"label:admin\")",
+                "read(\"label:admin\")",
+                "update(\"label:admin\")",
+                "delete(\"label:admin\")"
+            ],
+            "databaseId": "main",
+            "name": "flags",
+            "enabled": true,
+            "documentSecurity": false,
+            "attributes": [
+                {
+                    "key": "title",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 200,
+                    "default": null
+                },
+                {
+                    "key": "desc",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 200,
+                    "default": null
+                },
+                {
+                    "key": "active",
+                    "type": "boolean",
+                    "required": false,
+                    "array": false,
+                    "default": false
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "events",
+            "$permissions": [],
+            "databaseId": "main",
+            "name": "events",
+            "enabled": true,
+            "documentSecurity": true,
+            "attributes": [
+                {
+                    "key": "event_type",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "size": 64,
+                    "default": null
+                },
+                {
+                    "key": "UID",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "size": 32,
+                    "default": null
+                },
+                {
+                    "key": "timestamp",
+                    "type": "datetime",
+                    "required": true,
+                    "array": false,
+                    "format": "",
+                    "default": null
+                },
+                {
+                    "key": "sender",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 32,
+                    "default": null
+                },
+                {
+                    "key": "target",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 32,
+                    "default": null
+                },
+                {
+                    "key": "value",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 1073741824,
+                    "default": null
+                },
+                {
+                    "key": "parent",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 32,
+                    "default": null
+                },
+                {
+                    "key": "title",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 128,
+                    "default": null
+                },
+                {
+                    "key": "desc",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 512,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "docs",
+            "$permissions": [],
+            "databaseId": "main",
+            "name": "docs",
+            "enabled": true,
+            "documentSecurity": false,
+            "attributes": [
+                {
+                    "key": "title",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "size": 64,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "messages",
+            "$permissions": [
+                "create(\"users\")",
+                "read(\"users\")"
+            ],
+            "databaseId": "social",
+            "name": "messages",
+            "enabled": true,
+            "documentSecurity": false,
+            "attributes": [
+                {
+                    "key": "content",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 6000,
+                    "default": "**Couldn't load content**"
+                },
+                {
+                    "key": "parent",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "size": 18,
+                    "default": null
+                },
+                {
+                    "key": "author",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "size": 18,
+                    "default": null
+                },
+                {
+                    "key": "reply",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 18,
+                    "default": null
+                },
+                {
+                    "key": "timestamp",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "size": 13,
+                    "default": null
+                },
+                {
+                    "key": "clienttimestamp",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 10,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "directmessages",
+            "$permissions": [
+                "create(\"users\")",
+                "read(\"users\")",
+                "update(\"users\")"
+            ],
+            "databaseId": "social",
+            "name": "Direct Messages",
+            "enabled": true,
+            "documentSecurity": false,
+            "attributes": [
+                {
+                    "key": "name",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 64,
+                    "default": null
+                },
+                {
+                    "key": "friend",
+                    "type": "boolean",
+                    "required": true,
+                    "array": false,
+                    "default": null
+                },
+                {
+                    "key": "users",
+                    "type": "string",
+                    "required": false,
+                    "array": true,
+                    "size": 18,
+                    "default": null
+                },
+                {
+                    "key": "owner",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 18,
+                    "default": null
+                },
+                {
+                    "key": "lastsent",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 13,
+                    "default": null
+                },
+                {
+                    "key": "icon",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "format": "url",
+                    "default": "https://nyc.cloud.appwrite.io/v1/storage/buckets/profiles/files/default/view?project=flamality"
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "relations",
+            "$permissions": [
+                "create(\"users\")",
+                "read(\"users\")",
+                "update(\"users\")"
+            ],
+            "databaseId": "social",
+            "name": "relations",
+            "enabled": true,
+            "documentSecurity": false,
+            "attributes": [
+                {
+                    "key": "UID",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "size": 32,
+                    "default": null
+                },
+                {
+                    "key": "type",
+                    "type": "integer",
+                    "required": true,
+                    "array": false,
+                    "min": 0,
+                    "max": 4,
+                    "default": null
+                },
+                {
+                    "key": "target",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "size": 32,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "servers",
+            "$permissions": [],
+            "databaseId": "social",
+            "name": "servers",
+            "enabled": true,
+            "documentSecurity": false,
+            "attributes": [
+                {
+                    "key": "icon",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "format": "url",
+                    "default": null
+                },
+                {
+                    "key": "name",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "size": 50,
+                    "default": null
+                },
+                {
+                    "key": "owner",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "size": 18,
+                    "default": null
+                },
+                {
+                    "key": "users",
+                    "type": "string",
+                    "required": false,
+                    "array": true,
+                    "size": 18,
+                    "default": null
+                },
+                {
+                    "key": "banner",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "format": "url",
+                    "default": null
+                },
+                {
+                    "key": "bans",
+                    "type": "string",
+                    "required": false,
+                    "array": true,
+                    "size": 18,
+                    "default": null
+                },
+                {
+                    "key": "invites",
+                    "type": "string",
+                    "required": false,
+                    "array": true,
+                    "size": 18,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "voices",
+            "$permissions": [],
+            "databaseId": "voice",
+            "name": "voices",
+            "enabled": true,
+            "documentSecurity": false,
+            "attributes": [
+                {
+                    "key": "ip",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "format": "ip",
+                    "default": null
+                },
+                {
+                    "key": "answers",
+                    "type": "string",
+                    "required": false,
+                    "array": true,
+                    "size": 4000,
+                    "default": null
+                },
+                {
+                    "key": "parent",
+                    "type": "relationship",
+                    "required": false,
+                    "array": false,
+                    "relatedCollection": "questionnaires",
+                    "relationType": "oneToMany",
+                    "twoWay": true,
+                    "twoWayKey": "voices",
+                    "onDelete": "cascade",
+                    "side": "child"
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "questionnaires",
+            "$permissions": [
+                "read(\"users\")"
+            ],
+            "databaseId": "voice",
+            "name": "questionnaires",
+            "enabled": true,
+            "documentSecurity": false,
+            "attributes": [
+                {
+                    "key": "title",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "size": 200,
+                    "default": null
+                },
+                {
+                    "key": "description",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "size": 2000,
+                    "default": null
+                },
+                {
+                    "key": "questions",
+                    "type": "string",
+                    "required": false,
+                    "array": true,
+                    "size": 200000,
+                    "default": null
+                },
+                {
+                    "key": "voices",
+                    "type": "relationship",
+                    "required": false,
+                    "array": false,
+                    "relatedCollection": "voices",
+                    "relationType": "oneToMany",
+                    "twoWay": true,
+                    "twoWayKey": "parent",
+                    "onDelete": "cascade",
+                    "side": "parent"
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "data",
+            "$permissions": [
+                "create(\"any\")",
+                "read(\"any\")",
+                "update(\"any\")"
+            ],
+            "databaseId": "mcskinloader",
+            "name": "data",
+            "enabled": true,
+            "documentSecurity": false,
+            "attributes": [
+                {
+                    "key": "downloads",
+                    "type": "integer",
+                    "required": false,
+                    "array": false,
+                    "min": 0,
+                    "max": 4294967295,
+                    "default": 0
+                },
+                {
+                    "key": "views",
+                    "type": "integer",
+                    "required": false,
+                    "array": false,
+                    "min": 0,
+                    "max": 4294967295,
+                    "default": 0
+                },
+                {
+                    "key": "saves",
+                    "type": "integer",
+                    "required": false,
+                    "array": false,
+                    "min": 0,
+                    "max": 4294967295,
+                    "default": 0
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "club_meetings",
+            "$permissions": [
+                "read(\"any\")",
+                "create(\"label:admin\")",
+                "read(\"label:admin\")",
+                "update(\"label:admin\")",
+                "delete(\"label:admin\")"
+            ],
+            "databaseId": "offbranch",
+            "name": "meetings",
+            "enabled": true,
+            "documentSecurity": false,
+            "attributes": [
+                {
+                    "key": "location",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 16,
+                    "default": "No Location Yet"
+                },
+                {
+                    "key": "canceled",
+                    "type": "boolean",
+                    "required": false,
+                    "array": false,
+                    "default": false
+                },
+                {
+                    "key": "start",
+                    "type": "datetime",
+                    "required": true,
+                    "array": false,
+                    "format": "",
+                    "default": null
+                },
+                {
+                    "key": "end",
+                    "type": "datetime",
+                    "required": true,
+                    "array": false,
+                    "format": "",
+                    "default": null
+                },
+                {
+                    "key": "title",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 64,
+                    "default": "Pride Club Meeting"
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "club_agendas",
+            "$permissions": [
+                "read(\"any\")",
+                "create(\"label:admin\")",
+                "read(\"label:admin\")",
+                "update(\"label:admin\")",
+                "delete(\"label:admin\")"
+            ],
+            "databaseId": "offbranch",
+            "name": "agendas",
+            "enabled": true,
+            "documentSecurity": false,
+            "attributes": [
+                {
+                    "key": "question_1",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 512,
+                    "default": ""
+                },
+                {
+                    "key": "question_2",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 512,
+                    "default": null
+                },
+                {
+                    "key": "question_3",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 512,
+                    "default": null
+                },
+                {
+                    "key": "agenda_preview",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 5000,
+                    "default": null
+                },
+                {
+                    "key": "quote_text",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 1024,
+                    "default": null
+                },
+                {
+                    "key": "quote_author",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 128,
+                    "default": ""
+                },
+                {
+                    "key": "everything_else",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 5000,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "club_events",
+            "$permissions": [
+                "read(\"any\")",
+                "create(\"label:admin\")",
+                "read(\"label:admin\")",
+                "update(\"label:admin\")",
+                "delete(\"label:admin\")"
+            ],
+            "databaseId": "offbranch",
+            "name": "events",
+            "enabled": true,
+            "documentSecurity": false,
+            "attributes": [
+                {
+                    "key": "time",
+                    "type": "datetime",
+                    "required": false,
+                    "array": false,
+                    "format": "",
+                    "default": null
+                },
+                {
+                    "key": "title",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "size": 128,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "matching",
+            "$permissions": [
+                "create(\"any\")",
+                "read(\"any\")"
+            ],
+            "databaseId": "offbranch",
+            "name": "matching",
+            "enabled": true,
+            "documentSecurity": false,
+            "attributes": [
+                {
+                    "key": "left",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "format": "url",
+                    "default": null
+                },
+                {
+                    "key": "right",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "format": "url",
+                    "default": null
+                },
+                {
+                    "key": "title",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "size": 64,
+                    "default": null
+                },
+                {
+                    "key": "tags",
+                    "type": "string",
+                    "required": false,
+                    "array": true,
+                    "size": 16,
+                    "default": null
+                },
+                {
+                    "key": "author",
+                    "type": "string",
+                    "required": true,
+                    "array": false,
+                    "size": 32,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        }
+    ],
+    "buckets": [
+        {
+            "$id": "profiles",
+            "$permissions": [
+                "create(\"users\")",
+                "read(\"users\")",
+                "read(\"guests\")",
+                "create(\"label:admin\")",
+                "read(\"label:admin\")",
+                "update(\"label:admin\")",
+                "delete(\"label:admin\")"
+            ],
+            "fileSecurity": false,
+            "name": "Profile Content",
+            "enabled": true,
+            "maximumFileSize": 20000000,
+            "allowedFileExtensions": [
+                "jpg",
+                "png",
+                "gif",
+                "jpeg"
+            ],
+            "compression": "none",
+            "encryption": true,
+            "antivirus": true
+        },
+        {
+            "$id": "messages",
+            "$permissions": [],
+            "fileSecurity": false,
+            "name": "Message Content",
+            "enabled": true,
+            "maximumFileSize": 5000000000,
+            "allowedFileExtensions": [],
+            "compression": "none",
+            "encryption": true,
+            "antivirus": true
+        },
+        {
+            "$id": "storage",
+            "$permissions": [],
+            "fileSecurity": false,
+            "name": "storage",
+            "enabled": true,
+            "maximumFileSize": 5000000000,
+            "allowedFileExtensions": [],
+            "compression": "none",
+            "encryption": true,
+            "antivirus": true
+        },
+        {
+            "$id": "offbranch",
+            "$permissions": [
+                "read(\"any\")"
+            ],
+            "fileSecurity": false,
+            "name": "offbranch",
+            "enabled": true,
+            "maximumFileSize": 5000000000,
+            "allowedFileExtensions": [],
+            "compression": "none",
+            "encryption": true,
+            "antivirus": true
+        }
+    ],
+    "teams": [
+        {
+            "$id": "t1",
+            "name": "test team 1"
+        },
+        {
+            "$id": "t2",
+            "name": "test team 2"
+        }
+    ],
+    "topics": [
+        {
+            "$id": "Testing",
+            "name": "Testing",
+            "subscribe": [
+                "users"
+            ]
+        },
+        {
+            "$id": "dev",
+            "name": "dev_updates",
+            "subscribe": [
+                "users"
+            ]
+        }
+    ]
+}

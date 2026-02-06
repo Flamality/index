@@ -6,21 +6,40 @@ import NotFound from "./components/core/screens/NotFound";
 // import TermsOfService from "./docs/Terms.jsx";
 // import Docs from "./docs/Docs.jsx";
 import Admin from "./admin/Admin.jsx";
+
+// Landing
 const App = lazy(() => import("./Landing/Landing"));
+
+// Account
 const AccountRoutes = lazy(() => import("./account/Routes"));
+
+// Auth
 const AuthRoutes = lazy(() => import("./auth/Routes"));
+
+// BirthdayBash
 const BirthdayBashRoutes = lazy(() => import("./birthdaybash/Routes"));
+
+// Connections
 const ConnectRoutes = lazy(() => import("./connect/Routes"));
-const AppwriteConnect = lazy(() =>
-  import("./components/core/screens/AppwriteConnect")
+const AppwriteConnect = lazy(
+  () => import("./components/core/screens/AppwriteConnect"),
 );
+
+// Flamalite/ZZ
 const Flamalite = lazy(() => import("./zero/frontend/Index.jsx"));
+
+// Docs
+const Docs = lazy(() => import("./docs/Docs.jsx"));
+const TermsOfService = lazy(
+  () => import("./docs/components/builtin/Terms.mdx"),
+);
+const Privacy = lazy(() => import("./docs/components/builtin/Privacy.mdx"));
 
 export default function Routing() {
   return (
     <Routes>
       <Route
-        path='/'
+        path="/"
         element={
           <Suspense fallback={<Loading />}>
             <App />
@@ -28,7 +47,7 @@ export default function Routing() {
         }
       />
       <Route
-        path='/account/*'
+        path="/account/*"
         element={
           <Suspense fallback={<Loading />}>
             <AccountRoutes />
@@ -36,7 +55,7 @@ export default function Routing() {
         }
       />
       <Route
-        path='/auth/*'
+        path="/auth/*"
         element={
           <Suspense fallback={<Loading />}>
             <AuthRoutes />
@@ -44,7 +63,7 @@ export default function Routing() {
         }
       />
       <Route
-        path='/birthdaybash/*'
+        path="/birthdaybash/*"
         element={
           <Suspense fallback={<Loading />}>
             <BirthdayBashRoutes />
@@ -52,7 +71,7 @@ export default function Routing() {
         }
       />
       <Route
-        path='/connect/*'
+        path="/connect/*"
         element={
           <Suspense fallback={<Loading />}>
             <ConnectRoutes />
@@ -60,31 +79,47 @@ export default function Routing() {
         }
       />
       <Route
-        path='/app/*'
+        path="/app/*"
         element={
           <Suspense fallback={<Loading />}>
             <Flamalite />
           </Suspense>
         }
       />
-      {/* <Route
-        path='/terms'
-        element={
-          <Suspense fallback={<Loading />}>
-            <TermsOfService />
-          </Suspense>
-        }
-      />
       <Route
-        path='/docs/*'
+        path="/terms"
         element={
           <Suspense fallback={<Loading />}>
             <Docs />
           </Suspense>
         }
-      /> */}
+      />
       <Route
-        path='/appwrite-connect'
+        path="/privacy"
+        element={
+          <Suspense fallback={<Loading />}>
+            <Docs />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/docs"
+        element={
+          <Suspense fallback={<Loading />}>
+            <Docs />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/docs/:id"
+        element={
+          <Suspense fallback={<Loading />}>
+            <Docs />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/appwrite-connect"
         element={
           <Suspense fallback={<Loading />}>
             <AppwriteConnect />
@@ -92,16 +127,16 @@ export default function Routing() {
         }
       />
       <Route
-        path='/admin/*'
+        path="/admin/*"
         element={
           <Suspense fallback={<Loading />}>
             <Admin />
           </Suspense>
         }
       />
-      <Route path='loading' element={<Loading />} />
+      <Route path="loading" element={<Loading />} />
       {/* FALLBACK */}
-      <Route path='*' element={<NotFound />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

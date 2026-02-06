@@ -1,37 +1,81 @@
 .core-element-textfield {
   position: relative;
+  min-width: 300px;
+  width: 0;
 }
-.core-element-textfield-with-symbol > input {
-  padding-right: calc(var(--input-padding) + 2rem);
+
+.core-element-textfield-with-symbol>input {
+  padding-right: calc(var(--pad-sm) + 2rem);
 }
+
+.core-element-textfield-with-leading>input {
+  padding-left: calc(var(--pad-sm) + 2rem);
+}
+
+.core-element-textfield>input {
+  outline: none;
+  background-color: var(--color-surface);
+
+  &::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  &:not(:focus) {
+    text-overflow: ellipsis;
+  }
+}
+
+.core-element-textfield-leading {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  height: 1.5rem;
+  width: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .core-element-textfield-x,
 .core-element-textfield-check,
 .core-element-textfield-loading {
   position: absolute;
-  top: 50%;
+  top: 20%;
   right: 10px;
-  transform: translateY(-50%);
-  cursor: pointer;
   color: var(--color-danger);
   height: 1.5rem;
   width: 1.5rem;
 }
+
 .core-element-textfield-check {
   color: var(--color-success);
 }
+
 .core-element-textfield-loading {
   color: var(--color-text-muted);
   animation: loadSpin 1s linear infinite;
+}
+
+.core-element-textfield-count {
+  position: absolute;
+  bottom: -1rem;
+  right: 0;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
 }
 
 @keyframes loadSpin {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
+
 /* .core-element-textfield > div {
   position: absolute;
   top: 50%;

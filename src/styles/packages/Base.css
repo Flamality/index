@@ -1,0 +1,132 @@
+body,
+html {
+    overflow-x: hidden;
+    color: var(--text-sub);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-color: var(--color-bg-alt) var(--color-bg-main);
+    scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: var(--color-bg-alt);
+    border-radius: 32px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: var(--color-bg-alt);
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--color-bg-main);
+}
+
+@supports not selector(::-webkit-scrollbar) {
+    * {
+        scrollbar-color: var(--color-bg-alt) var(--color-bg-main);
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--color-text-main);
+    font-family: var(--font-heading);
+}
+
+p,
+span {
+    color: var(--color-text-main);
+    font-family: var(--font-main);
+}
+
+label {
+    color: var(--color-text-muted);
+    font-family: var(--font-main);
+    font-size: var(--text-md);
+    text-align: left;
+    width: 100%;
+}
+
+a {
+    color: var(--color-info);
+    text-decoration: none;
+}
+
+svg {
+    color: var(--color-text-main);
+}
+
+textarea,
+input {
+    background-color: var(--color-surface-alt);
+    color: var(--color-text-main);
+    border: var(--border-thin) solid var(--color-border);
+    padding: var(--pad-sm);
+    border-radius: var(--radius-sm);
+    box-sizing: border-box;
+    resize: none;
+}
+
+input:not([type="checkbox"]):not([type="radio"]),
+textarea {
+    width: 100%;
+}
+
+textarea:focus,
+input:focus {
+    border-color: var(--color-accent-primary);
+    outline: none;
+}
+
+textarea:disabled,
+input:disabled {
+    background-color: var(--color-bg-main);
+    color: var(--color-text-disabled);
+    cursor: not-allowed;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px var(--color-border) inset;
+    -webkit-text-fill-color: var(--color-text-main);
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+table {
+    border-collapse: collapse;
+    color: var(--color-text-sub);
+
+}
+
+th,
+td {
+    padding: var(--pad-sm) var(--pad-md);
+    min-width: 180px;
+    text-align: left;
+    border: 2px solid var(--color-border);
+    font-weight: 400;
+}
+
+th {
+    background-color: var(--color-surface);
+}
+
+ul,
+ol {
+    color: var(--color-text-main);
+    font-family: var(--font-main);
+    font-size: var(--text-md);
+    line-height: 1.5;
+    list-style: decimal;
+}
