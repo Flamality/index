@@ -1,3 +1,1 @@
-export default async function(user, {req, res, log}) {
-
-}
+export default async function (user, { req, res, log }, body) {}

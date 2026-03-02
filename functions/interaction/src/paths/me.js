@@ -1,9 +1,9 @@
 import { tablesDB } from '../main.js';
 import { getSpotifyUser } from '../services/spotify.js';
 
-export default async function (user, { req, res, log }) {
+export default async function (user, { req, res, log }, body) {
   if (!user) {
-    return res.json({ success: false, error: 'No user logged in.' });
+    return res.json({ success: false, error: 'No user logged in.' }, 401);
   }
 
   const userData = await tablesDB.getRow({
