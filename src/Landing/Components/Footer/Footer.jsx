@@ -49,6 +49,7 @@ export default function Footer() {
               <a href="https://flamality.com">Flamality</a>
               <a href="https://portfolio.flamality.com">Portfolio</a>
               <a href="https://mhspride.club">MHS Pride Club</a>
+              <a href="https://adrionic.xyz">Adrionic.xyz</a>
             </div>
           </div>
           <div className={`${styles.cat} ${open3 && styles.open}`}>
@@ -81,7 +82,6 @@ export default function Footer() {
             <div>
               <a href="/terms">Terms</a>
               <a href="/privacy">Privacy</a>
-              <a href="/cookies">Cookies</a>
               <a href="/guidelines">Guidelines</a>
             </div>
           </div>
