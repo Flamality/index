@@ -82,7 +82,6 @@ export default function Footer() {
             <div>
               <a href="/terms">Terms</a>
               <a href="/privacy">Privacy</a>
-              <a href="/cookies">Cookies</a>
               <a href="/guidelines">Guidelines</a>
             </div>
           </div>

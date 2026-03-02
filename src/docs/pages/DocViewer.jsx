@@ -1,30 +1,66 @@
-import React, { Suspense, useEffect, useState } from "react";
-
+import React, { Suspense, useEffect, useState, useRef } from "react";
 import Spinner from "../../components/core/elements/Spinner";
 import NavBar from "../components/NavBar/NavBar";
 import Footer from "../../Landing/Components/Footer/Footer";
 import { databases } from "../../services/appwrite";
 
 import styles from "./DocViewer.module.css";
+import { useMemo } from "react";
+import { slugify } from "../../services/slugify";
 
 // Lazy imports for built-in MDX docs
 const builtinDocs = {
   terms: () => import("../components/builtin/Terms.mdx"),
   privacy: () => import("../components/builtin/Privacy.mdx"),
+  guidelines: () => import("../components/builtin/Guidelines.mdx"),
 };
 
 export default function DocViewer({ id }) {
-  const [MdxModule, setMdxModule] = useState(null); // stores imported module
-  const [dbMdx, setDbMdx] = useState(null); // stores DB MDX string
-  const [title, setTitle] = useState(id); // document title fallback
+  const [MdxModule, setMdxModule] = useState(null);
+  const [dbMdx, setDbMdx] = useState(null);
+  const [title, setTitle] = useState(id);
+  const [sections, setSections] = useState([]);
+  const contentRef = useRef();
 
+  const mdxComponents = useMemo(
+    () => ({
+      h2: ({ children }) => {
+        const slug = slugify(String(children));
+        return <h2 id={slug}>{children}</h2>;
+      },
+    }),
+    [],
+  );
+
+  const MdxContent = useMemo(() => MdxModule?.default ?? null, [MdxModule]);
+
+  // Generate section list after content mounts
+  useEffect(() => {
+    if (!MdxModule && !dbMdx) return;
+
+    // Small timeout ensures Suspense has finished painting
+    const t = setTimeout(() => {
+      const headers = contentRef.current?.querySelectorAll("h2") ?? [];
+      setSections(
+        Array.from(headers).map((h) => ({
+          id: h.id,
+          text: h.textContent,
+        })),
+      );
+    }, 50);
+
+    return () => clearTimeout(t);
+  }, [MdxModule, dbMdx]);
+
+  // Loading MDX logic...
   useEffect(() => {
     setMdxModule(null);
     setDbMdx(null);
     setTitle(id);
 
     const loadDoc = async () => {
-      // Built-in MDX
+      if (!id) return;
+      // Check if already loaded
       if (builtinDocs[id]) {
         try {
           const mod = await builtinDocs[id]();
@@ -36,44 +72,35 @@ export default function DocViewer({ id }) {
           setTitle(`${id} (Failed)`);
         }
       }
-      // Database MDX
-      //   else {
-      //     try {
-      //       const doc = await databases.getDocument("main", "docs", id);
-      //       if (doc?.mdx) {
-      //         setDbMdx(doc.mdx);
-      //         setTitle(doc.title || id);
-      //         document.title = `Flamality | Docs | ${doc.title || id}`;
-      //       } else {
-      //         setTitle(`${id} (Not Found)`);
-      //         console.warn("Document not found in DB:", id);
-      //       }
-      //     } catch (err) {
-      //       console.error("Error fetching DB doc:", err);
-      //       setTitle(`${id} (Error)`);
-      //     }
-      //   }
     };
-
     loadDoc();
   }, [id]);
 
-  // While loading
   if (!MdxModule && !dbMdx) return <Spinner />;
 
-  // Lazy wrapper for built-in MDX
-  const LazyMdx = MdxModule
-    ? React.lazy(() => Promise.resolve({ default: MdxModule.default }))
-    : null;
-
   return (
-    <div>
+    <div className={styles.wrapper}>
       <NavBar />
-      <div className={styles.content}>
-        <Suspense fallback={<Spinner />}>
-          {LazyMdx && <LazyMdx />}
-          {dbMdx && <MDXRuntime>{dbMdx}</MDXRuntime>}
-        </Suspense>
+      <div className={styles.main}>
+        <div className={styles.sidebar}>
+          <h1>In this article</h1>
+          <ul>
+            {sections.map((section) => (
+              <li key={section.id}>
+                <a href={`#${section.id}`}>
+                  {section.text.replace(/^\d+\.\s+/, "")}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className={styles.content} ref={contentRef}>
+          <Suspense fallback={<Spinner />}>
+            {MdxContent && <MdxContent components={mdxComponents} />}
+            {dbMdx && <MDXRuntime>{dbMdx}</MDXRuntime>}
+          </Suspense>
+        </div>
       </div>
       <Footer />
     </div>

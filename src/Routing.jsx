@@ -103,6 +103,14 @@ export default function Routing() {
         }
       />
       <Route
+        path="/guidelines"
+        element={
+          <Suspense fallback={<Loading />}>
+            <Docs />
+          </Suspense>
+        }
+      />
+      <Route
         path="/docs"
         element={
           <Suspense fallback={<Loading />}>
