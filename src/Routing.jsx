@@ -5,8 +5,8 @@ import Loading from "./components/core/screens/Loading";
 import NotFound from "./components/core/screens/NotFound";
 // import TermsOfService from "./docs/Terms.jsx";
 // import Docs from "./docs/Docs.jsx";
-const Admin = lazy(() => import("./frontend/admin/Admin.jsx"));
-const Projects = lazy(() => import("./frontend/projects/Projects.jsx"));
+const Admin = lazy(() => import("./frontend/admin/Admin"));
+const Projects = lazy(() => import("./frontend/projects/Projects"));
 
 // Landing
 const App = lazy(() => import("./frontend/Landing/Landing"));
@@ -27,10 +27,10 @@ const AppwriteConnect = lazy(
 );
 
 // Flamalite/ZZ
-const Flamalite = lazy(() => import("./frontend/zero/frontend/Index.jsx"));
+const Flamalite = lazy(() => import("./frontend/zero/frontend/Index"));
 
 // Docs
-const Docs = lazy(() => import("./frontend/docs/Docs.jsx"));
+const Docs = lazy(() => import("./frontend/docs/Docs"));
 const TermsOfService = lazy(
   () => import("./frontend/docs/components/builtin/Terms.mdx"),
 );

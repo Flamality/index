@@ -1,6 +1,6 @@
 import { Query } from 'node-appwrite';
 import { presences, tablesDB } from '../appwrite/client.js';
-import { getSpotifyUser } from '../services/spotify.js';
+import { getSpotifyUser } from '../services/spotify';
 
 export default async function (user, { req, res, log }, body) {
   if (!user) {

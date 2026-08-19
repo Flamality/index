@@ -5,7 +5,7 @@ import { useLocation, useParams } from "react-router-dom";
 
 const builtinDocs = ["terms", "privacy"];
 
-import Landing from "./pages/Landing.jsx";
+import Landing from "./pages/Landing";
 import DocViewer from "./pages/DocViewer";
 
 export default function Docs() {

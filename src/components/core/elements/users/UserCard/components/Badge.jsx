@@ -8,7 +8,7 @@ import {
   FaRectangleList,
   FaBug,
 } from "react-icons/fa6";
-import ToolTip from "../../../overlays/tooltip/ToolTip";
+import ToolTip from "../../../overlays/ToolTip/ToolTip";
 import { GiStarSwirl } from "react-icons/gi";
 
 const badges = {

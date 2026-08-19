@@ -7,7 +7,7 @@ import { refreshUser, useUser } from "../../../../../contexts/cache";
 import UserSmallCard from "../UserSmallCard/UserSmallCard";
 import Button from "../../inputs/buttons/Button/Button";
 import { FaPersonCircleCheck, FaPersonCircleXmark } from "react-icons/fa6";
-import ToolTip from "../../overlays/tooltip/ToolTip";
+import ToolTip from "../../overlays/ToolTip/ToolTip";
 
 export default function UserFriendCard({ children }) {
   const [type, setType] = useState(0);

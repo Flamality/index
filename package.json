@@ -20,7 +20,8 @@
     "dev": "vite",
     "start:host": "vite --host",
     "format": "prettier --write .",
-    "check": "prettier --check ."
+    "check": "prettier --check .",
+    "lint": "eslint ."
   },
   "browserslist": {
     "production": [
@@ -37,6 +38,9 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^5.1.2",
     "autoprefixer": "^10.4.23",
+    "eslint": "^9.39.5",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-simple-import-sort": "^14.0.0",
     "postcss": "^8.5.6",
     "postcss-mixins": "^12.1.2",
     "postcss-nesting": "^13.0.2",

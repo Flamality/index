@@ -1,5 +1,5 @@
 import React from "react";
-import DMBar from "../components/layout/dmBar/dmBar";
+import DMBar from "../components/layout/dmBar/DMBar";
 
 import styles from "./Main.module.css";
 
