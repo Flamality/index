@@ -5,19 +5,20 @@ import Loading from "./components/core/screens/Loading";
 import NotFound from "./components/core/screens/NotFound";
 // import TermsOfService from "./docs/Terms.jsx";
 // import Docs from "./docs/Docs.jsx";
-import Admin from "./admin/Admin.jsx";
+const Admin = lazy(() => import("./frontend/admin/Admin.jsx"));
+const Projects = lazy(() => import("./frontend/projects/projects.jsx"));
 
 // Landing
-const App = lazy(() => import("./Landing/Landing"));
+const App = lazy(() => import("./frontend/Landing/Landing"));
 
 // Account
-const AccountRoutes = lazy(() => import("./account/Routes"));
+const AccountRoutes = lazy(() => import("./frontend/account/Routes"));
 
 // Auth
-const AuthRoutes = lazy(() => import("./auth/Routes"));
+const AuthRoutes = lazy(() => import("./frontend/auth/Routes"));
 
 // BirthdayBash
-const BirthdayBashRoutes = lazy(() => import("./birthdaybash/Routes"));
+const BirthdayBashRoutes = lazy(() => import("./frontend/birthdaybash/Routes"));
 
 // Connections
 const ConnectRoutes = lazy(() => import("./connect/Routes"));
@@ -26,14 +27,16 @@ const AppwriteConnect = lazy(
 );
 
 // Flamalite/ZZ
-const Flamalite = lazy(() => import("./zero/frontend/Index.jsx"));
+const Flamalite = lazy(() => import("./frontend/zero/frontend/Index.jsx"));
 
 // Docs
-const Docs = lazy(() => import("./docs/Docs.jsx"));
+const Docs = lazy(() => import("./frontend/docs/Docs.jsx"));
 const TermsOfService = lazy(
-  () => import("./docs/components/builtin/Terms.mdx"),
+  () => import("./frontend/docs/components/builtin/Terms.mdx"),
 );
-const Privacy = lazy(() => import("./docs/components/builtin/Privacy.mdx"));
+const Privacy = lazy(
+  () => import("./frontend/docs/components/builtin/Privacy.mdx"),
+);
 
 export default function Routing() {
   return (
@@ -139,6 +142,15 @@ export default function Routing() {
         element={
           <Suspense fallback={<Loading />}>
             <Admin />
+          </Suspense>
+        }
+      />
+
+      <Route
+        path="/p/*"
+        element={
+          <Suspense fallback={<Loading />}>
+            <Projects />
           </Suspense>
         }
       />

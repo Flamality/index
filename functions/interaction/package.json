@@ -6,13 +6,16 @@
   "type": "module",
   "scripts": {
     "format": "prettier --write .",
-    "build": "tsc"
+    "generate-routes": "node src/services/generate-routes.js",
+    "build": "npm run generate-routes && tsc"
   },
   "dependencies": {
-    "node-appwrite": "^21.1.0"
+    "appwrite": "^25.2.0",
+    "node-appwrite": "^26.2.0"
   },
   "devDependencies": {
     "@types/node": "^25.3.3",
-    "prettier": "^3.2.5"
+    "prettier": "^3.2.5",
+    "typescript": "^6.0.3"
   }
 }

@@ -1,46 +1,43 @@
-import { Client, Users, Account, Databases, TablesDB } from 'node-appwrite';
-import { routes } from './routes.js';
-const client = new Client()
-  .setEndpoint(process.env.APPWRITE_FUNCTION_API_ENDPOINT as string)
-  .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID as string);
-// Appwrite Functions
-export const users = new Users(client);
-export const account = new Account(client);
-export const databases = new Databases(client);
-export const tablesDB = new TablesDB(client);
-export default async (context: any) => {
-  // Get User
+import { account, client } from './appwrite/client.js';
+import { aclient } from './appwrite/server.js';
+import { routes } from './services/generated-routes.js';
+import { createNotification } from './services/notification.js';
 
+export default async (context: any) => {
+  aclient.setKey(context.req.headers['x-appwrite-key'] as string);
+  // Get User
   if (context.req.headers['x-appwrite-user-jwt']) {
     client.setJWT(context.req.headers['x-appwrite-user-jwt']);
   }
   context.log(context.req);
+  try {
+    context.log(JSON.stringify(context.req));
+  } catch (error) {}
   let user = null;
   try {
     user = await account.get();
   } catch (err) {
     user = null;
   }
-  context.log(user);
-  if (user) {
-    tablesDB.updateRow({
-      databaseId: 'main',
-      tableId: 'users',
-      rowId: user.$id,
-      data: {
-        last_update: new Date().toISOString(),
-        online: true,
-      },
-    });
-  }
 
   if (context.req.path === '/ping') {
     return context.res.text('Pong');
   }
+  interface RouteHandler {
+    (
+      user: any,
+      context: { req: any; res: any; log: any },
+      body: any
+    ): Promise<any>;
+  }
 
-  const handler = routes[context.req.path];
-  const body = context.req.body ? JSON.parse(context.req.body) : {};
+  interface Routes {
+    [key: string]: RouteHandler;
+  }
+  const r = routes as Routes;
+  const handler = r[context.req.path] as any;
   if (!handler) return context.res.text('Invalid path.', 400);
+  const body = context.req.body ? JSON.parse(context.req.body) : {};
   const res = await handler(user, context, body);
   if (res) return res;
   else return context.res.text('Completed with no return.', 200);

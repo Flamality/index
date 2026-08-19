@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
 
 :root {
     /* ------------------- Typography ------------------- */
     --font-main: "Noto Sans", "Segoe UI", sans-serif;
     --font-heading: "Noto Sans", "Segoe UI", sans-serif;
+    --font-8bit: "Press Start 2P", "Courier New", monospace;
+    --font-fantasy: "Uncial Antiqua", "Papyrus", fantasy;
 
     --header-1-size: 2.5rem;
     --header-2-size: 2rem;

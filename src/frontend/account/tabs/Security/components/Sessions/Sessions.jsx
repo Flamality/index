@@ -10,23 +10,24 @@ export default function Sessions({ data, current }) {
     .sort((a, b) => new Date(b.$updatedAt) - new Date(a.$updatedAt));
 
   return (
-    <div className='account-tab-security-sessions'>
+    <div className="account-tab-security-sessions">
       <SectionTitle>Sessions</SectionTitle>
-      {data?.length > 1 ? (
+      {current && (
         <>
-          {current && (
-            <>
-              <SectionSubtitle>Current Session</SectionSubtitle>
-              <SessionCard current={true} data={current} />
-            </>
-          )}
+          <SectionSubtitle>Current Session</SectionSubtitle>
+          <SessionCard current={true} data={current} />
+        </>
+      )}
+      {data?.length > 0 ? (
+        <>
           <SectionSubtitle>Other Sessions</SectionSubtitle>
-          
+
           {sorted.length ? (
             <div className="account-tab-security-sessions-other">
-            {sorted.map((i) => (
-              <SessionCard current={false} key={i.$id} data={i} />
-            ))}</div>
+              {sorted.map((i) => (
+                <SessionCard current={false} key={i.$id} data={i} />
+              ))}
+            </div>
           ) : (
             <p>No other sessions</p>
           )}

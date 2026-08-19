@@ -1,0 +1,37 @@
+.modal {
+    background-color: var(--color-surface-alt);
+    border-radius: var(--radius-md);
+    padding: var(--pad-lg);
+
+    /* min-height: 200px; */
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--pad-sm);
+}
+
+.modal p,
+.modal span,
+.modal .description {
+    white-space: pre-wrap;
+}
+
+.title {
+    color: var(--color-text-main);
+    font-size: var(--header-4-size);
+    font-weight: 700;
+}
+
+.description {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--pad-sm);
+}
+
+.actions {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: flex-end;
+    flex-direction: row;
+    /* margin-top: auto; */
+}

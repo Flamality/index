@@ -1,0 +1,368 @@
+[
+  {
+    "name": "Baker Island Time",
+    "short": "BIT",
+    "utc": "UTC-12:00",
+    "timezone": "Etc/GMT+12"
+  },
+  {
+    "name": "Samoa Standard Time",
+    "short": "SST",
+    "utc": "UTC-11:00",
+    "timezone": "Pacific/Pago_Pago"
+  },
+  {
+    "name": "Hawaii Standard Time",
+    "short": "HST",
+    "utc": "UTC-10:00",
+    "timezone": "Pacific/Honolulu"
+  },
+  {
+    "name": "Marquesas Time",
+    "short": "MART",
+    "utc": "UTC-09:30",
+    "timezone": "Pacific/Marquesas"
+  },
+  {
+    "name": "Alaska Standard Time",
+    "short": "AKST",
+    "utc": "UTC-09:00",
+    "timezone": "America/Anchorage"
+  },
+  {
+    "name": "Alaska Daylight Time",
+    "short": "AKDT",
+    "utc": "UTC-08:00",
+    "timezone": "America/Anchorage"
+  },
+  {
+    "name": "Pacific Standard Time",
+    "short": "PST",
+    "utc": "UTC-08:00",
+    "timezone": "America/Los_Angeles"
+  },
+  {
+    "name": "Pacific Daylight Time",
+    "short": "PDT",
+    "utc": "UTC-07:00",
+    "timezone": "America/Los_Angeles"
+  },
+  {
+    "name": "Mountain Standard Time",
+    "short": "MST",
+    "utc": "UTC-07:00",
+    "timezone": "America/Phoenix"
+  },
+  {
+    "name": "Mountain Daylight Time",
+    "short": "MDT",
+    "utc": "UTC-06:00",
+    "timezone": "America/Denver"
+  },
+  {
+    "name": "Central Standard Time",
+    "short": "CST",
+    "utc": "UTC-06:00",
+    "timezone": "America/Chicago"
+  },
+  {
+    "name": "Central Daylight Time",
+    "short": "CDT",
+    "utc": "UTC-05:00",
+    "timezone": "America/Chicago"
+  },
+  {
+    "name": "Eastern Standard Time",
+    "short": "EST",
+    "utc": "UTC-05:00",
+    "timezone": "America/New_York"
+  },
+  {
+    "name": "Eastern Daylight Time",
+    "short": "EDT",
+    "utc": "UTC-04:00",
+    "timezone": "America/New_York"
+  },
+  {
+    "name": "Atlantic Standard Time",
+    "short": "AST",
+    "utc": "UTC-04:00",
+    "timezone": "America/Halifax"
+  },
+  {
+    "name": "Atlantic Daylight Time",
+    "short": "ADT",
+    "utc": "UTC-03:00",
+    "timezone": "America/Halifax"
+  },
+  {
+    "name": "Newfoundland Standard Time",
+    "short": "NST",
+    "utc": "UTC-03:30",
+    "timezone": "America/St_Johns"
+  },
+  {
+    "name": "Newfoundland Daylight Time",
+    "short": "NDT",
+    "utc": "UTC-02:30",
+    "timezone": "America/St_Johns"
+  },
+  {
+    "name": "Brasilia Time",
+    "short": "BRT",
+    "utc": "UTC-03:00",
+    "timezone": "America/Sao_Paulo"
+  },
+  {
+    "name": "Argentina Time",
+    "short": "ART",
+    "utc": "UTC-03:00",
+    "timezone": "America/Argentina/Buenos_Aires"
+  },
+  {
+    "name": "Fernando de Noronha Time",
+    "short": "FNT",
+    "utc": "UTC-02:00",
+    "timezone": "America/Noronha"
+  },
+  {
+    "name": "Azores Standard Time",
+    "short": "AZOT",
+    "utc": "UTC-01:00",
+    "timezone": "Atlantic/Azores"
+  },
+  {
+    "name": "Azores Summer Time",
+    "short": "AZOST",
+    "utc": "UTC+00:00",
+    "timezone": "Atlantic/Azores"
+  },
+  {
+    "name": "Cape Verde Time",
+    "short": "CVT",
+    "utc": "UTC-01:00",
+    "timezone": "Atlantic/Cape_Verde"
+  },
+  {
+    "name": "Greenwich Mean Time",
+    "short": "GMT",
+    "utc": "UTC+00:00",
+    "timezone": "Europe/London"
+  },
+  {
+    "name": "British Summer Time",
+    "short": "BST",
+    "utc": "UTC+01:00",
+    "timezone": "Europe/London"
+  },
+  {
+    "name": "Central European Time",
+    "short": "CET",
+    "utc": "UTC+01:00",
+    "timezone": "Europe/Paris"
+  },
+  {
+    "name": "Central European Summer Time",
+    "short": "CEST",
+    "utc": "UTC+02:00",
+    "timezone": "Europe/Paris"
+  },
+  {
+    "name": "Eastern European Time",
+    "short": "EET",
+    "utc": "UTC+02:00",
+    "timezone": "Europe/Kyiv"
+  },
+  {
+    "name": "Eastern European Summer Time",
+    "short": "EEST",
+    "utc": "UTC+03:00",
+    "timezone": "Europe/Kyiv"
+  },
+  {
+    "name": "Moscow Standard Time",
+    "short": "MSK",
+    "utc": "UTC+03:00",
+    "timezone": "Europe/Moscow"
+  },
+  {
+    "name": "East Africa Time",
+    "short": "EAT",
+    "utc": "UTC+03:00",
+    "timezone": "Africa/Nairobi"
+  },
+  {
+    "name": "Iran Standard Time",
+    "short": "IRST",
+    "utc": "UTC+03:30",
+    "timezone": "Asia/Tehran"
+  },
+  {
+    "name": "Gulf Standard Time",
+    "short": "GST",
+    "utc": "UTC+04:00",
+    "timezone": "Asia/Dubai"
+  },
+  {
+    "name": "Afghanistan Time",
+    "short": "AFT",
+    "utc": "UTC+04:30",
+    "timezone": "Asia/Kabul"
+  },
+  {
+    "name": "Pakistan Standard Time",
+    "short": "PKT",
+    "utc": "UTC+05:00",
+    "timezone": "Asia/Karachi"
+  },
+  {
+    "name": "India Standard Time",
+    "short": "IST",
+    "utc": "UTC+05:30",
+    "timezone": "Asia/Kolkata"
+  },
+  {
+    "name": "Nepal Time",
+    "short": "NPT",
+    "utc": "UTC+05:45",
+    "timezone": "Asia/Kathmandu"
+  },
+  {
+    "name": "Bangladesh Standard Time",
+    "short": "BST",
+    "utc": "UTC+06:00",
+    "timezone": "Asia/Dhaka"
+  },
+  {
+    "name": "Myanmar Time",
+    "short": "MMT",
+    "utc": "UTC+06:30",
+    "timezone": "Asia/Yangon"
+  },
+  {
+    "name": "Indochina Time",
+    "short": "ICT",
+    "utc": "UTC+07:00",
+    "timezone": "Asia/Bangkok"
+  },
+  {
+    "name": "China Standard Time",
+    "short": "CST",
+    "utc": "UTC+08:00",
+    "timezone": "Asia/Shanghai"
+  },
+  {
+    "name": "Australian Western Standard Time",
+    "short": "AWST",
+    "utc": "UTC+08:00",
+    "timezone": "Australia/Perth"
+  },
+  {
+    "name": "Japan Standard Time",
+    "short": "JST",
+    "utc": "UTC+09:00",
+    "timezone": "Asia/Tokyo"
+  },
+  {
+    "name": "Korea Standard Time",
+    "short": "KST",
+    "utc": "UTC+09:00",
+    "timezone": "Asia/Seoul"
+  },
+  {
+    "name": "Australian Central Standard Time",
+    "short": "ACST",
+    "utc": "UTC+09:30",
+    "timezone": "Australia/Adelaide"
+  },
+  {
+    "name": "Australian Central Daylight Time",
+    "short": "ACDT",
+    "utc": "UTC+10:30",
+    "timezone": "Australia/Adelaide"
+  },
+  {
+    "name": "Australian Eastern Standard Time",
+    "short": "AEST",
+    "utc": "UTC+10:00",
+    "timezone": "Australia/Sydney"
+  },
+  {
+    "name": "Australian Eastern Daylight Time",
+    "short": "AEDT",
+    "utc": "UTC+11:00",
+    "timezone": "Australia/Sydney"
+  },
+  {
+    "name": "Lord Howe Standard Time",
+    "short": "LHST",
+    "utc": "UTC+10:30",
+    "timezone": "Australia/Lord_Howe"
+  },
+  {
+    "name": "Lord Howe Daylight Time",
+    "short": "LHDT",
+    "utc": "UTC+11:00",
+    "timezone": "Australia/Lord_Howe"
+  },
+  {
+    "name": "Solomon Islands Time",
+    "short": "SBT",
+    "utc": "UTC+11:00",
+    "timezone": "Pacific/Guadalcanal"
+  },
+  {
+    "name": "Norfolk Island Time",
+    "short": "NFT",
+    "utc": "UTC+11:30",
+    "timezone": "Pacific/Norfolk"
+  },
+  {
+    "name": "New Zealand Standard Time",
+    "short": "NZST",
+    "utc": "UTC+12:00",
+    "timezone": "Pacific/Auckland"
+  },
+  {
+    "name": "New Zealand Daylight Time",
+    "short": "NZDT",
+    "utc": "UTC+13:00",
+    "timezone": "Pacific/Auckland"
+  },
+  {
+    "name": "Fiji Time",
+    "short": "FJT",
+    "utc": "UTC+12:00",
+    "timezone": "Pacific/Fiji"
+  },
+  {
+    "name": "Chatham Standard Time",
+    "short": "CHAST",
+    "utc": "UTC+12:45",
+    "timezone": "Pacific/Chatham"
+  },
+  {
+    "name": "Chatham Daylight Time",
+    "short": "CHADT",
+    "utc": "UTC+13:45",
+    "timezone": "Pacific/Chatham"
+  },
+  {
+    "name": "Tonga Time",
+    "short": "TOT",
+    "utc": "UTC+13:00",
+    "timezone": "Pacific/Tongatapu"
+  },
+  {
+    "name": "Samoa Time",
+    "short": "WSST",
+    "utc": "UTC+13:00",
+    "timezone": "Pacific/Apia"
+  },
+  {
+    "name": "Line Islands Time",
+    "short": "LINT",
+    "utc": "UTC+14:00",
+    "timezone": "Pacific/Kiritimati"
+  }
+]

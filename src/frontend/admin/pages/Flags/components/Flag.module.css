@@ -1,0 +1,29 @@
+.container {
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.id,
+.title,
+.desc,
+.updated {
+    background-color: var(--color-surface);
+    padding: var(--pad-sm);
+    width: 200px;
+}
+
+.desc {
+    width: 400px;
+}
+
+.active,
+.nullable {
+    width: fit-content;
+}

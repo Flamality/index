@@ -6,9 +6,11 @@
   display: flex;
   flex-direction: row;
   gap: 1rem;
-  justify-content: space-between;
+  justify-content: space-around;
   border-radius: var(--radius-md);
+  padding: var(--space-sm) 0;
 }
+
 .color-circle {
   width: 40px;
   height: 40px;
@@ -17,11 +19,14 @@
   border: 2px solid #fff;
   cursor: pointer;
   position: relative;
+  box-shadow: 0 0 10px 2px var(--color-border);
 }
-.banner-editor-colormap > div {
+
+.banner-editor-colormap>div {
   position: relative;
 }
-.banner-editor-colormap > div > svg {
+
+.banner-editor-colormap>div>svg {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -29,8 +34,10 @@
   cursor: pointer;
   width: 100%;
   pointer-events: none;
+  filter: drop-shadow(0 0 2px var(--color-border));
 }
-.banner-editor-colormap > div > .remove-color {
+
+.banner-editor-colormap>div>.remove-color {
   position: absolute;
   top: -0.5rem;
   right: 0;
@@ -41,10 +48,13 @@
   display: none;
   pointer-events: all;
 }
-.banner-editor-colormap > div:hover > .remove-color {
+
+.banner-editor-colormap>div:hover>.remove-color {
   display: block;
 }
-.insert-color {
+
+.insert-color,
+.insert-color-edge {
   margin: auto var(--space-xs);
   height: fit-content;
   cursor: pointer;
@@ -56,9 +66,11 @@
   border-radius: var(--radius-full);
   background: var(--color-surface);
 }
+
 .insert-color svg {
   font-size: var(--text-sm);
 }
+
 .insert-color-edge {
   height: 2rem;
   width: 2rem;

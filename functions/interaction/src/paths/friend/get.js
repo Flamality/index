@@ -1,5 +1,5 @@
 import { Query } from 'appwrite';
-import { tablesDB } from '../../main';
+import { tablesDB } from '../../appwrite/client.js';
 
 export default async function (user, { req, res, log }, body) {
   if (!user) {
@@ -9,7 +9,7 @@ export default async function (user, { req, res, log }, body) {
     const userData = await tablesDB.listRows({
       databaseId: 'social',
       tableId: 'relations',
-      queries: [Query.equal('UID', user.$id), Query.equal('type', 3)],
+      queries: [Query.equal('UID', user.$id), Query.equal('type', [1, 2, 3])],
     });
     return res.json(userData.rows || [], 200);
   } catch (error) {

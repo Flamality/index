@@ -1,12 +1,12 @@
 import React, { Suspense, useEffect, useState, useRef } from "react";
-import Spinner from "../../components/core/elements/Spinner";
+import Spinner from "../../../components/core/elements/Spinner";
 import NavBar from "../components/NavBar/NavBar";
 import Footer from "../../Landing/Components/Footer/Footer";
-import { databases } from "../../services/appwrite";
+import { databases } from "../../../services/appwrite";
 
 import styles from "./DocViewer.module.css";
 import { useMemo } from "react";
-import { slugify } from "../../services/slugify";
+import { slugify } from "../../../services/slugify";
 
 // Lazy imports for built-in MDX docs
 const builtinDocs = {

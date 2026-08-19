@@ -4,10 +4,17 @@
   align-items: center;
   flex-grow: 1;
   flex-shrink: 0;
-  padding: 1rem calc(10rem + 250px) 3rem 10em;
+  padding: 1rem calc(10rem + 250px) 3rem 1rem;
 }
+
 @media screen and (max-width: 1000px) {
   .account-tab-content {
     padding: 1rem 2rem 1rem 2rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .account-tab-content {
+    padding: 1rem 0.5rem 1rem 0.5rem;
   }
 }

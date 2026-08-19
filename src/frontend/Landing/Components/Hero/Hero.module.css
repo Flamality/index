@@ -1,0 +1,240 @@
+.hero {
+    width: 100%;
+    position: relative;
+    height: 90vh;
+
+    .hero_background {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%);
+    }
+
+    .hero_background_layer {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+        object-position: right center;
+        height: 90vh;
+
+        position: absolute;
+        filter: saturate(0.9);
+        transform-origin: top right;
+    }
+
+    .layer6 {
+        opacity: 0.1;
+    }
+
+    .layer2 {
+        animation: sway 10s ease-in-out infinite;
+    }
+
+    .layer4 {
+        animation: sway 15s ease-in-out infinite;
+    }
+
+
+    h1 {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        transform: translate(0%, -50%);
+        color: var(--color-text-main);
+        font-size: 5rem;
+        opacity: 1;
+        text-align: center;
+        padding: 0 1rem;
+        font-family: var(--font-fantasy);
+        text-shadow: 0 0 50px var(--color-bg-main);
+        z-index: 2;
+    }
+
+    h2 {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        transform: translate(0, 80%);
+        color: var(--color-accent-primary);
+        font-size: 1.9rem;
+        font-weight: 700;
+        text-align: center;
+        padding: 0 3rem;
+        opacity: 1;
+        text-shadow: 0 0 50px var(--color-bg-main);
+        z-index: 2;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 10%, transparent 25%);
+        z-index: 1;
+    }
+}
+
+@keyframes sway {
+    0% {
+        transform: skew(0deg);
+    }
+
+    50% {
+        transform: skew(6deg);
+    }
+
+    100% {
+        transform: skew(0deg);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .hero {
+        height: 70vh;
+
+        h1 {
+            font-size: 3rem;
+            top: 15%;
+            left: 50%;
+            transform: translate(-50%, 0);
+            width: 100%;
+            text-wrap: nowrap;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            top: 17%;
+            left: 50%;
+            transform: translate(-50%, 100%);
+            width: 100%;
+            text-wrap: nowrap;
+        }
+
+        .hero_background {
+            mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%);
+
+            .hero_background_layer {
+                height: 70vh;
+            }
+        }
+    }
+}
+
+
+
+
+.summer {}
+
+.winter {
+
+    .layer4,
+    .layer2 {
+        display: none;
+
+    }
+
+    .layer3 {
+        filter: saturate(0.5);
+    }
+
+    .layer1 {
+        filter: saturate(0.2);
+    }
+}
+
+.autumn {
+
+    .layer4,
+    .layer2 {
+        filter: hue-rotate(-70deg) saturate(0.7);
+    }
+
+}
+
+.spring {}
+
+.more-snow {
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 80%);
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    object-position: right center;
+    height: 90vh;
+
+    position: absolute;
+    filter: saturate(0.9);
+    transform-origin: top right;
+    z-index: 3;
+
+    &:before,
+    &:after {
+        content: "";
+        position: fixed;
+        top: -3000%;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: rgba(black, 0.01);
+        background-image: url(http://www.freepngimg.com/download/winter_snow/4-2-white-snow-png.png);
+        background-size: 10%;
+        animation-name: MOVE-BG;
+        animation-duration: 500s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+}
+
+body {
+    &:before {
+        filter: blur(6px);
+        opacity: 0.8;
+    }
+
+    &:after {
+        filter: blur(1px);
+        top: -1500%;
+        background-image: url(http://www.freepngimg.com/download/winter_snow/4-2-white-snow-png.png);
+        background-size: 90%;
+        animation-duration: 200s;
+    }
+}
+
+.more-snow {
+    &:before {
+        filter: blur(4px);
+        opacity: 0.8;
+        top: -2500%;
+        background-size: 30%;
+        animation-duration: 400s;
+    }
+
+    &:after {
+        filter: blur(2px);
+        opacity: 0.8;
+        top: -2000%;
+        background-image: url(https://laviwebfiles.com/stage/codepen/4-2-white-snow-png.png);
+        background-size: 30%;
+        animation-duration: 300s;
+        z-index: 20;
+    }
+}
+
+@keyframes MOVE-BG {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(70%);
+        opacity: 0.5;
+    }
+}

@@ -6,9 +6,9 @@ import React, {
   useEffect,
 } from "react";
 import { useParams } from "react-router-dom";
-import Loading from "../components/core/screens/Loading";
+import Loading from "../../components/core/screens/Loading";
 import NavBar from "./components/NavBar/NavBar";
-import { Auth } from "../contexts/auth";
+import { Auth } from "../../contexts/auth";
 
 import "./Account.css";
 import ActionBar from "./components/ActionBar/ActionBar";
@@ -34,16 +34,18 @@ export default function Account() {
   }, [tab]);
 
   return (
-    <div className='account'>
+    <div className="account">
       {userData ? (
         <>
-          <NavBar />
-          <TopLevelNav />
-          <Suspense fallback={<Loading />}>
-            <ActiveTab />
-            {/* {dataDiff?.length > 0 ?  : <></>} */}
-            <ActionBar />
-          </Suspense>
+          <TopLevelNav tab={tab} />
+          <div className="account-content">
+            <NavBar />
+            <Suspense fallback={<Loading />}>
+              <ActiveTab />
+              {/* {dataDiff?.length > 0 ?  : <></>} */}
+              <ActionBar />
+            </Suspense>
+          </div>
         </>
       ) : (
         <Loading />

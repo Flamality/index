@@ -1,7 +1,10 @@
 import React, { useContext, useState } from "react";
-import { Auth } from "../contexts/auth";
+import { Auth } from "../../contexts/auth";
 import { Link, useLocation } from "react-router-dom";
-import GlintButton from "../components/core/elements/inputs/buttons/GlintButton/GlintButton";
+import GlintButton from "../../components/core/elements/inputs/buttons/GlintButton/GlintButton";
+
+import styles from "./Auth.module.css";
+import TextField from "../../components/core/elements/inputs/TextField";
 
 export default function Login() {
   const { login } = useContext(Auth);
@@ -30,55 +33,60 @@ export default function Login() {
     }
     try {
       const res = await login(email, password);
+
+      window.location.reload();
     } catch (error) {
-      setPasswordError("Invalid email or password.");
+      if (error.type === "user_more_factors_required") {
+        window.location.href = "/auth/mfa";
+        return;
+      } else if (error.type === "user_invalid_credentials") {
+        setPasswordError("Invalid email or password.");
+      } else if (error.type === "user_session_already_exists") {
+        setPasswordError("A session for this user already exists.");
+        window.location.href = "/account";
+      } else {
+        setPasswordError("An error occurred during login. Please try again.");
+      }
     }
   };
 
   return (
-    <div className='auth-screen'>
-      <Link to='/' className='auth-screen-title'>
-        Flamality
-      </Link>
-      <div className='auth-screen-decor' />
-      <div className='auth-screen-form'>
-        <h1>Login</h1>
-        <p>Please log in to continue.</p>
-        <form>
-          <input
-            type='email'
-            placeholder='Email'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <p
-            className={`auth-screen-form-error ${
-              emailError ? "" : "auth-screen-form-error-hidden"
-            }`}
-          >
-            {emailError || ":D"}
+    <div className={styles.page_wrapper}>
+      <div className={styles.container}>
+        <div className={styles.content}>
+          <Link to="/" className="auth-screen-title">
+            Flamality
+          </Link>
+          <h1>Login</h1>
+          <p>Please log in to continue.</p>
+          <form>
+            <TextField
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              error={!!emailError}
+              errorMessage={emailError}
+              fullLength
+            />
+            <TextField
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              error={!!passwordError}
+              errorMessage={passwordError}
+              fullLength
+            />
+            <GlintButton type="submit" onClick={handleLogin} fullLength>
+              Login
+            </GlintButton>
+          </form>
+          <p className="auth-screen-form-footer">
+            Don't have an account?{" "}
+            <a href={`/auth/register${location.search}`}>Register here</a>.
           </p>
-          <input
-            type='password'
-            placeholder='Password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <p
-            className={`auth-screen-form-error ${
-              passwordError ? "" : "auth-screen-form-error-hidden"
-            }`}
-          >
-            {passwordError || ":D"}
-          </p>
-          <GlintButton type='submit' onClick={handleLogin}>
-            Login
-          </GlintButton>
-        </form>
-        <p className='auth-screen-form-footer'>
-          Don't have an account?{" "}
-          <a href={`/auth/register${location.search}`}>Register here</a>.
-        </p>
+        </div>
       </div>
     </div>
   );

@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import PageContent from '../../components/PageContent/PageContent';
-import { useLocation } from 'react-router-dom';
-import { account } from '../../../services/appwrite';
-import Spinner from '../../../components/core/elements/Spinner';
-import { FaCheck, FaXmark } from 'react-icons/fa6';
+import React, { useEffect, useState } from "react";
+import PageContent from "../../components/PageContent/PageContent";
+import { useLocation } from "react-router-dom";
+import { account } from "../../../../services/appwrite";
+import Spinner from "../../../../components/core/elements/Spinner";
+import { FaCheck, FaXmark } from "react-icons/fa6";
 
-import './Verify.css';
+import "./Verify.css";
 
 export default function Verify() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const UID = searchParams.get('userId');
-  const secret = searchParams.get('secret');
+  const UID = searchParams.get("userId");
+  const secret = searchParams.get("secret");
 
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(true);

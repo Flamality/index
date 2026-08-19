@@ -4,8 +4,9 @@
   flex-direction: row;
   align-items: center;
   gap: var(--space-sm);
-  margin: var(--space-xxl) 0 var(--space-sm) 0;
+  margin: var(--space-xl) 0 var(--space-sm) 0;
 }
+
 .account-section-title h2 {
   font-weight: 700;
   text-align: left;

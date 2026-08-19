@@ -1,10 +1,11 @@
-import React, { useContext, useEffect } from 'react';
-import { Auth } from '../contexts/auth';
-import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import Login from './Login';
+import React, { useContext, useEffect } from "react";
+import { Auth } from "../../contexts/auth";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import Login from "./Login";
 
-import './Auth.css';
-import Signup from './Signup';
+import "./Auth.css";
+import Signup from "./Signup";
+import MFA from "./MFA";
 
 export default function AuthRoutes() {
   const { user, loading } = useContext(Auth);
@@ -17,11 +18,11 @@ export default function AuthRoutes() {
       if (!user) {
       } else {
         const params = new URLSearchParams(location.search);
-        const redirect = params.get('redirect') || '/';
+        const redirect = params.get("redirect") || "/";
         navigate(redirect);
       }
     }
-    document.title = "Login to a Flamality account"
+    document.title = "Login to a Flamality account";
   }, [user, loading]);
   return (
     <>
@@ -29,6 +30,7 @@ export default function AuthRoutes() {
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Signup />} />
+        <Route path="/mfa" element={<MFA />} />
       </Routes>
     </>
   );

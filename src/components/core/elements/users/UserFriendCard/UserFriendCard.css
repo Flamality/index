@@ -1,3 +1,33 @@
 .user-friend-card {
     color: white;
+    position: relative;
+    width: fit-content;
+}
+
+.user-friend-card-actions {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    display: flex;
+    gap: var(--gap-sm);
+
+    &>div>div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-sm);
+        border-radius: var(--radius-full);
+        cursor: pointer;
+        background-color: var(--color-bg-main);
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        &:hover {
+            background-color: var(--color-bg-alt);
+        }
+    }
 }

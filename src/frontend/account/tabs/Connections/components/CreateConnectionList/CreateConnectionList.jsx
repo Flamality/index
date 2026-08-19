@@ -7,12 +7,13 @@ export default function CreateConnectionList() {
   const connectSpotify = () => {
     const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
     const port = window.location.port ? `:${window.location.port}` : "";
-    const redirectUri =
-      window.location.protocol +
-      "//" +
-      window.location.hostname +
-      port +
-      "/connect/spotify";
+    // const redirectUri =
+    //   window.location.protocol +
+    //   "//" +
+    //   window.location.hostname +
+    //   port +
+    //   "/connect/spotify";
+    const redirectUri = "http://127.0.0.1:3000/connect/spotify";
     const scope = [
       "user-read-playback-state",
       "user-modify-playback-state",
@@ -32,7 +33,7 @@ export default function CreateConnectionList() {
     window.location.href = authUrl;
   };
   return (
-    <div className='account-tab-connections-createlist'>
+    <div className="account-tab-connections-createlist">
       <a onClick={connectSpotify}>
         <FaSpotify />
       </a>

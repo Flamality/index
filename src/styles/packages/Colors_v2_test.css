@@ -1,0 +1,229 @@
+:root {
+    color-scheme: dark;
+
+    /* ======================================================
+       CONTROLS
+       ====================================================== */
+    --theme-hue-bg: 270;
+    --theme-hue-text: 220;
+    --theme-hue-primary: 345;
+    --theme-hue-secondary: 210;
+
+    --theme-saturation-bg: 10%;
+    --theme-saturation-text: 10%;
+    --theme-saturation-accent: 40%;
+
+    --theme-lightness-bg-main: 11%;
+    --theme-lightness-bg-alt: 14%;
+    --theme-lightness-surface: 17%;
+    --theme-lightness-surface-alt: 21%;
+    --theme-lightness-border: 40%;
+
+    --theme-lightness-text-main: 96%;
+    --theme-lightness-text-sub: 82%;
+    --theme-lightness-text-muted: 66%;
+    --theme-lightness-text-disabled: 52%;
+
+    --theme-lightness-primary: 70%;
+    --theme-lightness-primary-light: 70%;
+    --theme-lightness-primary-dark: 50%;
+
+    --theme-lightness-secondary: 60%;
+    --theme-lightness-secondary-light: 70%;
+    --theme-lightness-secondary-dark: 50%;
+
+    /* ======================================================
+       TUNING
+       ====================================================== */
+    --color-saturation-multiplier: 1;
+    --color-lightness-boost: 0%;
+    --color-contrast-boost: 0%;
+
+    --theme-chroma-bg: 0.018;
+    --theme-chroma-text: 0.010;
+    --theme-chroma-border: 0.024;
+    --theme-chroma-accent: 0.205;
+    --theme-chroma-accent-secondary: 0.185;
+
+    --theme-chroma-success: 0.145;
+    --theme-chroma-warning: 0.160;
+    --theme-chroma-danger: 0.185;
+    --theme-chroma-info: 0.155;
+
+    /* ======================================================
+       LAYERS
+       ====================================================== */
+    --color-layer-0: oklch(calc(11% + var(--color-lightness-boost)) calc(var(--theme-chroma-bg) * var(--color-saturation-multiplier)) var(--theme-hue-bg));
+    --color-layer-1: oklch(calc(14% + var(--color-lightness-boost)) calc(var(--theme-chroma-bg) * var(--color-saturation-multiplier)) var(--theme-hue-bg));
+    --color-layer-2: oklch(calc(17% + var(--color-lightness-boost)) calc(var(--theme-chroma-bg) * var(--color-saturation-multiplier)) var(--theme-hue-bg));
+    --color-layer-3: oklch(calc(21% + var(--color-lightness-boost)) calc(var(--theme-chroma-bg) * var(--color-saturation-multiplier)) var(--theme-hue-bg));
+    --color-layer-4: oklch(calc(25% + var(--color-lightness-boost)) calc(var(--theme-chroma-bg) * var(--color-saturation-multiplier)) var(--theme-hue-bg));
+
+    --color-bg-main: var(--color-layer-0);
+    --color-bg-alt: var(--color-layer-1);
+    --color-surface: var(--color-layer-2);
+    --color-surface-alt: var(--color-layer-3);
+    --color-surface-raised: var(--color-layer-4);
+
+    --color-bg-elevated: var(--color-layer-3);
+    --color-bg-floating: var(--color-layer-4);
+    --color-bg-inset: oklch(9% 0.014 var(--theme-hue-bg));
+
+    /* Overlays */
+    --color-overlay-scrim: oklch(0% 0 0 / 0.55);
+    --color-overlay-backdrop: oklch(0% 0 0 / 0.35);
+    --color-hover-overlay: oklch(100% 0 0 / 0.05);
+    --color-active-overlay: oklch(100% 0 0 / 0.09);
+
+    /* ======================================================
+       TEXT
+       ====================================================== */
+    --color-text-main: oklch(calc(var(--theme-lightness-text-main) + var(--color-contrast-boost)) calc(var(--theme-chroma-text) * var(--color-saturation-multiplier)) var(--theme-hue-text));
+    --color-text-sub: oklch(calc(var(--theme-lightness-text-sub) + var(--color-contrast-boost)) calc(var(--theme-chroma-text) * var(--color-saturation-multiplier)) var(--theme-hue-text));
+    --color-text-muted: oklch(calc(var(--theme-lightness-text-muted) + var(--color-contrast-boost)) calc(var(--theme-chroma-text) * var(--color-saturation-multiplier)) var(--theme-hue-text));
+    --color-text-disabled: oklch(calc(var(--theme-lightness-text-disabled) + var(--color-contrast-boost)) calc(var(--theme-chroma-text) * var(--color-saturation-multiplier)) var(--theme-hue-text));
+    --color-text-inverse: oklch(14% 0.016 var(--theme-hue-text));
+
+    /* ======================================================
+       BORDERS / DIVIDERS / FOCUS
+       ====================================================== */
+    --color-border-subtle: oklch(34% calc(var(--theme-chroma-border) * 0.75) var(--theme-hue-bg) / 0.28);
+    --color-border-default: oklch(calc(var(--theme-lightness-border) + 0%) calc(var(--theme-chroma-border) * 1) var(--theme-hue-bg) / 0.42);
+    --color-border-strong: oklch(52% calc(var(--theme-chroma-border) * 1.1) var(--theme-hue-bg) / 0.58);
+
+    --color-border: var(--color-border-default);
+    --color-divider: oklch(100% 0 0 / 0.08);
+
+    --color-focus-ring: oklch(72% 0.16 235 / 0.95);
+    --color-focus-ring-soft: oklch(72% 0.16 235 / 0.25);
+
+    --color-outline-contrast: oklch(96% 0.01 var(--theme-hue-text));
+    --color-highlight: oklch(90% 0.11 95);
+
+    /* ======================================================
+       PRIMARY ACCENT
+       ====================================================== */
+    --color-accent-primary: oklch(calc(var(--theme-lightness-primary) + 0%) calc(var(--theme-chroma-accent) * var(--color-saturation-multiplier)) var(--theme-hue-primary));
+    --color-accent-primary-light: oklch(calc(var(--theme-lightness-primary-light) + 0%) calc(var(--theme-chroma-accent) * 0.95) var(--theme-hue-primary));
+    --color-accent-primary-dark: oklch(calc(var(--theme-lightness-primary-dark) + 0%) calc(var(--theme-chroma-accent) * 0.9) var(--theme-hue-primary));
+    --color-accent-primary-glow: oklch(60% calc(var(--theme-chroma-accent) * 1) var(--theme-hue-primary) / 0.38);
+    --color-accent-primary-bg: oklch(18% 0.06 var(--theme-hue-primary));
+    --color-accent-primary-soft: oklch(60% 0.06 var(--theme-hue-primary) / 0.14);
+    --color-accent-primary-border: oklch(64% 0.15 var(--theme-hue-primary) / 0.45);
+    --color-accent-primary-text: oklch(98% 0.008 var(--theme-hue-primary));
+    --color-accent-primary-on-soft: oklch(88% 0.03 var(--theme-hue-primary));
+
+    /* ======================================================
+       SECONDARY ACCENT
+       ====================================================== */
+    --color-accent-secondary: oklch(calc(var(--theme-lightness-secondary) + 0%) calc(var(--theme-chroma-accent-secondary) * var(--color-saturation-multiplier)) var(--theme-hue-secondary));
+    --color-accent-secondary-light: oklch(calc(var(--theme-lightness-secondary-light) + 0%) calc(var(--theme-chroma-accent-secondary) * 0.95) var(--theme-hue-secondary));
+    --color-accent-secondary-dark: oklch(calc(var(--theme-lightness-secondary-dark) + 0%) calc(var(--theme-chroma-accent-secondary) * 0.9) var(--theme-hue-secondary));
+    --color-accent-secondary-glow: oklch(60% calc(var(--theme-chroma-accent-secondary) * 1) var(--theme-hue-secondary) / 0.36);
+    --color-accent-secondary-bg: oklch(17% 0.05 var(--theme-hue-secondary));
+    --color-accent-secondary-soft: oklch(60% 0.055 var(--theme-hue-secondary) / 0.14);
+    --color-accent-secondary-border: oklch(66% 0.135 var(--theme-hue-secondary) / 0.45);
+    --color-accent-secondary-text: oklch(98% 0.008 var(--theme-hue-secondary));
+    --color-accent-secondary-on-soft: oklch(88% 0.028 var(--theme-hue-secondary));
+
+    /* ======================================================
+       EXTRA ACCENTS
+       ====================================================== */
+    --color-accent-tertiary: oklch(68% 0.14 175);
+    --color-accent-tertiary-soft: oklch(68% 0.14 175 / 0.14);
+    --color-accent-pink: oklch(67% 0.19 335);
+    --color-accent-cyan: oklch(74% 0.15 210);
+    --color-accent-violet: oklch(63% 0.20 300);
+
+    /* ======================================================
+       STATUS COLORS
+       ====================================================== */
+    --color-success: oklch(72% var(--theme-chroma-success) 155);
+    --color-warning: oklch(82% var(--theme-chroma-warning) 85);
+    --color-danger: oklch(68% var(--theme-chroma-danger) 25);
+    --color-info: oklch(70% var(--theme-chroma-info) 230);
+
+    --color-success-soft: oklch(72% var(--theme-chroma-success) 155 / 0.14);
+    --color-warning-soft: oklch(82% var(--theme-chroma-warning) 85 / 0.14);
+    --color-danger-soft: oklch(68% var(--theme-chroma-danger) 25 / 0.14);
+    --color-info-soft: oklch(70% var(--theme-chroma-info) 230 / 0.14);
+
+    --color-success-border: oklch(72% var(--theme-chroma-success) 155 / 0.35);
+    --color-warning-border: oklch(82% var(--theme-chroma-warning) 85 / 0.35);
+    --color-danger-border: oklch(68% var(--theme-chroma-danger) 25 / 0.35);
+    --color-info-border: oklch(70% var(--theme-chroma-info) 230 / 0.35);
+
+    --color-success-dark: oklch(32% 0.10 155);
+    --color-warning-dark: oklch(34% 0.11 85);
+    --color-danger-dark: oklch(32% 0.12 25);
+    --color-info-dark: oklch(32% 0.10 230);
+
+    --color-success-contrast: oklch(98% 0.01 155);
+    --color-warning-contrast: oklch(18% 0.02 85);
+    --color-danger-contrast: oklch(98% 0.01 25);
+    --color-info-contrast: oklch(98% 0.01 230);
+
+    /* ======================================================
+       BRAND / DISCORD
+       ====================================================== */
+    --discord-color-1-lightness: 65%;
+    --color-discord-1: oklch(var(--discord-color-1-lightness) 0.16 235);
+
+    /* ======================================================
+       SHADOWS / GLOWS
+       ====================================================== */
+    --shadow-opacity: 0.42;
+    --shadow-color: oklch(0% 0 0 / var(--shadow-opacity));
+
+    --shadow-sm: 0 1px 2px var(--shadow-color);
+    --shadow-md: 0 2px 8px var(--shadow-color);
+    --shadow-lg: 0 8px 22px var(--shadow-color);
+    --shadow-xl: 0 18px 40px var(--shadow-color);
+    --shadow-inset: inset 0 1px 3px var(--shadow-color);
+
+    --shadow-glow-primary: 0 0 14px var(--color-accent-primary-glow);
+    --shadow-glow-secondary: 0 0 14px var(--color-accent-secondary-glow);
+
+    /* ======================================================
+       UI ALIASES
+       ====================================================== */
+    --card-bg: var(--color-surface);
+    --card-bg-hover: var(--color-surface-alt);
+    --card-border: var(--color-border-default);
+
+    --panel-bg: var(--color-bg-alt);
+    --panel-border: var(--color-border-subtle);
+
+    --input-bg: var(--color-surface);
+    --input-border: var(--color-border-default);
+    --input-border-focus: var(--color-focus-ring);
+
+    --button-primary-bg: var(--color-accent-primary);
+    --button-primary-bg-hover: var(--color-accent-primary-light);
+    --button-primary-text: var(--color-accent-primary-text);
+
+    --button-secondary-bg: var(--color-accent-secondary);
+    --button-secondary-bg-hover: var(--color-accent-secondary-light);
+    --button-secondary-text: var(--color-accent-secondary-text);
+
+    --chip-bg: oklch(100% 0 0 / 0.06);
+    --chip-border: oklch(100% 0 0 / 0.10);
+    --chip-text: var(--color-text-sub);
+
+    --tooltip-bg: oklch(10% 0.015 var(--theme-hue-bg));
+    --tooltip-text: var(--color-text-main);
+
+    --modal-bg: oklch(14% 0.020 var(--theme-hue-bg));
+    --modal-border: var(--color-border-strong);
+
+    --selection-bg: oklch(58% 0.18 var(--theme-hue-primary) / 0.28);
+    --selection-text: oklch(98% 0.01 var(--theme-hue-primary));
+
+    --gradient-primary: linear-gradient(135deg,
+            oklch(64% 0.175 var(--theme-hue-primary)),
+            oklch(60% 0.185 var(--theme-hue-secondary)));
+
+    --gradient-soft: linear-gradient(180deg,
+            oklch(100% 0 0 / 0.03),
+            oklch(100% 0 0 / 0.00));
+}

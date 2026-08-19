@@ -1,5 +1,5 @@
 import { ID, Permission, Role } from 'node-appwrite';
-import { tablesDB } from '../main.js';
+import { tablesDB } from '../appwrite/server.js';
 
 // MASTER LIST OF NOTIFICATION TYPES, THIS DEFINES TYPES THAT CAN BE USED GLOBALLY, BE CAREFUL WHEN CHANGING
 type NotificationType =
@@ -25,15 +25,20 @@ export const createNotification = async (
   uid: string,
   data: NotificationData
 ) => {
-  await tablesDB.createRow({
-    databaseId: 'main',
-    tableId: 'events',
-    rowId: ID.unique(),
-    data: {
-      uid,
-      event_type: type,
-      ...data,
-    },
-    permissions: [Permission.read(Role.user(uid))],
-  });
+  try {
+    await tablesDB.createRow({
+      databaseId: 'main',
+      tableId: 'events',
+      rowId: ID.unique(),
+      data: {
+        UID: uid,
+        event_type: type,
+        timestamp: new Date().toISOString(),
+        ...data,
+      },
+      permissions: [Permission.read(Role.user(uid))],
+    });
+  } catch (error) {
+    throw new Error(`Failed to create notification: ${error}`);
+  }
 };

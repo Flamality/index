@@ -1,15 +1,45 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import "./BannerEditor.css";
 import { FaPaintBrush } from "react-icons/fa";
 import { FaPlus, FaXmark } from "react-icons/fa6";
+import ColorPicker from "../../../../../components/core/elements/inputs/colors/ColorPicker";
+import { Layers } from "../../../../../contexts/layers";
 
-export default function BannerEditor({ banner_gradient, onChange }) {
+export default function BannerEditor({ banner_gradient, onChange, style }) {
+  const { showModal } = useContext(Layers);
   const parsed = banner_gradient
     ? JSON.parse(banner_gradient)
     : ["135deg", "#746aff", "#4f3eff"];
   const [angle, setAngle] = useState(parsed[0]);
   const [colors, setColors] = useState(parsed.slice(1));
+  const [step, setStep] = useState(100 / colors.length);
+  const gradientString =
+    style === "block"
+      ? `linear-gradient(90deg, ${colors
+          .map(
+            (color, i) =>
+              `${color} ${i * (100 / colors.length)}%, ${color} ${
+                (i + 1) * (100 / colors.length)
+              }%`,
+          )
+          .join(", ")})`
+      : `linear-gradient(90deg, ${colors.join(", ")})`;
+
+  useEffect(() => {
+    if (!banner_gradient) return;
+    const parsed = JSON.parse(banner_gradient);
+    setAngle(parsed[0]);
+    setColors(parsed.slice(1));
+  }, [banner_gradient]);
+
+  const updateFromIndex = (index, value) => {
+    if (index === 0) {
+      updateAngle(value);
+    } else {
+      updateColor(index - 1, value);
+    }
+  };
 
   const updateColor = (index, value) => {
     const newColors = [...colors];
@@ -37,13 +67,13 @@ export default function BannerEditor({ banner_gradient, onChange }) {
 
   return (
     <div
-      className='account-profile-banner-editor'
+      className="account-profile-banner-editor"
       style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
     >
       <label>
         Direction: {angle}
         <input
-          type='range'
+          type="range"
           min={0}
           max={360}
           value={parseInt(angle)}
@@ -51,20 +81,16 @@ export default function BannerEditor({ banner_gradient, onChange }) {
         />
       </label>
       <div
-        className='banner-editor-colormap'
+        className="banner-editor-colormap"
         style={{
-          background: `linear-gradient(90deg, ${colors.join(", ")})`,
-          display: "flex",
-          alignItems: "center",
-          gap: "0.5rem",
-          padding: "0.5rem",
+          background: gradientString,
         }}
       >
         {colors.length < 5 && (
           <div
-            className='insert-color-edge'
+            className="insert-color-edge"
             onClick={() => {
-              const newColors = ["#555", ...colors];
+              const newColors = ["#555555", ...colors];
               setColors(newColors);
               onChange(JSON.stringify([angle, ...newColors]));
             }}
@@ -83,9 +109,26 @@ export default function BannerEditor({ banner_gradient, onChange }) {
                 gap: "0.5rem",
               }}
             >
-              <div className='color-circle' style={{ backgroundColor: color }}>
-                <input
-                  type='color'
+              <div
+                className="color-circle"
+                style={{ backgroundColor: color }}
+                onClick={(e) => {
+                  const rect = e.target.getBoundingClientRect();
+                  const top = rect.top + rect.height / 2 - 5;
+                  const left = rect.left + rect.width / 2 - 30;
+                  showModal(
+                    [left, top],
+                    <ColorPicker
+                      color={color.replace("#", "")}
+                      setColor={(newColor) => updateColor(i, "#" + newColor)}
+                      button1="Confirm"
+                      button2="Remove"
+                    />,
+                  );
+                }}
+              >
+                {/* <input
+                  type="color"
                   value={color}
                   onChange={(e) => updateColor(i, e.target.value)}
                   style={{
@@ -97,21 +140,21 @@ export default function BannerEditor({ banner_gradient, onChange }) {
                     opacity: 0,
                     cursor: "pointer",
                   }}
-                />
+                /> */}
               </div>
               <FaPaintBrush />
               <FaXmark
-                className='remove-color'
+                className="remove-color"
                 onClick={() => removeColor(i)}
               />
             </div>
 
             {colors.length < 5 && i < colors.length - 1 && (
               <div
-                className='insert-color'
+                className="insert-color"
                 onClick={() => {
                   const newColors = [...colors];
-                  newColors.splice(i + 1, 0, "#555");
+                  newColors.splice(i + 1, 0, "#555555");
                   setColors(newColors);
                   onChange(JSON.stringify([angle, ...newColors]));
                 }}
@@ -124,9 +167,9 @@ export default function BannerEditor({ banner_gradient, onChange }) {
 
         {colors.length < 5 && (
           <div
-            className='insert-color-edge'
+            className="insert-color-edge"
             onClick={() => {
-              const newColors = [...colors, "#555"];
+              const newColors = [...colors, "#555555"];
               setColors(newColors);
               onChange(JSON.stringify([angle, ...newColors]));
             }}

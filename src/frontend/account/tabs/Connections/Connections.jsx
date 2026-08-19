@@ -7,7 +7,6 @@ import ConnectionList from "./components/ConnectionList/ConnectionList";
 export default function Connections() {
   return (
     <PageContent>
-      <PageTitle>Connections</PageTitle>
       <label>Add Connection</label>
       <CreateConnectionList />
       <label>My Connections</label>

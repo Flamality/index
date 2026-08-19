@@ -11,6 +11,13 @@
     width: 100%;
 }
 
+.account-tab-friends-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-top: var(--space-sm);
+}
+
 /* .account-tab-friends-friendslist-tabs button {
     background-color: transparent;
     overflow: visible;

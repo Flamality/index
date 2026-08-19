@@ -1,0 +1,37 @@
+:root {
+    /* ------------------- Spacing ------------------- */
+    --space-xxs: 0.125rem;
+    /* 2px */
+    --space-xs: 0.25rem;
+    /* 4px */
+    --space-sm: 0.5rem;
+    /* 8px */
+    --space-md: 1rem;
+    /* 16px */
+    --space-lg: 1.5rem;
+    /* 24px */
+    --space-xl: 2rem;
+    /* 32px */
+    --space-2xl: 3rem;
+    /* 48px */
+    --space-3xl: 4rem;
+    /* 64px */
+
+    --pad-xxs: var(--space-xxs);
+    --pad-xs: var(--space-xs);
+    --pad-sm: var(--space-sm);
+    --pad-md: var(--space-md);
+    --pad-lg: var(--space-lg);
+    --pad-xl: var(--space-xl);
+    --pad-2xl: var(--space-2xl);
+
+    --pad-sm-yx: var(--space-sm) var(--space-md);
+    --pad-md-yx: var(--space-md) var(--space-lg);
+    --pad-lg-yx: var(--space-lg) var(--space-xl);
+
+    --gap-xs: var(--space-xs);
+    --gap-sm: var(--space-sm);
+    --gap-md: var(--space-md);
+    --gap-lg: var(--space-lg);
+    --gap-xl: var(--space-xl);
+}

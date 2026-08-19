@@ -1,17 +1,19 @@
 import React, { useContext, useState } from "react";
-import { Auth } from "../contexts/auth";
+import { Auth } from "../../contexts/auth";
 import { Link, useLocation } from "react-router-dom";
 import { Query } from "appwrite";
-import { databases, registerUser } from "../services/appwrite";
+import { databases, registerUser } from "../../services/appwrite";
 import {
   checkConfirmPassword,
   checkEmail,
   checkPassword,
   checkUsername,
-} from "../services/test";
+} from "../../services/test";
 import { FaXmark } from "react-icons/fa6";
-import TextField from "../components/core/elements/inputs/TextField";
-import GlintButton from "../components/core/elements/inputs/buttons/GlintButton/GlintButton";
+import TextField from "../../components/core/elements/inputs/TextField";
+import GlintButton from "../../components/core/elements/inputs/buttons/GlintButton/GlintButton";
+
+import styles from "./Auth.module.css";
 
 export default function Signup() {
   const [username, setUsername] = useState("");
@@ -75,92 +77,75 @@ export default function Signup() {
   };
 
   return (
-    <div className='auth-screen'>
-      <Link to='/' className='auth-screen-title'>
-        Flamality
-      </Link>
+    <div className={styles.page_wrapper}>
+      <div className={styles.container}>
+        <div className={styles.content}>
+          <Link to="/" className="auth-screen-title">
+            Flamality
+          </Link>
 
-      <div className='auth-screen-form'>
-        <h1>Register</h1>
-        <p>Create a new account!</p>
-        <form>
-          <TextField
-            onChange={EmailChange}
-            value={email}
-            placeholder='Email'
-            type='email'
-            error={!!emailError}
-            loading={emailLoading}
-            success={!emailError && email.length > 0 && !emailLoading}
-          />
-          <p
-            className={`auth-screen-form-error ${
-              emailError ? "" : "auth-screen-form-error-hidden"
-            }`}
-          >
-            {emailError}
+          <h1>Register</h1>
+          <p>Create a new account!</p>
+          <form>
+            <TextField
+              onChange={EmailChange}
+              value={email}
+              placeholder="Email"
+              type="email"
+              error={!!emailError}
+              loading={emailLoading}
+              success={!emailError && email.length > 0 && !emailLoading}
+              errorMessage={emailError}
+              fullLength
+            />
+            <TextField
+              onChange={UsernameChange}
+              value={username}
+              placeholder="Username"
+              maxLength={32}
+              fullLength
+              error={!!usernameError}
+              loading={usernameLoading}
+              success={
+                !usernameError && username.length > 0 && !usernameLoading
+              }
+              errorMessage={usernameError}
+            />
+            <TextField
+              onChange={PasswordChange}
+              type="password"
+              placeholder="Password"
+              value={password}
+              maxLength={128}
+              fullLength
+              error={!!passwordError}
+              success={!passwordError && password.length > 0}
+              errorMessage={passwordError}
+            />
+            <TextField
+              onChange={ConfirmChange}
+              type="password"
+              placeholder="Confirm Password"
+              value={confirm}
+              fullLength
+              maxLength={128}
+              error={!!confirmError}
+              success={
+                !confirmError && confirm.length > 0 && confirm === password
+              }
+              errorMessage={confirmError}
+            />
+            <GlintButton type="submit" onClick={handleSignup} fullLength>
+              Register
+            </GlintButton>
+          </form>
+          <p className="auth-screen-form-footer">
+            Already have an account?{" "}
+            <a href={`/auth/login${location.search}`}>Login here</a>.
           </p>
-          <TextField
-            onChange={UsernameChange}
-            value={username}
-            placeholder='Username'
-            maxLength={32}
-            error={!!usernameError}
-            loading={usernameLoading}
-            success={!usernameError && username.length > 0 && !usernameLoading}
-          />
-          <p
-            className={`auth-screen-form-error ${
-              usernameError ? "" : "auth-screen-form-error-hidden"
-            }`}
-          >
-            {usernameError}
-          </p>
-          <TextField
-            onChange={PasswordChange}
-            type='password'
-            placeholder='Password'
-            value={password}
-            maxLength={128}
-            error={!!passwordError}
-            success={!passwordError && password.length > 0}
-          />
-          <p
-            className={`auth-screen-form-error ${
-              passwordError ? "" : "auth-screen-form-error-hidden"
-            }`}
-          >
-            {passwordError}
-          </p>
-          <TextField
-            onChange={ConfirmChange}
-            type='password'
-            placeholder='Confirm Password'
-            value={confirm}
-            maxLength={128}
-            error={!!confirmError}
-            success={
-              !confirmError && confirm.length > 0 && confirm === password
-            }
-          />
-
-          <p
-            className={`auth-screen-form-error ${
-              confirmError ? "" : "auth-screen-form-error-hidden"
-            }`}
-          >
-            {confirmError}
-          </p>
-          <GlintButton type='submit' onClick={handleSignup}>
-            Register
-          </GlintButton>
-        </form>
-        <p className='auth-screen-form-footer'>
-          Already have an account?{" "}
-          <a href={`/auth/login${location.search}`}>Login here</a>.
-        </p>
+          <div className="auth-screen-decor" />
+        </div>
       </div>
-      <div className='auth-screen-decor' />
     </div>
   );
 }
