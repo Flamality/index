@@ -1,0 +1,18 @@
+{
+  "en": {
+    "landing_accountcard_title_start": "My",
+    "landing_accountcard_title_end": ".",
+    "landing_accountcard_message_notloggedin": "It seems like you're not logged in.",
+    "landing_accountcard_message_loggedin": "Hey, ",
+    "landing_accountcard_button_notloggedin": "Log In or Sign Up",
+    "landing_accountcard_button_loggedin": "Manage Account"
+  },
+  "es": {
+    "landing_accountcard_title_start": "Mi cuenta de",
+    "landing_accountcard_title_end": ".",
+    "landing_accountcard_message_notloggedin": "Parece que no has iniciado sesión.",
+    "landing_accountcard_message_loggedin": "¡Hola, ",
+    "landing_accountcard_button_notloggedin": "Iniciar Sesión o Registrarse",
+    "landing_accountcard_button_loggedin": "Gestionar Cuenta"
+  }
+}

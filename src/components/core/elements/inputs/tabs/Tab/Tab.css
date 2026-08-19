@@ -1,17 +1,36 @@
 .core-element-tab {
-    background-color: var(--color-surface-alt);
+    background-color: var(--color-surface-raised);
     padding: var(--pad-sm) var(--pad-md);
     width: fit-content;
     color: var(--color-text-main);
     cursor: pointer;
+    position: relative;
 }
+
 .core-element-tab:first-child {
     border-radius: var(--radius-full) var(--radius-sm) var(--radius-sm) var(--radius-full);
 }
+
 .core-element-tab:last-child {
     border-radius: var(--radius-sm) var(--radius-full) var(--radius-full) var(--radius-sm);
 }
+
 .core-element-tab.active {
+    background-color: var(--color-accent-primary);
+    color: var(--color-accent-primary-text);
+}
+
+.core-element-tab-label {
+    position: absolute;
+    top: 0.2rem;
+    left: calc(100% - 0.2rem);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
     background-color: var(--color-accent-primary-dark);
-    color: var(--color-text-main);
+    height: 1.5rem;
+    width: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--radius-full);
 }

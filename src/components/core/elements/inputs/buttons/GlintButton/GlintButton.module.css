@@ -11,6 +11,10 @@
   font-weight: 600;
   transition: background 0.3s ease, color 0.3s ease;
   min-width: 100px;
+
+  &.fullLength {
+    width: 100%;
+  }
 }
 
 .button:hover {
@@ -33,6 +37,7 @@
 .button::before {
   top: 6px;
 }
+
 .button::after {
   bottom: 6px;
 }
@@ -54,12 +59,10 @@
   left: -75%;
   width: 50%;
   height: 100%;
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.25),
-    rgba(255, 255, 255, 0.1)
-  );
+  background: linear-gradient(120deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.25),
+      rgba(255, 255, 255, 0.1));
   transform: skewX(-20deg);
   transition: left 0.5s ease;
 }
@@ -72,9 +75,11 @@
   background-color: var(--color-surface);
   cursor: default;
 }
+
 .button:disabled:hover {
   background-color: var(--color-surface);
 }
+
 .button:disabled:hover::before,
 .button:disabled:hover::after {
   width: 100%;

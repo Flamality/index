@@ -18,16 +18,18 @@ export default function TextField({
   loading = false,
   error = false,
   success = false,
+  errorMessage = "",
   leading = null,
+  fullLength = false,
 }) {
   return (
     <div
       className={`core-element-textfield ${
         error || loading || success ? "core-element-textfield-with-symbol" : ""
-      } ${leading ? "core-element-textfield-with-leading" : ""}`}
+      } ${leading ? "core-element-textfield-with-leading" : ""} ${errorMessage ? "core-element-textfield-with-error-message" : ""} ${fullLength ? "core-element-textfield-full-length" : ""}`}
     >
       {leading && (
-        <div className='core-element-textfield-leading'>{leading}</div>
+        <div className="core-element-textfield-leading">{leading}</div>
       )}
       <input
         placeholder={placeholder}
@@ -39,18 +41,23 @@ export default function TextField({
         minLength={minLength}
       />
       {loading ? (
-        <VscLoading className='core-element-textfield-loading' />
+        <VscLoading className="core-element-textfield-loading" />
       ) : error ? (
-        <FaXmark className='core-element-textfield-x' />
+        <FaXmark className="core-element-textfield-x" />
       ) : success ? (
-        <FaCheck className='core-element-textfield-check' />
+        <FaCheck className="core-element-textfield-check" />
       ) : null}
       {showCount && (
-        <div className='core-element-textfield-count'>
+        <div className="core-element-textfield-count">
           {value.length}
           {showCountMax ? ` / ${maxLength}` : ""}
         </div>
       )}
+      <div
+        className={`core-element-textfield-error-message ${errorMessage ? "" : "core-element-textfield-error-message-hidden"}`}
+      >
+        {errorMessage && error && errorMessage}
+      </div>
     </div>
   );
 }

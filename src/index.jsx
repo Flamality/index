@@ -26,15 +26,15 @@ root.render(
   <BrowserRouter>
     {/* <MDXProvider components={mdxComponents}> */}
     <NotificationsProvider>
-      <AuthProvider>
-        <LayersProvider>
+      <LayersProvider>
+        <AuthProvider>
           <ConnectionsProvider>
             <Root />
           </ConnectionsProvider>
-        </LayersProvider>
-      </AuthProvider>
+        </AuthProvider>
+      </LayersProvider>
     </NotificationsProvider>
     {/* </MDXProvider> */}
-  </BrowserRouter>
+  </BrowserRouter>,
   // </React.StrictMode>
 );

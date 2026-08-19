@@ -5,12 +5,14 @@
   "type": "module",
   "dependencies": {
     "@mdx-js/rollup": "^3.1.1",
-    "appwrite": "^21.5.0",
+    "appwrite": "^25.2.0",
     "appwrite-cli": "^12.0.1",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
-    "react-icons": "^5.5.0",
-    "react-router-dom": "^7.11.0"
+    "react-icons": "^5.7.0",
+    "react-qr-code": "^2.0.21",
+    "react-router-dom": "^7.11.0",
+    "zustand": "^5.0.14"
   },
   "scripts": {
     "start": "vite",
@@ -18,7 +20,8 @@
     "dev": "vite",
     "start:host": "vite --host",
     "format": "prettier --write .",
-    "check": "prettier --check ."
+    "check": "prettier --check .",
+    "lint": "eslint ."
   },
   "browserslist": {
     "production": [
@@ -35,6 +38,9 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^5.1.2",
     "autoprefixer": "^10.4.23",
+    "eslint": "^9.39.5",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-simple-import-sort": "^14.0.0",
     "postcss": "^8.5.6",
     "postcss-mixins": "^12.1.2",
     "postcss-nesting": "^13.0.2",

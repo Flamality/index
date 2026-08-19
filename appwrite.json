@@ -49,14 +49,31 @@
             "logging": true,
             "runtime": "node-22",
             "scopes": [
-                "users.read"
+                "users.read",
+                "databases.read",
+                "databases.write",
+                "tables.read",
+                "tables.write",
+                "columns.read",
+                "columns.write",
+                "indexes.read",
+                "indexes.write",
+                "rows.read",
+                "rows.write",
+                "collections.read",
+                "collections.write",
+                "attributes.read",
+                "attributes.write",
+                "documents.read",
+                "documents.write",
+                "dedicatedDatabases.execute"
             ],
             "events": [],
             "schedule": "",
             "timeout": 15,
-            "entrypoint": "src/main.js",
-            "commands": "npm install",
-            "specification": "s-0.5vcpu-512mb",
+            "entrypoint": "dist/main.js",
+            "commands": "npm install && npm run build",
+            "specification": "s-1vcpu-1gb",
             "path": "functions/interaction"
         },
         {
@@ -186,14 +203,6 @@
                     "default": ""
                 },
                 {
-                    "key": "avatar",
-                    "type": "string",
-                    "required": false,
-                    "array": false,
-                    "format": "url",
-                    "default": "https://nyc.cloud.appwrite.io/v1/storage/buckets/profiles/files/default/view?project=flamality"
-                },
-                {
                     "key": "banner",
                     "type": "string",
                     "required": false,
@@ -263,6 +272,14 @@
                     "required": false,
                     "array": false,
                     "default": false
+                },
+                {
+                    "key": "avatar",
+                    "type": "string",
+                    "required": false,
+                    "array": false,
+                    "format": "url",
+                    "default": "https://nyc.cloud.appwrite.io/v1/storage/buckets/profiles/files/default/view?project=flamality&mode=admin"
                 }
             ],
             "indexes": []
@@ -437,18 +454,24 @@
         },
         {
             "$id": "docs",
-            "$permissions": [],
+            "$permissions": [
+                "read(\"any\")",
+                "create(\"label:admin\")",
+                "read(\"label:admin\")",
+                "update(\"label:admin\")",
+                "delete(\"label:admin\")"
+            ],
             "databaseId": "main",
             "name": "docs",
             "enabled": true,
             "documentSecurity": false,
             "attributes": [
                 {
-                    "key": "title",
+                    "key": "mdx",
                     "type": "string",
-                    "required": true,
+                    "required": false,
                     "array": false,
-                    "size": 64,
+                    "size": 100000,
                     "default": null
                 }
             ],
@@ -583,7 +606,8 @@
             "$permissions": [
                 "create(\"users\")",
                 "read(\"users\")",
-                "update(\"users\")"
+                "update(\"users\")",
+                "delete(\"users\")"
             ],
             "databaseId": "social",
             "name": "relations",
@@ -1089,6 +1113,23 @@
             ],
             "fileSecurity": false,
             "name": "offbranch",
+            "enabled": true,
+            "maximumFileSize": 5000000000,
+            "allowedFileExtensions": [],
+            "compression": "none",
+            "encryption": true,
+            "antivirus": true
+        },
+        {
+            "$id": "streaming",
+            "$permissions": [
+                "create(\"any\")",
+                "read(\"any\")",
+                "update(\"any\")",
+                "delete(\"any\")"
+            ],
+            "fileSecurity": false,
+            "name": "streaming",
             "enabled": true,
             "maximumFileSize": 5000000000,
             "allowedFileExtensions": [],

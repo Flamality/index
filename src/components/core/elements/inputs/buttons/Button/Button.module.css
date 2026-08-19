@@ -2,6 +2,7 @@
 	min-width: 120px;
 	padding: var(--pad-sm) var(--pad-md);
 	border-radius: var(--radius-full);
+	height: fit-content;
 	outline: none;
 	border: none;
 	cursor: pointer;
@@ -10,9 +11,24 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
+	gap: var(--gap-sm);
+
+	--text-color: var(--color-bg-main);
+
+	svg {
+		width: 16px;
+		height: 16px;
+		color: var(--text-color);
+	}
+
+	p {
+		font-size: var(--text-sm) !important;
+		color: var(--text-color) !important;
+	}
 
 	&.primary {
 		background-color: var(--color-accent-primary);
+		--text-color: var(--color-accent-secondary-text);
 
 		&:hover {
 			background-color: var(--color-accent-primary-dark);
@@ -21,6 +37,7 @@
 
 	&.secondary {
 		background-color: var(--color-accent-secondary);
+		--text-color: var(--color-accent-secondary-text);
 
 		&:hover {
 			background-color: var(--color-accent-secondary-dark);
@@ -29,21 +46,49 @@
 
 	&.grayscale {
 		background-color: var(--color-text-main);
+		--text-color: var(--color-text-inverse);
+
+		&:hover {
+			background-color: var(--color-text-sub);
+		}
+	}
+
+	&.error {
+		background-color: var(--color-danger);
+		--text-color: var(--color-danger-contrast);
+
+		&:hover {
+			background-color: var(--color-danger-dark);
+		}
+	}
+
+	&.danger {
+		background-color: var(--color-danger);
+		--text-color: var(--color-danger-contrast);
+
+		&:hover {
+			background-color: var(--color-danger-dark);
+		}
+	}
+
+
+
+	&.disabled {
+		background-color: var(--color-text-muted);
+		cursor: not-allowed;
 
 		&:hover {
 			background-color: var(--color-text-muted);
 		}
 	}
 
-
-
-	&:disabled {
-		background-color: var(--color-text-muted);
-		cursor: not-allowed;
+	&.core-elements-spinner {
+		--width: 20px;
 	}
 
-	p {
-		font-size: var(--text-sm);
-		color: var(--color-bg-main);
+	&.iconOnly {
+		min-width: auto;
+		padding: var(--pad-sm);
+		gap: 0;
 	}
 }

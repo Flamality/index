@@ -1,4 +1,12 @@
-import { Client, Account, Databases, Storage, Functions } from "appwrite";
+import {
+  Client,
+  Account,
+  Databases,
+  Storage,
+  Functions,
+  Presences,
+  Realtime,
+} from "appwrite";
 
 export const client = new Client();
 
@@ -13,6 +21,8 @@ export const account = new Account(client);
 export const databases = new Databases(client);
 export const storage = new Storage(client);
 export const functions = new Functions(client);
+export const presences = new Presences(client);
+export const realtime = new Realtime(client);
 export const randomID = () => {
   var random = Math.floor(1e9 + Math.random() * 9e9);
   return random.toString();

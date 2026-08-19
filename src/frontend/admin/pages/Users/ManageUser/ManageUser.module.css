@@ -1,0 +1,25 @@
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: row;
+    background-color: var(--color-bg-alt);
+    padding: var(--pad-lg);
+    padding-top: var(--pad-2xl);
+    border-radius: var(--radius-lg);
+}
+
+.closeButton {
+    position: absolute;
+    top: var(--pad-sm);
+    right: var(--pad-sm);
+    font-size: 1.5rem;
+    color: var(--color-text-muted);
+    cursor: pointer;
+
+    &:hover {
+        color: var(--color-accent-primary);
+    }
+}

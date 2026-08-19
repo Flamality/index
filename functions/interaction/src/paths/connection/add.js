@@ -1,4 +1,4 @@
-import { tablesDB } from '../../main.js';
+import { tablesDB } from '../../appwrite/client.js';
 
 export default async function (user, { req, res, log }) {
   let body;

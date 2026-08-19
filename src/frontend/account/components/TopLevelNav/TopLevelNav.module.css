@@ -1,0 +1,62 @@
+.container {
+  background-color: var(--color-bg-alt);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-xs) var(--space-md);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  z-index: var(--z-max);
+
+  &>div {
+    width: 33%;
+  }
+}
+
+.tab_name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-text-main);
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: var(--space-md) var(--space-sm);
+    justify-content: space-between;
+
+    &>div {
+      width: fit-content;
+    }
+  }
+
+  .tab_name {
+
+    p {
+      font-size: var(--text-lg);
+      text-wrap: nowrap;
+    }
+  }
+
+  .actions>div:first-child {
+    display: none;
+    width: fit-content;
+
+  }
+
+  .user_card {
+    display: none;
+  }
+}

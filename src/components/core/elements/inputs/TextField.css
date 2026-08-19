@@ -2,6 +2,11 @@
   position: relative;
   min-width: 300px;
   width: 0;
+  transition: margin-bottom 0.3s ease;
+}
+
+.core-element-textfield-full-length {
+  width: 100%;
 }
 
 .core-element-textfield-with-symbol>input {
@@ -89,3 +94,38 @@
 .core-element-textfield > div::before {
   background-size: 0.75rem 0.75rem;
 } */
+
+.core-element-textfield-error-message {
+  position: absolute;
+  bottom: -1.5rem;
+  height: 1.5rem;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--pad-sm);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--text-xs);
+  color: var(--color-danger);
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  background-color: var(--color-surface-alt);
+
+  transition: opacity 0.3s ease, pointer-events 0.3s ease, height 0.3s ease, bottom 0.3s ease;
+
+  &.core-element-textfield-error-message-hidden {
+    opacity: 0;
+    pointer-events: none;
+    height: 0rem;
+    bottom: 0rem;
+  }
+}
+
+.core-element-textfield-with-error-message {
+  margin-bottom: 1.5rem;
+
+  &>input {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
