@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./Button.module.css";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../../../Spinner";
-import ToolTip from "../../../overlays/tooltip/ToolTip";
+import ToolTip from "../../../overlays/ToolTip/ToolTip";
 
 export default function Button({
   leading,
