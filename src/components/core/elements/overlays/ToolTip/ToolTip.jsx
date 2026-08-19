@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./ToolTip.module.css";
+import styles from "./tooltip.module.css";
 export default function ToolTip({ position = "top", content = "", children }) {
   const [visible, setVisible] = useState(false);
 
