@@ -6,7 +6,7 @@ import NotFound from "./components/core/screens/NotFound";
 // import TermsOfService from "./docs/Terms.jsx";
 // import Docs from "./docs/Docs.jsx";
 const Admin = lazy(() => import("./frontend/admin/Admin.jsx"));
-const Projects = lazy(() => import("./frontend/projects/projects.jsx"));
+const Projects = lazy(() => import("./frontend/projects/Projects.jsx"));
 
 // Landing
 const App = lazy(() => import("./frontend/Landing/Landing"));
