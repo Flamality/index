@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { databases } from "../../../services/appwrite";
-import Button from "../../../components/core/elements/inputs/buttons/Button/Button";
+import { databases } from "../../../../services/appwrite";
+import Button from "../../../../components/core/elements/inputs/buttons/Button/Button";
 import ManageUser from "./ManageUser/ManageUser";
 
 export default function Users() {

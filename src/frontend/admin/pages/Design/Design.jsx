@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 
 import styles from "./Design.module.css";
-import Button from "../../../components/core/elements/inputs/buttons/Button/Button";
-import GlintButton from "../../../components/core/elements/inputs/buttons/GlintButton/GlintButton";
-import TextField from "../../../components/core/elements/inputs/TextField";
-import TabGroup from "../../../components/core/elements/inputs/tabs/TabGroup/TabGroup";
-import Tab from "../../../components/core/elements/inputs/tabs/Tab/Tab";
-import { Notifications } from "../../../contexts/notifications";
+import Button from "../../../../components/core/elements/inputs/buttons/Button/Button";
+import GlintButton from "../../../../components/core/elements/inputs/buttons/GlintButton/GlintButton";
+import TextField from "../../../../components/core/elements/inputs/TextField";
+import TabGroup from "../../../../components/core/elements/inputs/tabs/TabGroup/TabGroup";
+import Tab from "../../../../components/core/elements/inputs/tabs/Tab/Tab";
+import { Notifications } from "../../../../contexts/notifications";
 import { FaUser } from "react-icons/fa6";
 import Typography from "./sections/Typography";
 
@@ -44,43 +44,43 @@ export default function Colors() {
     <div className={styles.container}>
       <div className={styles.input_container}>
         <h2>Buttons</h2>
-        <Button style='primary'>Primary Button</Button>
-        <Button style='secondary'>Secondary Button</Button>
-        <Button style='grayscale'>Grayscale Button</Button>
+        <Button style="primary">Primary Button</Button>
+        <Button style="secondary">Secondary Button</Button>
+        <Button style="grayscale">Grayscale Button</Button>
         <Button disabled>Default Button (Disabled)</Button>
         <GlintButton>Glint Button</GlintButton>
         <h2>Text Fields</h2>
         <TextField
-          placeholder='Default TextField'
+          placeholder="Default TextField"
           value={textFieldValue}
           onChange={(e) => setTextFieldValue(e.target.value)}
         />
         <TextField
-          placeholder='TextField with leading icon'
+          placeholder="TextField with leading icon"
           leading={<FaUser />}
           value={textFieldValue}
           onChange={(e) => setTextFieldValue(e.target.value)}
         />
         <TextField
-          placeholder='TextField with error'
+          placeholder="TextField with error"
           value={textFieldValue}
           error
           onChange={(e) => setTextFieldValue(e.target.value)}
         />
         <TextField
-          placeholder='TextField loading'
+          placeholder="TextField loading"
           value={textFieldValue}
           loading
           onChange={(e) => setTextFieldValue(e.target.value)}
         />
         <TextField
-          placeholder='TextField success'
+          placeholder="TextField success"
           value={textFieldValue}
           success
           onChange={(e) => setTextFieldValue(e.target.value)}
         />
         <TextField
-          placeholder='TextField with char count'
+          placeholder="TextField with char count"
           value={textFieldValue}
           showCount
           showCountMax

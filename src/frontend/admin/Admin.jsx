@@ -5,11 +5,11 @@ import { FaFlag, FaHouse, FaPaintbrush, FaPeopleGroup } from "react-icons/fa6";
 import { Link, Route, Routes } from "react-router-dom";
 import Flags from "./pages/Flags/Flags";
 import Users from "./pages/Users/Users";
-import { Auth } from "../contexts/auth";
-import Loading from "../components/core/screens/Loading";
+import { Auth } from "../../contexts/auth";
+import Loading from "../../components/core/screens/Loading";
 import { FaExclamationCircle } from "react-icons/fa";
 import Design from "./pages/Design/Design";
-import { presences } from "../services/appwrite";
+import { presences } from "../../services/appwrite";
 
 function Admin() {
   const { user, loading } = useContext(Auth);

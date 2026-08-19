@@ -3,18 +3,18 @@ import {
   BodyLarge,
   BodyMedium,
   BodySmall,
-} from "../../../../components/core/elements/typography/Body";
+} from "../../../../../components/core/elements/typography/Body";
 import {
   HeaderLarge,
   HeaderMedium,
   HeaderSmall,
   HeaderTiny,
-} from "../../../../components/core/elements/typography/Header";
+} from "../../../../../components/core/elements/typography/Header";
 import {
   TitleLarge,
   TitleMedium,
   TitleSmall,
-} from "../../../../components/core/elements/typography/Title";
+} from "../../../../../components/core/elements/typography/Title";
 
 export default function Typography() {
   return (

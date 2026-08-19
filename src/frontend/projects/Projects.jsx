@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Index from "./clicker";
+import Index from "./clicker/Index";
 
 export default function Projects() {
   return (

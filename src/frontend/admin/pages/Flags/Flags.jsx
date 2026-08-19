@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { databases } from "../../../services/appwrite";
+import { databases } from "../../../../services/appwrite";
 import Flag from "./components/Flag";
 
 export default function Flags() {
