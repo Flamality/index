@@ -24,11 +24,17 @@ export default async function (user, { req, res, log }, body) {
       presence = fullData.status || 'offline';
     }
   } catch (error) {}
-  const secret = await tablesDB.getRow({
+  let secret
+  try {
+  const sres = await tablesDB.getRow({
     databaseId: 'main',
     tableId: 'secrets',
     rowId: user.$id,
   });
+  secret = sres
+} catch (e) {
+  log(e);
+}
   if (secret?.spotify_token) {
     const spotifyUser = await getSpotifyUser(secret.spotify_token);
     connections = {
