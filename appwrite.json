@@ -51,7 +51,6 @@
             "scopes": [
                 "users.read",
                 "databases.read",
-                "databases.write",
                 "tables.read",
                 "tables.write",
                 "columns.read",
@@ -59,14 +58,7 @@
                 "indexes.read",
                 "indexes.write",
                 "rows.read",
-                "rows.write",
-                "collections.read",
-                "collections.write",
-                "attributes.read",
-                "attributes.write",
-                "documents.read",
-                "documents.write",
-                "dedicatedDatabases.execute"
+                "rows.write"
             ],
             "events": [],
             "schedule": "",

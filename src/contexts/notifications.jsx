@@ -4,7 +4,7 @@ import { client, realtime } from "../services/appwrite";
 import { Auth } from "./auth";
 import { admin } from "../../devConfig";
 import { Channel } from "appwrite";
-import { refreshUser, updateUserCache } from "./cache";
+import { addMessageToCache, getDMChannelFromCache, refreshUser, updateUserCache, useDMChannel } from "./cache";
 
 export const Notifications = createContext(null);
 
@@ -48,6 +48,15 @@ export const NotificationsProvider = ({ children }) => {
       //     `Your friend request to ${sender} was denied`,
       //   );
       // }
+    }
+    if (type === "NEW_MESSAGE") {
+      const { value, parent, UID } = event;
+      const channel = await getDMChannelFromCache(parent);
+      addMessageToCache(parent, {
+        content: value,
+        sender: UID,
+        timestamp: Date.now(),
+      });
     }
   };
 

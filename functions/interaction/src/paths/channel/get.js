@@ -2,8 +2,7 @@ import { databases, tablesDB } from '../../appwrite/client.js';
 
 export default async function (user, { req, res, log }, body) {
   if (!body.id) {
-    res.status(400).json({ error: 'Missing channel ID' });
-    return;
+    return res.status(400).json({ error: 'Missing channel ID' });
   }
 
   let info = null;
@@ -14,5 +13,11 @@ export default async function (user, { req, res, log }, body) {
       tableId: 'channels',
       rowId: body.id,
     });
+    info = res;
   } catch (error) {}
+  if (!info) {
+   return res.status(404)
+  }
+  return res.json(info);
 }
+

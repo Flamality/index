@@ -23,9 +23,12 @@ interface NotificationData {
 export const createNotification = async (
   type: NotificationType,
   uid: string,
-  data: NotificationData
+  data: NotificationData,
+  reads: string[] = [],
+  log?: any
 ) => {
   try {
+    const permissionTable = reads.map((userId) => Permission.read(Role.user(userId)));
     await tablesDB.createRow({
       databaseId: 'main',
       tableId: 'events',
@@ -36,9 +39,10 @@ export const createNotification = async (
         timestamp: new Date().toISOString(),
         ...data,
       },
-      permissions: [Permission.read(Role.user(uid))],
+      permissions: [Permission.read(Role.user(uid)), ...permissionTable],
     });
   } catch (error) {
+    log("Error creating notification:", error);
     throw new Error(`Failed to create notification: ${error}`);
   }
 };

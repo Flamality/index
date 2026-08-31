@@ -1,6 +1,6 @@
 import { account, client } from './appwrite/client.js';
 import { aclient } from './appwrite/server.js';
-import { routes } from './services/generated-routes';
+import { routes } from './services/generated-routes.js';
 import { createNotification } from './services/notification.js';
 
 export default async (context: any) => {

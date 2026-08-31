@@ -10,7 +10,7 @@
     "build": "npm run generate-routes && tsc"
   },
   "dependencies": {
-    "appwrite": "^25.2.0",
+    "appwrite": "^26.2.0",
     "node-appwrite": "^26.2.0"
   },
   "devDependencies": {

@@ -8,6 +8,7 @@ import { refreshUser, useUser } from "../../../../../contexts/cache";
 import UserAvatar from "../UserAvatar/UserAvatar";
 import {
   FaClock,
+  FaMessage,
   FaPaintbrush,
   FaPersonCircleCheck,
   FaPersonCircleMinus,
@@ -17,12 +18,26 @@ import {
 import ButtonGroup from "../../inputs/buttons/ButtonGroup/ButtonGroup";
 import RichText from "../../inputs/RichText";
 import Badge from "./components/Badge";
+import { useNavigate } from "react-router-dom";
 
 export default function UserCard({ overwrite = false, children }) {
   // const [user, setUser] = useState();
   const { user: usr, userData } = useContext(Auth);
+  const navigate = useNavigate();
 
   const [loadingFriend, setLoadingFriend] = useState(false);
+
+  const findDM = async () => {
+    try {
+      const res = await execute("interaction", "/friend/dm", { user: children });
+      if (res.success === false) {
+        return;
+      }
+      navigate(`/app/d/${res?.id}`);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   const sendUpdate = async (id, type) => {
     try {
@@ -187,6 +202,7 @@ export default function UserCard({ overwrite = false, children }) {
                   Edit Profile
                 </Button>
               )}
+              <Button leading={<FaMessage />} onClick={findDM} />
             </ButtonGroup>
           </div>
 
