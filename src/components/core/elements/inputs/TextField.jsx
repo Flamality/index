@@ -21,6 +21,7 @@ export default function TextField({
   errorMessage = "",
   leading = null,
   fullLength = false,
+  onSubmit = () => {},
 }) {
   return (
     <div
@@ -39,6 +40,12 @@ export default function TextField({
         type={type}
         maxLength={maxLength}
         minLength={minLength}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            onSubmit();
+          }
+        }}
       />
       {loading ? (
         <VscLoading className="core-element-textfield-loading" />

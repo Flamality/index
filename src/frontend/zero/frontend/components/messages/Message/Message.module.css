@@ -1,0 +1,34 @@
+.container {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-xs);
+}
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xxs);
+}
+.senderName {
+    font-weight: 400;
+    font-size: var(--text-md);
+}
+.messageContent {
+    font-size: var(--text-md);
+    line-height: 1.5;
+    overflow-wrap: break-word;
+}
+
+.messageHeader {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-xs);
+}
+.timestamp {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    align-self: end;
+}
+.pending .mesageContent {
+    color: var(--color-text-muted)
+}

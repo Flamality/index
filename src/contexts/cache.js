@@ -2,6 +2,58 @@ import { create } from "zustand";
 import { execute, tablesDB } from "../services/appwrite";
 import { useEffect } from "react";
 
+const getMessageIdentity = (item) => {
+  if (!item) return [];
+
+  return [item.$id, item.int_id].filter(Boolean);
+};
+
+const matchesMessageIdentity = (left, right) => {
+  if (!left || !right) return false;
+
+  const leftIds = getMessageIdentity(left);
+  const rightIds = getMessageIdentity(right);
+
+  if (!leftIds.length || !rightIds.length) return false;
+
+  return leftIds.some((id) => rightIds.includes(id));
+};
+
+const upsertMessage = (list, incoming) => {
+  if (!incoming) return list;
+
+  // Find ALL matching indices in the existing list
+  const matchingIndices = [];
+  list.forEach((entry, idx) => {
+    if (matchesMessageIdentity(entry, incoming)) {
+      matchingIndices.push(idx);
+    }
+  });
+
+  if (matchingIndices.length === 0) {
+    return [...list, incoming];
+  }
+
+  // Combine data from all existing matching records with the incoming record
+  const mergedItem = matchingIndices.reduce(
+    (acc, idx) => ({ ...acc, ...list[idx] }),
+    { ...incoming }
+  );
+
+  // Keep items that didn't match, and insert mergedItem at the first matched index
+  const firstMatchIndex = matchingIndices[0];
+  const matchingSet = new Set(matchingIndices);
+
+  return list.reduce((acc, entry, idx) => {
+    if (idx === firstMatchIndex) {
+      acc.push(mergedItem);
+    } else if (!matchingSet.has(idx)) {
+      acc.push(entry);
+    }
+    return acc;
+  }, []);
+};
+
 export const useCache = create((set, get) => ({
   cache: {
     user: {},
@@ -12,7 +64,7 @@ export const useCache = create((set, get) => ({
   messages: {},
 
   fetchUser: async (id, attempt = 0) => {
-    if (get().pending[`user_${id}`]) return;
+    if (!id || get().pending[`user_${id}`]) return;
 
     set((state) => ({
       pending: { ...state.pending, [`user_${id}`]: true },
@@ -20,9 +72,43 @@ export const useCache = create((set, get) => ({
 
     try {
       const res = await execute("interaction", "/user/get", { id });
-      if (!res) return;
+
+      if (!res) {
+        set((state) => ({
+          cache: {
+            ...state.cache,
+            user: {
+              ...state.cache.user,
+              [id]: {
+                data: state.cache.user?.[id]?.data ?? null,
+                lastUpdated: Date.now(),
+                error: "No user payload returned",
+              },
+            },
+          },
+        }));
+
+        if (attempt < 8) {
+          setTimeout(() => get().fetchUser(id, attempt + 1), 500);
+        }
+        return;
+      }
 
       if (res.success === false) {
+        set((state) => ({
+          cache: {
+            ...state.cache,
+            user: {
+              ...state.cache.user,
+              [id]: {
+                data: state.cache.user?.[id]?.data ?? null,
+                lastUpdated: Date.now(),
+                error: res.message || "User fetch failed",
+              },
+            },
+          },
+        }));
+
         if (attempt < 8) {
           setTimeout(() => get().fetchUser(id, attempt + 1), 500);
         } else {
@@ -36,7 +122,7 @@ export const useCache = create((set, get) => ({
           ...state.cache,
           user: {
             ...state.cache.user,
-            [id]: { data: res, lastUpdated: Date.now() },
+            [id]: { data: res, lastUpdated: Date.now(), error: null },
           },
         },
       }));
@@ -44,6 +130,25 @@ export const useCache = create((set, get) => ({
       const isFriend = get().friends.some((f) => f.target === id);
       if (isFriend || [1, 2, 3].includes(res.relation)) {
         get().getFriends();
+      }
+    } catch (error) {
+      console.error("Failed to fetch user:", error);
+      set((state) => ({
+        cache: {
+          ...state.cache,
+          user: {
+            ...state.cache.user,
+            [id]: {
+              data: state.cache.user?.[id]?.data ?? null,
+              lastUpdated: Date.now(),
+              error: error?.message || "User fetch threw an error",
+            },
+          },
+        },
+      }));
+
+      if (attempt < 8) {
+        setTimeout(() => get().fetchUser(id, attempt + 1), 500);
       }
     } finally {
       set((state) => ({
@@ -57,24 +162,34 @@ export const useCache = create((set, get) => ({
     if (res) set({ friends: res });
   },
 
- getMessages: async (dm, parent = null, offset = 0) => {
-  const res = await execute("interaction", "/message/get", {
-    dm_parent: dm || null,
-    parent: parent || null,
-    offset,
-  });
-  if (!res) return;
+  getMessages: async (dm, parent = null, offset = 0) => {
+    const res = await execute("interaction", "/message/get", {
+      dm_parent: dm || null,
+      parent: parent || null,
+      offset,
+    });
+    if (!res) return;
 
-  set((state) => ({
-    messages: {
-      ...state.messages,
-      [dm]: {
-        data: res,
-        lastUpdated: Date.now(),
-      },
-    },
-  }));
-},
+    set((state) => {
+      const existing = state.messages?.[dm]?.data ?? [];
+      const normalized = Array.isArray(res) ? res : [];
+      const deduped = normalized.reduce((acc, item) => upsertMessage(acc, item), existing);
+
+      const nextMessages = offset === 0
+        ? deduped.sort((a, b) => (a.timestamp ?? 0) - (b.timestamp ?? 0))
+        : deduped.sort((a, b) => (a.timestamp ?? 0) - (b.timestamp ?? 0));
+
+      return {
+        messages: {
+          ...state.messages,
+          [dm]: {
+            data: nextMessages,
+            lastUpdated: Date.now(),
+          },
+        },
+      };
+    });
+  },
 
   getUser: (id) => get().cache.user?.[id]?.data,
 
@@ -151,13 +266,15 @@ export const updateUserCache = (id, data) => {
 
 export const addMessageToCache = (dm, message) => {
   useCache.setState((state) => {
-    const prev = state.messages?.[dm];
-    const updatedMessages = prev?.data ? [...prev.data, message] : [message];
+    if (!dm || !message) return state;
+
+    const prev = state.messages?.[dm]?.data ?? [];
+    const dedupedMessages = upsertMessage(prev, message);
     return {
       messages: {
         ...state.messages,
         [dm]: {
-          data: updatedMessages,
+          data: dedupedMessages.sort((a, b) => (a.timestamp ?? 0) - (b.timestamp ?? 0)),
           lastUpdated: Date.now(),
         },
       },
@@ -165,9 +282,15 @@ export const addMessageToCache = (dm, message) => {
   });
 };
 
-// --- Custom Hooks ---
+export const fetchMoreMessages = (id) => {
+  const messages = useCache.getState().messages?.[id];
+  if (!messages || !Array.isArray(messages.data)) return;
 
-// REMOVED 'async' keyword here
+  const offset = messages.data.length;
+  useCache.getState().getMessages(id, null, offset);
+};
+
+// --- Custom Hooks ---
 export const useMessages = (id) => {
   const messages = useCache((state) => state.messages?.[id] ?? null);
   const getMessages = useCache((state) => state.getMessages);
@@ -208,22 +331,27 @@ export const useDMChannel = (id) => {
   return channel?.data ?? null;
 }
 export const useUser = (id, force = false) => {
+  if (!id) {
+    return null;
+  }
   const user = useCache((state) => state.cache.user?.[id] ?? null);
   const fetchUser = useCache((state) => state.fetchUser);
+  const isPending = useCache((state) => !!state.pending[`user_${id}`]);
 
   useEffect(() => {
     if (!id) return;
+
     const isStale =
       !user?.data ||
       !user?.lastUpdated ||
       Date.now() - user.lastUpdated > 60_000;
 
-    if (isStale || force) {
+    if ((isStale && !isPending) || force) {
       fetchUser(id);
     }
-  }, [id, user?.lastUpdated, force, fetchUser]);
+  }, [id, user?.data?._id, user?.lastUpdated, force, fetchUser, isPending]);
 
-  return user?.data;
+  return user?.data ?? null;
 };
 
 export const useFriends = (type = 3) => {

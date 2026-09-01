@@ -50,12 +50,13 @@ export const NotificationsProvider = ({ children }) => {
       // }
     }
     if (type === "NEW_MESSAGE") {
-      const { value, parent, UID } = event;
+      const { value, parent, UID, target } = event;
       const channel = await getDMChannelFromCache(parent);
       addMessageToCache(parent, {
         content: value,
-        sender: UID,
+        author: UID,
         timestamp: Date.now(),
+        $id: target
       });
     }
   };

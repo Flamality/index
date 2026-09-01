@@ -1,0 +1,36 @@
+.container {
+    max-height: 100vh;
+    overflow-y: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.header {
+    padding: var(--space-sm);
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-background-secondary);
+}
+
+.container .header h2 {
+    font-size: var(--font-size-md);
+    font-weight: 500;
+    margin: 0;
+}
+
+.messagesContainer {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--space-sm);
+    display: flex;
+    flex-direction: column;
+}
+
+.inputContainer {
+    padding: var(--space-sm);
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-background-secondary);
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-xs);
+}

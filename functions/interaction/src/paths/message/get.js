@@ -32,10 +32,10 @@ export default async function (user, { res, log }, body) {
       tableId: 'messages',
       queries: [
         Query.equal('dm_parent', dmParent),
-        Query.orderAsc('timestamp'),
+        Query.orderDesc('timestamp'),
+        Query.limit(50),
+        Query.offset(offset),
       ],
-      limit: 50,
-      offset,
     });
 
     return res.json(result.rows || [], 200);

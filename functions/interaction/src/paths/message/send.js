@@ -42,10 +42,11 @@ let dmData
     );
   }
   try {
+    const new_id = ID.unique();
     await tablesDB.createRow({
       databaseId: 'social',
       tableId: 'messages',
-      rowId: ID.unique(),
+      rowId: new_id,
       data: {
         content: content,
         author: user.$id,
@@ -61,11 +62,11 @@ let dmData
     await createNotification(
       'NEW_MESSAGE',
       user.$id,
-      { value: content, parent: dm || body.parent || null },
+      { value: content, parent: dm || body.parent || null, target: new_id },
       dmData?.users || [],
       log
     );
-    return res.json({ success: true });
+    return res.json({ success: true, id:  new_id});
   } catch (error) {
     return res.json(
       { success: false, error: error.message || 'Failed to send message.' },
