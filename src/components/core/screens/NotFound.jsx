@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import "./NotFound.css";
 import { Link } from "react-router-dom";
+import { Quests } from "../../../contexts/quests";
 
 export default function NotFound() {
+  const { grantQuest } = useContext(Quests);
+
+  useEffect(() => {
+    grantQuest("error");
+  }, []);
+
   return (
     <div className="core-screen-404">
       <div className="core-screen-404-top">

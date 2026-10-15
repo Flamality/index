@@ -1,0 +1,165 @@
+.header {
+    width: 100%;
+    padding: var(--space-lg);
+    /* border: 1px solid var(--color-surface); */
+    /* border-radius: var(--radius-lg); */
+    /* background: var(--color-surface); */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    border-bottom: 2px solid var(--color-surface);
+
+    margin-bottom: var(--space-lg);
+}
+
+.counter {
+    flex-shrink: 0;
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-warning);
+}
+
+.counter span {
+    color: var(--color-text-muted);
+    font-weight: 400;
+}
+
+.bar {
+    width: 100%;
+    height: 6px;
+    background: var(--color-surface-alt);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: var(--color-accent-primary);
+    border-radius: inherit;
+    transition: width 300ms ease;
+}
+
+.progressLabel {
+    margin: var(--space-sm) 0 0;
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    text-align: right;
+    text-wrap: nowrap;
+}
+
+.questList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.badgeClaim {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-2xl);
+    border: 1px solid var(--color-surface);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    margin-bottom: var(--space-lg);
+    border: 2px solid var(--color-border);
+}
+
+.quest {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    width: 100%;
+    padding: var(--space-md) var(--space-lg);
+    border: 1px solid var(--color-surface);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    transition: border-color 180ms ease, background 180ms ease;
+}
+
+.status {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-md);
+    background: var(--color-surface-alt);
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+}
+
+.content {
+    flex: 1;
+    min-width: 0;
+}
+
+.title {
+    margin: 0;
+    font-size: var(--text-lg);
+    font-weight: 600;
+}
+
+.description {
+    margin: var(--space-xs) 0 0;
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.questState {
+    flex-shrink: 0;
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+}
+
+.rewarded {
+    border-color: color-mix(in srgb,
+            var(--color-warning) 35%,
+            var(--color-surface));
+}
+
+.rewarded .status {
+    color: var(--color-warning);
+    background: color-mix(in srgb,
+            var(--color-warning) 12%,
+            var(--color-surface));
+}
+
+.rewarded .questState {
+    color: var(--color-warning);
+}
+
+.notRewarded .title {
+    color: var(--color-text-muted);
+}
+
+@media (hover: hover) {
+    .quest:hover {
+        border-color: var(--color-warning-dark);
+    }
+}
+
+@media (max-width: 480px) {
+    .quest {
+        padding: var(--space-md);
+    }
+
+    .questState {
+        display: none;
+    }
+
+    .header {
+        padding: var(--space-md);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .progress,
+    .quest {
+        transition: none;
+    }
+}

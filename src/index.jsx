@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { QuestsProvider } from "./contexts/quests";
 
 import ReactDOM from "react-dom/client";
 import "./index.css";
@@ -26,13 +27,15 @@ root.render(
   <BrowserRouter>
     {/* <MDXProvider components={mdxComponents}> */}
     <NotificationsProvider>
-      <LayersProvider>
-        <AuthProvider>
-          <ConnectionsProvider>
-            <Root />
-          </ConnectionsProvider>
-        </AuthProvider>
-      </LayersProvider>
+      <QuestsProvider>
+        <LayersProvider>
+          <AuthProvider>
+            <ConnectionsProvider>
+              <Root />
+            </ConnectionsProvider>
+          </AuthProvider>
+        </LayersProvider>
+      </QuestsProvider>
     </NotificationsProvider>
     {/* </MDXProvider> */}
   </BrowserRouter>,

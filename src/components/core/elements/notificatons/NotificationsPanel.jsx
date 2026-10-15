@@ -3,6 +3,7 @@ import { Notifications } from "../../../../contexts/notifications";
 import "./NotificationsPanel.css";
 import {
   FaCheck,
+  FaCrown,
   FaInfo,
   FaQuestion,
   FaTriangleExclamation,
@@ -20,7 +21,7 @@ export default function NotificationsPanel() {
         // Trigger enter in next tick
         setTimeout(() => {
           setLocalNotifs((prev) =>
-            prev.map((ln) => (ln.id === n.id ? { ...ln, visible: true } : ln))
+            prev.map((ln) => (ln.id === n.id ? { ...ln, visible: true } : ln)),
           );
         }, 10);
 
@@ -31,7 +32,7 @@ export default function NotificationsPanel() {
 
   const hideNotification = (id) => {
     setLocalNotifs((prev) =>
-      prev.map((n) => (n.id === id ? { ...n, visible: false } : n))
+      prev.map((n) => (n.id === id ? { ...n, visible: false } : n)),
     );
     setTimeout(() => {
       setLocalNotifs((prev) => prev.filter((n) => n.id !== id));
@@ -39,17 +40,18 @@ export default function NotificationsPanel() {
   };
 
   return (
-    <div className='notifications-panel'>
+    <div className="notifications-panel">
       {localNotifs.map((n) => (
         <div
           key={n.id}
           className={`notification ${n.type} ${n.visible ? "enter" : "exit"}`}
         >
-          <div className='notification-accent'>
+          <div className="notification-accent">
             {n.type == "danger" && <FaTriangleExclamation />}
             {n.type == "success" && <FaCheck />}
             {n.type == "warning" && <FaQuestion />}
             {n.type == "info" && <FaInfo />}
+            {n.type == "quest" && <FaCrown />}
           </div>
           <p className="notification-title">{n.title}</p>
           <p className="notification-desc">{n.desc}</p>

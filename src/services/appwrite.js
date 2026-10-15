@@ -14,8 +14,8 @@ client
   .setEndpoint(
     import.meta.env.VITE_API_URL || "https://nyc.cloud.appwrite.io/v1",
   )
-  .setProject(import.meta.env.VITE_APPWRITE_ID || "flamality")
-  .setDevKey(import.meta.env.VITE_DEV_KEY || "invalid");
+  .setProject(import.meta.env.VITE_APPWRITE_ID || "flamality");
+// .setDevKey(import.meta.env.VITE_DEV_KEY || "invalid");
 
 export const account = new Account(client);
 export const databases = new Databases(client);

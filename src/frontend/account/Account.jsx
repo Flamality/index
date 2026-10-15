@@ -22,6 +22,7 @@ const tabs = {
   admin: React.lazy(() => import("./tabs/Admin/Admin")),
   connections: React.lazy(() => import("./tabs/Connections/Connections")),
   friends: React.lazy(() => import("./tabs/Friends/Friends")),
+  quests: React.lazy(() => import("./tabs/Quests/Quests")),
 };
 
 export default function Account() {

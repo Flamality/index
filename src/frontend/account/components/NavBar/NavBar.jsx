@@ -3,6 +3,7 @@ import "./NavBar.css";
 import TabButton from "./TabButton/TabButton";
 import {
   FaCircleUser,
+  FaCrown,
   FaDatabase,
   FaLock,
   FaPeopleArrows,
@@ -20,6 +21,7 @@ export default function NavBar() {
       <TabButton text="Profile" link="profile" icon={<FaPaintBrush />} />
       <TabButton text="Friends" link="friends" icon={<FaPeopleArrows />} />
       <TabButton text="Security" link="security" icon={<FaLock />} />
+      <TabButton text="Quests" link="quests" icon={<FaCrown />} />
       {user.labels.includes("admin") && (
         <TabButton text="Conections" link="connections" icon={<FaPlug />} />
       )}

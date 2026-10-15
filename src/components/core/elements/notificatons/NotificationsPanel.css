@@ -85,3 +85,8 @@
   --current-color: var(--color-warning);
   --current-color-dark: var(--color-warning-dark);
 }
+
+.notification.quest {
+  --current-color: var(--color-warning);
+  --current-color-dark: var(--color-warning-dark);
+}
