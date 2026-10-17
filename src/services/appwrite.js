@@ -6,6 +6,7 @@ import {
   Functions,
   Presences,
   Realtime,
+  Avatars,
 } from "appwrite";
 
 export const client = new Client();
@@ -21,6 +22,7 @@ export const account = new Account(client);
 export const databases = new Databases(client);
 export const storage = new Storage(client);
 export const functions = new Functions(client);
+export const avatar = new Avatars(client);
 export const presences = new Presences(client);
 export const realtime = new Realtime(client);
 export const randomID = () => {

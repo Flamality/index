@@ -1,0 +1,78 @@
+.wrapper {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--pad-md);
+  flex-shrink: 0;
+}
+
+.status {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  margin-left: var(--pad-sm);
+  border-radius: var(--radius-full);
+  padding: var(--pad-xxs) var(--pad-sm);
+
+  &.ready {
+    background-color: var(--color-success);
+  }
+}
+
+.inputContainer {
+  margin-bottom: var(--pad-md);
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+
+.input {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  resize: none;
+  box-sizing: border-box;
+}
+
+.result {
+  position: relative;
+  flex: 0 0 200px;
+  min-height: 50px;
+  box-sizing: border-box;
+  padding: var(--pad-md);
+  padding-top: calc(var(--pad-md) + 10px);
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  overflow-y: auto;
+}
+
+.resizer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  cursor: ns-resize;
+  background: #2196f3;
+  touch-action: none;
+  z-index: 10;
+}
+
+.result pre {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: var(--color-text-main);
+}
+
+.result pre.error {
+  color: var(--color-danger);
+}

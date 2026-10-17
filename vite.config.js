@@ -21,4 +21,7 @@ export default defineConfig({
     },
   },
   base: "/",
+  optimizeDeps: {
+    exclude: ["@electric-sql/pglite"],
+  },
 });

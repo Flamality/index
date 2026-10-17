@@ -15,6 +15,9 @@ export default function UserSmallCard({
   const data = useUser(children);
   const user = overwrite || data;
   const { showModal } = useContext(Layers);
+  const [avatar, setAvatar] = useState(null);
+
+  useEffect(() => {}, [children, overwrite]);
 
   return (
     <div
