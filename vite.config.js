@@ -22,6 +22,7 @@ export default defineConfig({
   },
   base: "/",
   optimizeDeps: {
-    exclude: ["@electric-sql/pglite"],
+    exclude: ["@electric-sql/pglite", "@sqlite.org/sqlite-wasm"],
   },
+  assetsInclude: ["**/*.wasm"],
 });

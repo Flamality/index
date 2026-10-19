@@ -1,0 +1,119 @@
+.wrapper {
+    --size: 60px;
+    height: var(--size);
+    width: var(--size);
+    position: relative;
+    --background-color: #3f374f;
+    --text-color: #e9e9ec;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: var(--size);
+    width: var(--size);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    background-color: var(--background-color);
+    background: linear-gradient(145deg,
+            color-mix(in srgb, var(--background-color), white 9%),
+            var(--background-color) 70%);
+
+    p {
+        color: var(--text-color);
+    }
+
+    &:hover {
+        height: 90px;
+        width: 90px;
+        z-index: 1;
+        box-shadow: var(--shadow-xl);
+
+        .number {
+            font-size: var(--text-sm);
+        }
+
+        .symbol {
+            font-size: var(--header-3-size);
+        }
+    }
+}
+
+.selected {
+    .container {
+        border: 1px solid color-mix(in srgb, var(--background-color), white 9%) alpha(0.5);
+    }
+}
+
+.number {
+    font-size: var(--text-xs);
+}
+
+.symbol {
+    font-size: var(--text-lg);
+    font-weight: bold;
+}
+
+.name {
+    font-size: var(--text-xs);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.alkali_metal {
+    --background-color: #164e63;
+    --text-color: #cffafe;
+}
+
+.alkaline_earth_metal {
+    --background-color: #7f1d3f;
+    --text-color: #ffe4ed;
+}
+
+.transition_metal {
+    --background-color: #4c3285;
+    --text-color: #ede9fe;
+}
+
+.post-transition_metal {
+    --background-color: #285744;
+    --text-color: #d1fae5;
+}
+
+.metalloid {
+    --background-color: #79521c;
+    --text-color: #fef3c7;
+}
+
+.nonmetal {
+    --background-color: #254779;
+    --text-color: #dbeafe;
+}
+
+.halogen {
+    --background-color: #796018;
+    --text-color: #fff7cc;
+}
+
+.noble_gas {
+    --background-color: #87365f;
+    --text-color: #fce7f3;
+}
+
+.lanthanide {
+    --background-color: #40576f;
+    --text-color: #e0f2fe;
+}
+
+.actinide {
+    --background-color: #873c2a;
+    --text-color: #ffede5;
+}

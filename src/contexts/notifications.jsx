@@ -94,7 +94,7 @@ export const NotificationsProvider = ({ children }) => {
       createNotification("success", "Connected", "Connected to realtime", true);
       return () => {
         subscription();
-        presenceSubscription();
+        // presenceSubscription();
         createNotification(
           "danger",
           "Disconnected",

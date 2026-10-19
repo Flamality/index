@@ -1,8 +1,9 @@
 import React from "react";
-import { db, dbReady } from "./service_pglite";
+import { db, dbReady } from "./service_sqlite";
 
 import styles from "./database.module.css";
 import Button from "../../../components/core/elements/inputs/buttons/Button/Button";
+import { FaEllipsis } from "react-icons/fa6";
 
 export default function Database() {
   const [ready, setReady] = React.useState(false);
@@ -86,7 +87,9 @@ export default function Database() {
       </div>
 
       <div className={styles.result} ref={boxRef}>
-        <div className={styles.resizer} onMouseDown={handleMouseDown} />
+        <div className={styles.resizer} onMouseDown={handleMouseDown}>
+          <FaEllipsis />
+        </div>
         {error && <pre className={styles.error}>{error}</pre>}
 
         {result && <pre>{JSON.stringify(result, null, 2)}</pre>}
