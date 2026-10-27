@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import styles from "./Element.module.css";
+import styles from "./element.module.css";
 
 export default function Element({ e, section }) {
   const navigate = useNavigate();
@@ -44,10 +44,24 @@ export default function Element({ e, section }) {
           navigate(`/p/periodic/${e.symbol}`);
         }}
       >
-        <p className={styles.number}>{e.number}</p>
+        <div className={styles.top}>
+          <p className={styles.number}>{e.number}</p>
+          <p className={styles.mass}>{e.atomic_mass.toFixed(2)}</p>
+        </div>
         <p className={styles.symbol}>{e.symbol}</p>
         <p className={styles.name}>{e.name}</p>
       </div>
+
+      {e.ypos === 1 && (
+        <div className={styles.topLabel}>
+          <p>{e.group}</p>
+        </div>
+      )}
+      {e.xpos === 1 && (
+        <div className={styles.leftLabel}>
+          <p>{e.period}</p>
+        </div>
+      )}
     </div>
   );
 }

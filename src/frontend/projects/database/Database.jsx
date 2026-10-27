@@ -1,5 +1,5 @@
 import React from "react";
-import { db, dbReady } from "./service_sqlite";
+import { db, dbReady } from "./service_pglite";
 
 import styles from "./database.module.css";
 import Button from "../../../components/core/elements/inputs/buttons/Button/Button";

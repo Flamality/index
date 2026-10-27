@@ -1,0 +1,37 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  justify-content: end;
+  align-items: center;
+}
+
+.categoryNotch {
+  height: 1lh;
+  width: 1lh;
+  background-color: var(--background-color);
+  border-radius: var(--radius-full);
+  border: 1px solid color-mix(in srgb, var(--background-color), white 9%)
+    alpha(0.5);
+}
+
+.category {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid color-mix(in srgb, var(--background-color), white 9%)
+    alpha(0.5);
+  width: fit-content;
+  padding: var(--pad-xxs) var(--pad-sm);
+  gap: var(--space-xs);
+  p {
+    color: var(--text-color);
+  }
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}

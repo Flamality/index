@@ -9,7 +9,6 @@
     "@electric-sql/pglite-repl": "^0.4.10",
     "@mdx-js/rollup": "^3.1.1",
     "@monaco-editor/react": "^4.7.0",
-    "@sqlite.org/sqlite-wasm": "^3.53.4-build2",
     "appwrite": "^25.2.0",
     "appwrite-cli": "^12.0.1",
     "react": "^19.2.3",
